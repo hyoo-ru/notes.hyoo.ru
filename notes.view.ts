@@ -83,7 +83,7 @@ namespace $.$$ {
 			return [
 				... this.notes_filter_showed() ? [ this.Note_filter() ] : [] ,
 				this.Notes_list() ,
-				this.Tag_drop() ,
+				... this.tag() ? [ this.Tag_drop() ] : [] ,
 			]
 		}
 
@@ -92,6 +92,12 @@ namespace $.$$ {
 			this.tag_ids([ id , ... this.tag_ids() ])
 			this.tag( id )
 			this.tag_filter( '' )
+		}
+
+		tag_drop() {
+			const tag = this.tag()
+			this.tag_ids( this.tag_ids().filter( id => id !== tag ) )
+			this.tag( null )
 		}
 
 		tagging_add() {
