@@ -1,0 +1,100 @@
+$hyoo_notes $mol_book
+	pages /
+		<= Tags_page $mol_page
+			minimal_width 200
+			title <= tags_title @ \Tags
+			event_top?val <=> event_front_up?val
+			tools /
+				<= Tags_all $mol_link
+					arg * tag null
+					sub / <= Tags_all_icon $mol_icon_filter_remove
+			body <= tags_body /
+				<= Tag_filter $mol_search
+					query?val <=> tag_filter?val \
+					hint <= tag_filter_hint @ \Search or add...
+				<= Tag_add $mol_button_minor
+					sub /
+						<= Tag_add_icon $mol_icon_plus
+						<= tag_add_title @ \Add this tag
+					click?event <=> tag_add?event null
+				<= Tag_list $mol_list
+					rows <= tag_rows /
+		<= Notes_page $mol_page
+			minimal_width 400
+			title <= notes_title @ \Notes
+			event_top?val <=> event_front_up?val
+			tools /
+				<= Note_add $mol_button_major
+					sub /
+						<= Note_add_icon $mol_icon_plus
+						- <= note_add_title @ \Add new
+					click?event <=> note_add?event null
+			body <= notes_body /
+				<= Note_filter $mol_search
+					query?val <=> note_filter?val \
+				<= Notes_list $mol_list
+					rows <= note_rows /
+				<= Tag_drop $mol_button_minor
+					title <= tag_drop_title @ \Delete tag
+					click?event <=> tag_drop?event null
+		<= Note_page $mol_page
+			minimal_width 800
+			title <= note_current_title \
+			event_top?val <=> event_front_up?val
+			tools /
+				<= Note_tags_manage $mol_link
+					sub / <= Note_tags_manage_icon $mol_icon_settings
+					arg * tagging \
+				<= Note_close $mol_link
+					arg *
+						note null
+						tagging null
+					sub / <= Note_close_icon $mol_icon_close
+			body /
+				<= Note_content $mol_textarea
+					value?val <=> note_current_content?val \
+		<= Tagging_page $mol_page
+			minimal_width 200
+			title <= tagging_title @ \Note tags
+			event_top?val <=> event_front_up?val
+			tools /
+				<= Tagging_close $mol_link
+					arg * tagging null
+					sub / <= Tagging_close_icon $mol_icon_close
+			body <= tagging_body /
+				<= Tagging_filter $mol_search
+					query?val <=> tagging_filter?val \
+					hint <= tag_filter_hint
+				<= Tagging_add $mol_button_minor
+					sub /
+						<= Tagging_add_icon $mol_icon_plus
+						<= tag_add_title
+					click?event <=> tagging_add?event null
+				<= Tagging_list $mol_list
+					rows <= tagging_rows /
+				<= Note_drop $mol_button_minor
+					title <= note_drop_title @ \Delete note
+					click?event <=> note_drop?event null
+	Tag_row!id $mol_link
+		sub /
+			<= Tag_title!id $mol_dimmer
+				haystack <= tag_title!id \
+				needle <= tag_filter
+		arg *
+			tag <= id!id \
+			note null
+			tagging null
+	Note_row!id $mol_link
+		sub /
+			<= Note_title!id $mol_dimmer
+				haystack <= note_title!id \
+				needle <= note_filter
+		arg *
+			note <= id!id \
+			tagging null
+	Tagging_tag_row!id $mol_check_box
+		checked?val <=> tagging_tag!id?val false
+		label /
+			<= Tagging_tag_title!id $mol_dimmer
+				haystack <= tag_title!id \
+				needle <= tagging_filter
