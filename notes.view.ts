@@ -156,7 +156,7 @@ namespace $.$$ {
 			this.note_ids([ id , ... this.note_ids() ])
 			this.note_tags( id , $mol_maybe( this.tag() ) )
 			this.note( id )
-			this.Note_content().Edit().focused( true )
+			new $mol_defer( ()=> this.Note_content().Edit().focused( true ) )
 		}
 
 		note_drop() {
