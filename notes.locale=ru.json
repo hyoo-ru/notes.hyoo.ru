@@ -3,7 +3,9 @@
 	"$hyoo_notes_tag_filter_hint": "Найти или добавить...",
 	"$hyoo_notes_tag_add_title": "Добавить эту метку",
 	"$hyoo_notes_notes_title": "Заметки",
+	"$hyoo_notes_notes_list_add_title": "Добавить новую",
 	"$hyoo_notes_tag_drop_title": "Удалить метку",
+	"$hyoo_notes_note_content_hint": "Содержимое заметки",
 	"$hyoo_notes_tagging_title": "Метки заметки",
 	"$hyoo_notes_note_drop_title": "Удалить заметку"
 }

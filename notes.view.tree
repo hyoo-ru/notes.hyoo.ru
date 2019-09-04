@@ -56,6 +56,7 @@ $hyoo_notes $mol_book
 					sub / <= Note_close_icon $mol_icon_close
 			body /
 				<= Note_content $mol_textarea
+					hint <= note_content_hint @ \Note content
 					value?val <=> note_current_content?val \
 		<= Tagging_page $mol_page
 			minimal_width 200
