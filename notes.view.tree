@@ -81,6 +81,7 @@ $hyoo_notes $mol_book
 					title <= note_drop_title @ \Delete note
 					click?event <=> note_drop?event null
 	Placeholder $mol_book_placeholder minimal_width 200
+	note_default_title @ \New note
 	Tag_row!id $mol_link
 		sub /
 			<= Tag_title!id $mol_dimmer

@@ -7,5 +7,6 @@
 	"$hyoo_notes_tag_drop_title": "Удалить метку",
 	"$hyoo_notes_note_content_hint": "Содержимое заметки",
 	"$hyoo_notes_tagging_title": "Метки заметки",
-	"$hyoo_notes_note_drop_title": "Удалить заметку"
+	"$hyoo_notes_note_drop_title": "Удалить заметку",
+	"$hyoo_notes_note_default_title": "Новая заметка"
 }

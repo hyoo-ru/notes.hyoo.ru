@@ -116,7 +116,7 @@ namespace $.$$ {
 		}
 
 		note_title( id : string ) {
-			return this.note_content( id ).replace( /\n[\s\S]*/ , ''  ) || 'Новая заметка'
+			return this.note_content( id ).replace( /\n[\s\S]*/ , ''  ) || this.note_default_title()
 		}
 
 		note_current_title() {
