@@ -34,11 +34,15 @@ $hyoo_notes $mol_book
 					query?val <=> note_filter?val \
 				<= Notes_list $mol_list
 					rows <= note_rows /
+					Empty <= Note_add_hint $mol_view
+						sub /
+							<= notes_list_add_title @ \Add new
+							<= Notes_list_add_icon $mol_icon_arrow_up_bold
 				<= Tag_drop $mol_button_minor
 					title <= tag_drop_title @ \Delete tag
 					click?event <=> tag_drop?event null
 		<= Note_page $mol_page
-			minimal_width 800
+			minimal_width 600
 			title <= note_current_title \
 			event_top?val <=> event_front_up?val
 			tools /
@@ -75,6 +79,7 @@ $hyoo_notes $mol_book
 				<= Note_drop $mol_button_minor
 					title <= note_drop_title @ \Delete note
 					click?event <=> note_drop?event null
+	Placeholder $mol_book_placeholder minimal_width 200
 	Tag_row!id $mol_link
 		sub /
 			<= Tag_title!id $mol_dimmer

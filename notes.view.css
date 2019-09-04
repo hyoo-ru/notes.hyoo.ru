@@ -1,3 +1,7 @@
+[hyoo_notes_placeholder] {
+	flex: 1000 1 200px;
+}
+
 [hyoo_notes_tags_page] {
 	flex: 1 1 200px;
 }
@@ -59,8 +63,20 @@
 	flex: 1 0 auto;
 }
 
+[hyoo_notes_note_add] {
+	padding: .5rem;
+}
+
+[hyoo_notes_note_add_hint] {
+	display: flex;
+	padding: 0 .5rem;
+	justify-content: flex-end;
+	align-items: center;
+	color: var(--mol_theme_shade);
+}
+
 [hyoo_notes_note_page] {
-	flex: 1 1 800px;
+	flex: 1 1 600px;
 }
 
 [hyoo_notes_note_page_body] {
