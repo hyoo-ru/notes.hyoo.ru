@@ -81,6 +81,7 @@
 
 [hyoo_notes_note_page_body] {
 	display: flex;
+	flex-direction: column;
 }
 
 [hyoo_notes_note_row] {
