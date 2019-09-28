@@ -41,4 +41,4 @@ jobs:
       uses: alex-page/blazing-fast-gh-pages-deploy@v1.0.1
       with:
         repo-token: ${{ secrets.GH_PAT }}
-        site-directory: '../mam/hyoo/notes/-'
+        site-directory: '../mam/hyoo/notes/-' 
