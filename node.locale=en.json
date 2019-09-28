@@ -1,0 +1,15 @@
+{
+	"$hyoo_notes_note_content_hint": "Note content",
+	"$hyoo_notes_note_default_title": "New note",
+	"$hyoo_notes_note_drop_title": "Delete note",
+	"$hyoo_notes_notes_list_add_title": "Add new",
+	"$hyoo_notes_notes_title": "Notes",
+	"$hyoo_notes_tag_add_title": "Add this tag",
+	"$hyoo_notes_tag_drop_title": "Delete tag",
+	"$hyoo_notes_tag_filter_hint": "Search or add...",
+	"$hyoo_notes_tagging_title": "Note tags",
+	"$hyoo_notes_tags_title": "Tags",
+	"$mol_search_hint": "Search...",
+	"$mol_select_hint": "Search..",
+	"$mol_select_no_options_message": "No options"
+}
