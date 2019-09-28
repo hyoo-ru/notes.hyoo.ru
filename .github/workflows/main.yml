@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - name: Set up NodeJS
+      uses: actions/setup-node@v1
+    
+    - name: Checkout sources
+      uses: actions/checkout@v1
+    
+    - name: Checkout MAM
+      uses: actions/checkout@v1
+      with:
+        repository: eigenmethod/mam
+        ref: master
+        path: mam
+    
+    - name: Build app
+      run: |
+        cd ..
+        ls
+        mkdir mam/hyoo
+        mkdir mam/hyoo/notes
+        mv notes.hyoo.ru/* mam/hyoo/notes
+        cd mam
+        yarn
+        yarn start hyoo/notes
+        cp hyoo/notes/CNAME hyoo/notes/-/CNAME
+    
+    - name: Deploy on GitHub Pages
+      uses: alex-page/blazing-fast-gh-pages-deploy@v1.0.1
+      with:
+        repo-token: ${{ secrets.GH_PAT }}
+        site-directory: '../mam/hyoo/notes/-'
