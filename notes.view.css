@@ -22,7 +22,15 @@
 
 [hyoo_notes_tag_row] {
 	display: flex;
-	flex-direction: column;
+	padding: .25rem;
+}
+
+[hyoo_notes_tag_row] > * {
+	margin: .25rem;
+}
+
+[hyoo_notes_tag_icon] {
+	margin: .5rem .25rem;
 }
 
 [hyoo_notes_tag_filter] {
@@ -85,9 +93,26 @@
 
 [hyoo_notes_note_row] {
 	display: flex;
-	flex-direction: column;
+	padding: .25rem;
+}
+
+[hyoo_notes_note_row] > * {
+	margin: .25rem;
+}
+
+[hyoo_notes_note_icon] {
+	margin: .5rem .25rem;
 }
 
 [hyoo_notes_tagging_tag_row] {
 	display: flex;
+	padding: .25rem;
+}
+
+[hyoo_notes_tagging_tag_row] > * {
+	margin: .25rem;
+}
+
+[hyoo_notes_tagging_tag_row_icon] {
+	margin: .5rem .25rem;
 }

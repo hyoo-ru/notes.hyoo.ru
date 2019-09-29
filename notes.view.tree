@@ -84,6 +84,7 @@ $hyoo_notes $mol_book
 	note_default_title @ \New note
 	Tag_row!id $mol_link
 		sub /
+			<= Tag_icon!id $mol_icon_folder
 			<= Tag_title!id $mol_dimmer
 				haystack <= tag_title!id \
 				needle <= tag_filter
@@ -93,6 +94,7 @@ $hyoo_notes $mol_book
 			tagging null
 	Note_row!id $mol_link
 		sub /
+			<= Note_icon!id $mol_icon_card_text_outline
 			<= Note_title!id $mol_dimmer
 				haystack <= note_title!id \
 				needle <= note_filter
