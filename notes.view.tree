@@ -1,7 +1,7 @@
 $hyoo_notes $mol_book
 	pages /
 		<= Tags_page $mol_page
-			minimal_width 200
+			minimal_width 300
 			title <= tags_title @ \Tags
 			event_top?val <=> event_front_up?val
 			tools /
@@ -20,7 +20,7 @@ $hyoo_notes $mol_book
 				<= Tag_list $mol_list
 					rows <= tag_rows /
 		<= Notes_page $mol_page
-			minimal_width 400
+			minimal_width 500
 			title <= notes_title @ \Notes
 			event_top?val <=> event_front_up?val
 			tools /
@@ -42,7 +42,7 @@ $hyoo_notes $mol_book
 					title <= tag_drop_title @ \Delete tag
 					click?event <=> tag_drop?event null
 		<= Note_page $mol_page
-			minimal_width 600
+			minimal_width 800
 			title <= note_current_title \
 			event_top?val <=> event_front_up?val
 			tools /
@@ -59,7 +59,7 @@ $hyoo_notes $mol_book
 					hint <= note_content_hint @ \Note content
 					value?val <=> note_current_content?val \
 		<= Tagging_page $mol_page
-			minimal_width 200
+			minimal_width 300
 			title <= tagging_title @ \Note tags
 			event_top?val <=> event_front_up?val
 			tools /
@@ -80,7 +80,7 @@ $hyoo_notes $mol_book
 				<= Note_drop $mol_button_minor
 					title <= note_drop_title @ \Delete note
 					click?event <=> note_drop?event null
-	Placeholder $mol_book_placeholder minimal_width 200
+	Placeholder $mol_book_placeholder minimal_width 300
 	note_default_title @ \New note
 	Tag_row!id $mol_link
 		sub /
