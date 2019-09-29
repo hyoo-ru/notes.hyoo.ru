@@ -541,6 +541,14 @@ $mol_textarea $mol_view
 		<= View $mol_text
 			text <= text \
 
+$mol_icon_folder $mol_icon path \M10,4H4C2.89,4 2,4.89 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z
+
+$mol_icon_card $mol_icon path \M20,20H4C2.9,20 2,19.1 2,18V6C2,4.9 2.9,4 4,4H20C21.1,4 22,4.9 22,6V18C22,19.1 21.1,20 20,20Z
+
+$mol_icon_card_text $mol_icon path \M20,20H4C2.9,20 2,19.1 2,18V6C2,4.9 2.9,4 4,4H20C21.1,4 22,4.9 22,6V18C22,19.1 21.1,20 20,20M5,13V15H16V13H5M5,9V11H19V9H5Z
+
+$mol_icon_card_text_outline $mol_icon path \M20,20H4C2.9,20 2,19.1 2,18V6C2,4.9 2.9,4 4,4H20C21.1,4 22,4.9 22,6V18C22,19.1 21.1,20 20,20M4,6V18H20V6H4M6,9H18V11H6V9M6,13H16V15H6V13Z
+
 $hyoo_notes $mol_book
 	pages /
 		<= Tags_page $mol_page
@@ -627,6 +635,7 @@ $hyoo_notes $mol_book
 	note_default_title @ \New note
 	Tag_row!id $mol_link
 		sub /
+			<= Tag_icon!id $mol_icon_folder
 			<= Tag_title!id $mol_dimmer
 				haystack <= tag_title!id \
 				needle <= tag_filter
@@ -636,6 +645,7 @@ $hyoo_notes $mol_book
 			tagging null
 	Note_row!id $mol_link
 		sub /
+			<= Note_icon!id $mol_icon_card_text_outline
 			<= Note_title!id $mol_dimmer
 				haystack <= note_title!id \
 				needle <= note_filter
