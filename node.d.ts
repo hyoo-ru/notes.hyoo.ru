@@ -335,7 +335,7 @@ interface $node {
 declare var $node: $node;
 
 declare namespace $ {
-    var $mol_dom_context: Window & Pick<typeof globalThis, 'Node' | 'Element' | 'HTMLElement' | 'XMLHttpRequest' | 'DOMParser' | 'XMLSerializer'>;
+    var $mol_dom_context: typeof globalThis;
 }
 
 declare namespace $ {
@@ -865,6 +865,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $mol_ghost extends $.$mol_ghost {
         dom_node(): Element;
+        dom_node_actual(): Element;
         dom_tree(): Element;
         title(): string;
     }
