@@ -1,4 +1,5 @@
 $hyoo_notes $mol_book
+	attr * mol_theme \$mol_theme_auto
 	pages /
 		<= Tags_page $mol_page
 			minimal_width 300
