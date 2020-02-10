@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
   schedule:
-  - cron: "30 * * * *"
+  - cron: "50 * * * *"
 
 jobs:
   build:
@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    
+    - name: Environment Printer
+      uses: managedkaos/print-env@v1.0
     
     - name: Checkout sources
       uses: actions/checkout@v1
