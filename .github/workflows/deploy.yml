@@ -2,10 +2,8 @@ name: Deploy
 
 on:
   push:
-    branches:
-    - master
   schedule:
-  - cron: "0 2 * * *"
+  - cron: "30 * * * *"
 
 jobs:
   build:
@@ -23,6 +21,7 @@ jobs:
         module: 'hyoo/notes'
     
     - name: Deploy on GitHub Pages
+      if: github.ref == 'refs/heads/master'
       uses: alex-page/blazing-fast-gh-pages-deploy@v1.0.1
       with:
         repo-token: ${{ secrets.GH_PAT }}
