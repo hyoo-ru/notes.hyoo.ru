@@ -114,9 +114,8 @@ var $;
 var $;
 (function ($) {
     var _a;
-    class $mol_object2 extends Object {
+    class $mol_object2 {
         constructor(init) {
-            super();
             this[_a] = null;
             if (init)
                 init(this);
@@ -1931,7 +1930,7 @@ var $;
             this.hour = config.hour;
             this.minute = config.minute;
             this.second = config.second;
-            this.offset = config.offset && new $.$mol_time_duration(config.offset);
+            this.offset = config.offset == null ? config.offset : new $.$mol_time_duration(config.offset);
         }
         get weekday() {
             return (this.native.getDay() + 6) % 7;
