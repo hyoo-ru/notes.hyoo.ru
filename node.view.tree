@@ -502,21 +502,19 @@ $mol_text $mol_list
 	Table_cell_head!id $mol_float
 		sub <= table_cell_content!id /
 
-$mol_text_row $mol_view
-	minimal_height 40
+$mol_text_row $mol_paragraph
 	attr *
 		^
 		mol_text_type <= type \
 
-$mol_text_header $mol_view
+$mol_text_header $mol_paragraph
 	dom_name \h
-	minimal_height 50
 	attr *
 		^
 		mol_text_header_level <= level?val 0
 	sub <= content /
 
-$mol_text_span $mol_view
+$mol_text_span $mol_paragraph
 	dom_name \span
 	attr *
 		^
@@ -620,6 +618,10 @@ $mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
 
 $mol_check_box $mol_check
 	Icon $mol_icon_tick
+
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 8
 
 $mol_icon_folder $mol_icon path \M10,4H4C2.89,4 2,4.89 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z
 
