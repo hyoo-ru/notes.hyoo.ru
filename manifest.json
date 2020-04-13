@@ -3,6 +3,11 @@
 	"name": "$HyOO Notes",
 	"icons": [
 		{
+			"src": "../../hyoo/notes/logo/logo_16.png",
+			"type": "image/png",
+			"sizes": "16x16"
+		},
+		{
 			"src": "../../hyoo/notes/logo/logo_48.png",
 			"type": "image/png",
 			"sizes": "48x48"
