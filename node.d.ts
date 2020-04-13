@@ -1391,7 +1391,7 @@ declare namespace $ {
         buffer(next?: Uint8Array, force?: $mol_mem_force): Uint8Array;
         sub(): $mol_file[];
         resolve(path: string): $mol_file;
-        relate(base?: $mol_file): any;
+        relate(base?: $mol_file): string;
         append(next: Uint8Array | string): void;
     }
 }
@@ -2337,10 +2337,10 @@ declare namespace $.$$ {
     class $hyoo_notes extends $.$hyoo_notes {
         pages(): $mol_page[];
         note_ids(next?: string[]): string[];
-        note_tags(id: string, next?: string[]): string[];
+        note_tags(id: string, next?: string[] | null): string[];
         note(next?: string | null): string | null;
-        note_content(note: string, next?: string): string;
-        note_current_content(next?: string): any;
+        note_content(note: string, next?: string | null): string;
+        note_current_content(next?: string): string;
         tag_ids(next?: string[]): string[];
         tag(next?: string | null): string | null;
         tagging(next?: boolean): boolean;
@@ -2356,18 +2356,19 @@ declare namespace $.$$ {
         tag_title(id: string): string;
         id(id: string): string;
         note_title(id: string): string;
-        note_current_title(): any;
+        note_current_title(): string;
         tag_rows(): $mol_link[];
         tagging_rows(): $mol_check_box[];
         note_ids_available(): string[];
         note_rows(): $mol_link[];
         note_add(): void;
         note_drop(): void;
-        notes_title(): any;
+        notes_title(): string;
         tagging_tag(tag: string, next?: boolean): boolean;
     }
 }
 
+/// <reference types="node" />
 declare namespace $ {
-    function $mol_exec(dir: string, command: string, ...args: string[]): any;
+    function $mol_exec(dir: string, command: string, ...args: string[]): import("child_process").SpawnSyncReturns<Buffer>;
 }

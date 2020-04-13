@@ -4360,9 +4360,6 @@ var $;
         }
         Head() {
             return ((obj) => {
-                obj.attr = () => ({
-                    "mol_theme": "$mol_theme_base",
-                });
                 obj.sub = () => this.head();
                 return obj;
             })(new this.$.$mol_view());
@@ -4404,9 +4401,6 @@ var $;
         }
         Foot() {
             return ((obj) => {
-                obj.attr = () => ({
-                    "mol_theme": "$mol_theme_base",
-                });
                 obj.sub = () => this.foot();
                 return obj;
             })(new this.$.$mol_view());
@@ -4502,6 +4496,7 @@ var $;
                 padding: rem(.5),
                 wordBreak: 'normal',
                 cursor: 'default',
+                fontWeight: 'bolder',
                 ':empty': {
                     display: 'none',
                 },
@@ -7720,7 +7715,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_placeholder] {\n\tflex: 1 1 300px;\n}\n\n[hyoo_notes_tags_page] {\n\tflex: 1 1 300px;\n}\n\n[hyoo_notes_tagging_page] {\n\tflex: 1 1 300px;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .5rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 1 1 500px;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .5rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add] {\n\tpadding: .5rem;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .5rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1 1 800px;\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
+    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_placeholder] {\n\tflex: 1 1 300px;\n}\n\n[hyoo_notes_tags_page] {\n\tflex: 1 1 300px;\n}\n\n[hyoo_notes_tagging_page] {\n\tflex: 1 1 300px;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .5rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 1 1 500px;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .5rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 1rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1 1 800px;\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
 })($ || ($ = {}));
 //notes.view.css.js.map
 ;
@@ -8316,7 +8311,7 @@ var $;
                 ];
             }
             notes_filter_showed() {
-                return this.note_ids_available().length > 5;
+                return this.note_ids_available().length > 1;
             }
             notes_body() {
                 return [
@@ -8392,7 +8387,8 @@ var $;
                 this.tagging(false);
             }
             notes_title() {
-                return this.tag_title(this.tag()) || super.notes_title();
+                const tag = this.tag();
+                return tag ? this.tag_title(tag) : super.notes_title();
             }
             tagging_tag(tag, next) {
                 const note = this.note();
