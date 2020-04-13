@@ -71,13 +71,9 @@
 	flex: 1 0 auto;
 }
 
-[hyoo_notes_note_add] {
-	padding: .5rem;
-}
-
 [hyoo_notes_note_add_hint] {
 	display: flex;
-	padding: 0 .5rem;
+	padding: 0 1rem;
 	justify-content: flex-end;
 	align-items: center;
 	color: var(--mol_theme_shade);

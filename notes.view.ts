@@ -15,7 +15,7 @@ namespace $.$$ {
 			return this.$.$mol_state_local.value( 'note_ids' , next ) || []
 		}
 		
-		note_tags( id : string , next? : string[] ) {
+		note_tags( id : string , next? : string[] | null ) {
 			return this.$.$mol_state_local.value( `note=${id}.tags` , next ) || []
 		}
 		
@@ -23,13 +23,13 @@ namespace $.$$ {
 			return this.$.$mol_state_arg.value( 'note' , next )
 		}
 
-		note_content( note : string , next? : string ) {
+		note_content( note : string , next? : string | null ) {
 			if( next ) this.note_ids([ note , ... this.note_ids().filter( id => id !== note ) ])
 			return this.$.$mol_state_local.value( `note=${ note }.content` , next ) || ''
 		}		
 		
 		note_current_content( next? : string ) {
-			return this.note_content( this.note() , next )
+			return this.note_content( this.note()! , next )
 		}		
 		
 		tag_ids( next? : string[] ) {
@@ -76,7 +76,7 @@ namespace $.$$ {
 		}
 
 		notes_filter_showed() {
-			return this.note_ids_available().length > 5
+			return this.note_ids_available().length > 1
 		}
 
 		notes_body() {
@@ -120,7 +120,7 @@ namespace $.$$ {
 		}
 
 		note_current_title() {
-			return this.note_title( this.note() )
+			return this.note_title( this.note()! )
 		}
 
 		tag_rows() {
@@ -160,7 +160,7 @@ namespace $.$$ {
 		}
 
 		note_drop() {
-			const note = this.note()
+			const note = this.note()!
 			this.note_ids( this.note_ids().filter( id => id !== note ) )
 			this.note_tags( note , null )
 			this.note_content( note , null )
@@ -169,12 +169,13 @@ namespace $.$$ {
 		}
 
 		notes_title() {
-			return this.tag_title( this.tag() ) || super.notes_title()
+			const tag = this.tag()
+			return tag ? this.tag_title( tag ) : super.notes_title()
 		}
 
 		tagging_tag( tag : string , next?: boolean ) {
 			
-			const note = this.note()
+			const note = this.note()!
 			const tags = this.note_tags( note )
 
 			if( next === undefined ) return tags.includes( tag )
