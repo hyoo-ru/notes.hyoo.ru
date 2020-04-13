@@ -1081,6 +1081,7 @@ declare namespace $ {
             shrink?: number | Common;
             basis?: Size;
             direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+            wrap?: 'wrap' | 'nowrap' | 'wrap-reverse' | Common;
         };
     }
     export {};
@@ -1975,21 +1976,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_icon_tick extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_check_box extends $mol_check {
-        Icon(): $mol_icon_tick;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
     class $mol_check_expand extends $mol_check {
         minimal_height(): number;
         Icon(): $mol_icon_chevron;
@@ -2302,6 +2288,21 @@ declare namespace $ {
     class $mol_icon_card_text_outline extends $mol_icon {
         path(): string;
     }
+}
+
+declare namespace $ {
+    class $mol_icon_tick extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_check_box extends $mol_check {
+        Icon(): $mol_icon_tick;
+    }
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {

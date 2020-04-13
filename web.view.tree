@@ -614,11 +614,6 @@ $mol_check_expand $mol_check
 	checked?val <=> expanded?val false
 	enabled <= expandable false
 
-$mol_check_box $mol_check
-	Icon $mol_icon_tick
-
-$mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
-
 $mol_paragraph $mol_view
 	line_height 24
 	letter_width 8
@@ -630,3 +625,8 @@ $mol_icon_card $mol_icon path \M20,20H4C2.9,20 2,19.1 2,18V6C2,4.9 2.9,4 4,4H20C
 $mol_icon_card_text $mol_icon path \M20,20H4C2.9,20 2,19.1 2,18V6C2,4.9 2.9,4 4,4H20C21.1,4 22,4.9 22,6V18C22,19.1 21.1,20 20,20M5,13V15H16V13H5M5,9V11H19V9H5Z
 
 $mol_icon_card_text_outline $mol_icon path \M20,20H4C2.9,20 2,19.1 2,18V6C2,4.9 2.9,4 4,4H20C21.1,4 22,4.9 22,6V18C22,19.1 21.1,20 20,20M4,6V18H20V6H4M6,9H18V11H6V9M6,13H16V15H6V13Z
+
+$mol_check_box $mol_check
+	Icon $mol_icon_tick
+
+$mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
