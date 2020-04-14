@@ -4486,6 +4486,7 @@ var $;
                 margin: 0,
                 minHeight: calc(`1.5em + 2rem`),
                 padding: rem(.5),
+                background: "var(--mol_theme_back)",
             },
             Title: {
                 flex: {
@@ -4523,6 +4524,7 @@ var $;
                 flex: 'none',
                 margin: 0,
                 overflow: 'hidden',
+                background: "var(--mol_theme_back)",
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
