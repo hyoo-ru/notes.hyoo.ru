@@ -8274,7 +8274,6 @@ var $;
                 obj.sub = () => [this.Note_icon(id), this.Note_title(id)];
                 obj.arg = () => ({
                     "note": this.id(id),
-                    "tagging": null,
                 });
                 return obj;
             })(new this.$.$mol_link());
