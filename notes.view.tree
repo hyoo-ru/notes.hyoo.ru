@@ -101,7 +101,6 @@ $hyoo_notes $mol_book
 				needle <= note_filter
 		arg *
 			note <= id!id \
-			tagging null
 	Tagging_tag_row!id $mol_check_box
 		checked?val <=> tagging_tag!id?val false
 		label /
