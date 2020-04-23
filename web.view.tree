@@ -477,7 +477,7 @@ $mol_textarea $mol_view
 $mol_text $mol_list
 	uri_base \
 	text \
-	tokens /$mol_syntax_token
+	tokens /
 	Quote!id $mol_text
 		text <= quote_text!id \
 	Row!id $mol_text_row
@@ -518,12 +518,12 @@ $mol_text_span $mol_paragraph
 		mol_text_type <= type?val \
 	sub <= content?val /
 
-$mol_text_link $mol_link
+$mol_text_link $mol_link_iconed
 	attr *
 		^
 		mol_text_type <= type?val \
 	uri <= link?val \
-	sub <= content?val /
+	content <= content?val /
 
 $mol_text_image $mol_view
 	dom_name \object
@@ -614,6 +614,22 @@ $mol_check_expand $mol_check
 $mol_paragraph $mol_view
 	line_height 24
 	letter_width 8
+
+$mol_link_iconed $mol_link
+	sub /
+		<= Icon $mol_image
+			uri <= icon \
+			title \
+	content /
+		<= title <= uri
+	host \
+
+$mol_image $mol_view
+	dom_name \img
+	field *
+		^
+		src <= uri \
+		alt <= title
 
 $mol_icon_folder $mol_icon path \M10,4H4C2.89,4 2,4.89 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z
 
