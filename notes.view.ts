@@ -5,8 +5,8 @@ namespace $.$$ {
 		pages() {
 			return [
 				this.Tags_page() ,
-				this.Notes_page() ,
-				... this.note() ? [ this.Note_page() ] : [] ,
+				this.Notes_page( this.tag() ) ,
+				... this.note() ? [ this.Note_page( this.note() ) ] : [] ,
 				... this.tagging() ? [ this.Tagging_page() ] : [] ,
 			]
 		}
