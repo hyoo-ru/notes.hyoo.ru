@@ -3269,7 +3269,7 @@ var $;
 (function ($) {
     if ($.$mol_dom_context.document) {
         const event_name = self.cordova ? 'deviceready' : 'DOMContentLoaded';
-        $.$mol_dom_context.document.addEventListener(event_name, $.$mol_fiber_root($.$mol_log2.func((event) => {
+        Promise.resolve().then($.$mol_fiber_root($.$mol_log2.func(() => {
             $.$mol_view.autobind();
             $.$mol_defer.run();
         })));
@@ -3720,10 +3720,9 @@ var $;
                 return this.pages().map(page => page.title()).reverse().join(' | ');
             }
             sub() {
-                const next = [this.Placeholder(), ...this.pages().slice().reverse()];
-                const prev = $.$mol_mem_cached(() => this.sub());
-                if (!prev)
-                    return next;
+                var _a;
+                const next = [...this.pages().slice(), this.Placeholder()];
+                const prev = (_a = $.$mol_mem_cached(() => this.sub())) !== null && _a !== void 0 ? _a : [];
                 for (let i = 1; i++;) {
                     const p = prev[prev.length - i];
                     const n = next[next.length - i];
@@ -3748,7 +3747,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/book2/book2.view.css", "[mol_book2] {\n\tdisplay: flex;\n\tflex-flow: row nowrap;\n\talign-items: stretch;\n\toverflow: hidden;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n\tmargin: 0;\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n\ttransform: scaleX( -1 ); /* hack for ff: prevent invisible scroll */\n\ttransition: none;\n\toverflow: auto;\n\tscroll-snap-type: x proximity;\n}\n\n[mol_book2] > * {\n\ttransform: scaleX( -1 ); /* hack for ff: prevent invisible scroll */\n\tflex: none;\n\tscroll-snap-stop: always;\n\tscroll-snap-align: start;\n\tposition: relative;\n\tz-index: 0;\n\tmin-height: 100%;\n\tmax-height: 100%;\n\tmax-width: 100%;\n}\n\n[mol_book2_placeholder] {\n\tflex: 1 1 0;\n\tbackground: var(--mol_theme_back);\n}\n");
+    $.$mol_style_attach("mol/book2/book2.view.css", "[mol_book2] {\n\tdisplay: flex;\n\tflex-flow: row nowrap;\n\talign-items: stretch;\n\toverflow: hidden;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n\tmargin: 0;\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n\ttransform: transformZ(0);\n\ttransition: none;\n\toverflow: auto;\n\tscroll-snap-type: x proximity;\n}\n\n[mol_book2] > * {\n\tflex: none;\n\tscroll-snap-stop: always;\n\tscroll-snap-align: start;\n\tposition: relative;\n\tz-index: 0;\n\tmin-height: 100%;\n\tmax-height: 100%;\n\tmax-width: 100%;\n}\n\n[mol_book2_placeholder] {\n\tflex: 1 1 0;\n\tbackground: var(--mol_theme_back);\n}\n");
 })($ || ($ = {}));
 //book2.view.css.js.map
 ;
@@ -4382,7 +4381,7 @@ var $;
         version() {
             return this.stat().mtime.getTime().toString(36).toUpperCase();
         }
-        exists(next) {
+        exists(next, force) {
             let exists = true;
             try {
                 this.stat();
@@ -6405,7 +6404,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/float/float.view.css", "[mol_float] {\n\tposition: sticky;\n\ttop: 0;\n\tleft: 0;\n\tz-index: 1;\n\topacity: 1;\n\ttransition: opacity .25s ease-in;\n\tdisplay: block;\n}\n\n[mol_float_scrolling] {\n\topacity: 0;\n\ttransition-duration: 0;\n}\n");
+    $.$mol_style_attach("mol/float/float.view.css", "[mol_float] {\n\tposition: sticky;\n\ttop: 0;\n\tleft: 0;\n\tz-index: 1;\n\topacity: 1;\n\ttransition: opacity .25s ease-in;\n\tdisplay: block;\n\tbackground: var(--mol_theme_back);\n\tbox-shadow: 0 0 .5rem hsla(0,0%,0%,.25);\n}\n\n");
 })($ || ($ = {}));
 //float.view.css.js.map
 ;
