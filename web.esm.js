@@ -2424,6 +2424,9 @@ var $;
         static hsla(hue, saturation, lightness, alpha) {
             return new $mol_style_func('hsla', [hue, per(saturation), per(lightness), alpha]);
         }
+        static rgba(red, green, blue, alpha) {
+            return new $mol_style_func('rgba', [red, green, blue, alpha]);
+        }
     }
     $.$mol_style_func = $mol_style_func;
 })($ || ($ = {}));
@@ -3747,7 +3750,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/book2/book2.view.css", "[mol_book2] {\n\tdisplay: flex;\n\tflex-flow: row nowrap;\n\talign-items: stretch;\n\toverflow: hidden;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n\tmargin: 0;\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n\ttransform: transformZ(0);\n\ttransition: none;\n\toverflow: auto;\n\tscroll-snap-type: x proximity;\n}\n\n[mol_book2] > * {\n\tflex: none;\n\tscroll-snap-stop: always;\n\tscroll-snap-align: start;\n\tposition: relative;\n\tz-index: 0;\n\tmin-height: 100%;\n\tmax-height: 100%;\n\tmax-width: 100%;\n}\n\n[mol_book2_placeholder] {\n\tflex: 1 1 0;\n\tbackground: var(--mol_theme_back);\n}\n");
+    $.$mol_style_attach("mol/book2/book2.view.css", "[mol_book2] {\n\tdisplay: flex;\n\tflex-flow: row nowrap;\n\talign-items: stretch;\n\toverflow: hidden;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n\tmargin: 0;\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n\ttransform: translateZ(0);\n\ttransition: none;\n\toverflow: auto;\n\tscroll-snap-type: x proximity;\n}\n\n[mol_book2] > * {\n\tflex: none;\n\tscroll-snap-stop: always;\n\tscroll-snap-align: start;\n\tposition: relative;\n\tz-index: 0;\n\tmin-height: 100%;\n\tmax-height: 100%;\n\tmax-width: 100%;\n}\n\n[mol_book2_placeholder] {\n\tflex: 1 1 0;\n\t/* background: var(--mol_theme_back); */\n}\n");
 })($ || ($ = {}));
 //book2.view.css.js.map
 ;
@@ -3951,7 +3954,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/button/button.view.css", "[mol_button] {\n\tborder: none;\n\tfont: inherit;\n\tbackground-color: none;\n\tdisplay: inline-flex;\n\tflex-shrink: 0;\n\ttext-decoration: inherit;\n\tcursor: inherit;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tword-break: normal;\n\tcursor: default;\n}\n[mol_button]:focus {\n\toutline: none;\n}\n\n[mol_button_typed] {\n\tjustify-content: center;\n\talign-content: center;\n\talign-items: center;\n\tvertical-align: middle;\n\ttext-align: center;\n\tpadding: .5rem 1rem;\n\tborder-radius: var(--mol_skin_round);\n}\n\n[mol_button_typed][disabled] {\n\tcolor: var(--mol_theme_text);\n\tpointer-events: none;\n}\n\n[mol_button_minor] {\n\tcolor: var(--mol_theme_control);\n}\n\n[mol_button_major][disabled] {\n\topacity: .5;\n}\n\n[mol_button_typed]:hover ,\n[mol_button_typed]:focus {\n\tcursor: pointer;\n\tbackground-color: var(--mol_theme_hover);\n}\n");
+    $.$mol_style_attach("mol/button/button.view.css", "[mol_button] {\n\tborder: none;\n\tfont: inherit;\n\tbackground-color: none;\n\tdisplay: inline-flex;\n\tflex-shrink: 0;\n\ttext-decoration: inherit;\n\tcursor: inherit;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tword-break: normal;\n\tcursor: default;\n}\n[mol_button]:focus {\n\toutline: none;\n}\n\n[mol_button_typed] {\n\tjustify-content: center;\n\talign-content: center;\n\talign-items: center;\n\tvertical-align: middle;\n\ttext-align: center;\n\tpadding: .5rem .75rem;\n\tborder-radius: var(--mol_skin_round);\n}\n\n[mol_button_typed][disabled] {\n\tcolor: var(--mol_theme_text);\n\tpointer-events: none;\n}\n\n[mol_button_minor] {\n\tcolor: var(--mol_theme_control);\n}\n\n[mol_button_major][disabled] {\n\topacity: .5;\n}\n\n[mol_button_typed]:hover ,\n[mol_button_typed]:focus {\n\tcursor: pointer;\n\tbackground-color: var(--mol_theme_hover);\n}\n");
 })($ || ($ = {}));
 //button.view.css.js.map
 ;
@@ -4109,8 +4112,7 @@ var $;
                 flex: 'none',
                 position: 'relative',
                 margin: 0,
-                minHeight: calc(`1.5em + 2rem`),
-                padding: rem(.5),
+                padding: rem(.75),
                 background: {
                     color: $.$mol_theme.back,
                 },
@@ -4123,7 +4125,7 @@ var $;
                     shrink: 1,
                     basis: per(50),
                 },
-                padding: rem(.5),
+                padding: [rem(.5), rem(.75)],
                 wordBreak: 'normal',
                 cursor: 'default',
                 textShadow: '0 0',
@@ -4135,6 +4137,8 @@ var $;
                 flex: 'auto',
                 display: 'flex',
                 justifyContent: 'flex-end',
+                alignItems: 'flex-start',
+                flexWrap: 'wrap',
                 ':empty': {
                     display: 'none',
                 },
@@ -4701,12 +4705,13 @@ var $;
 var $;
 (function ($) {
     const { rem } = $.$mol_style_unit;
+    const { rgba } = $.$mol_style_func;
     $.$mol_style_define($.$mol_link, {
         textDecoration: 'none',
         color: $.$mol_theme.control,
         stroke: 'currentcolor',
         cursor: 'pointer',
-        padding: [rem(.5), rem(1)],
+        padding: [rem(.5), rem(.75)],
         boxSizing: 'border-box',
         position: 'relative',
         ':hover': {
@@ -5815,7 +5820,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/string/string.view.css", "[mol_string] {\n\tbox-sizing: border-box;\n\toutline-offset: 0;\n\tborder: none;\n\tborder-radius: var(--mol_skin_round);\n\twhite-space: nowrap;\n\toverflow: hidden;\n\tpadding: .5rem 1rem;\n\ttext-align: left;\n\tposition: relative;\n\tz-index: 0;\n\tfont: inherit;\n\tflex: 0 1 auto;\n\twidth: 100%;\n\tbackground: var(--mol_theme_field);\n\tcolor: var(--mol_theme_text);\n\tbox-shadow: inset 0 0 0 .5px var(--mol_theme_line);\n\tmargin: 0;\n}\n\n[mol_string]:disabled {\n\tbackground-color: transparent;\n}\n\n[mol_string]:focus {\n\toutline: none;\n\tz-index: 1;\n\tbox-shadow: inset 0 0 0 .5px var(--mol_theme_focus);\n}\n\n[mol_string]::-ms-clear {\n\tdisplay: none;\n}\n");
+    $.$mol_style_attach("mol/string/string.view.css", "[mol_string] {\n\tbox-sizing: border-box;\n\toutline-offset: 0;\n\tborder: none;\n\tborder-radius: var(--mol_skin_round);\n\twhite-space: nowrap;\n\toverflow: hidden;\n\tpadding: .5rem .75rem;\n\ttext-align: left;\n\tposition: relative;\n\tz-index: 0;\n\tfont: inherit;\n\tflex: 0 1 auto;\n\twidth: 100%;\n\tbackground: var(--mol_theme_field);\n\tcolor: var(--mol_theme_text);\n\tbox-shadow: inset 0 0 0 .5px var(--mol_theme_line);\n\tmargin: 0;\n}\n\n[mol_string]:disabled {\n\tbackground-color: transparent;\n}\n\n[mol_string]:focus {\n\toutline: none;\n\tz-index: 1;\n\tbox-shadow: inset 0 0 0 .5px var(--mol_theme_focus);\n}\n\n[mol_string]::-ms-clear {\n\tdisplay: none;\n}\n");
 })($ || ($ = {}));
 //string.view.css.js.map
 ;
@@ -6111,7 +6116,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/select/select.view.css", "[mol_select] {\n\tdisplay: flex;\n\tword-break: normal;\n\talign-self: flex-start;\n}\n\n[mol_select_anchor] {\n\tdisplay: flex;\n\tflex: 1 1 auto;\n\tjustify-content: space-between;\n}\n\n[mol_select_option_row] {\n\tmin-width: 100%;\n\tpadding: 0;\n\tjustify-content: flex-start;\n}\n\n[mol_select_bubble] {\n\tmin-width: 100%;\n}\n\n[mol_select_filter] {\n\tz-index: 2;\n\topacity: 1 !important;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n}\n\n[mol_select_option_label] {\n\tpadding: .5rem 1rem;\n\ttext-align: left;\n\tmin-height: 1.5em;\n\tdisplay: block;\n}\n\n[mol_select_clear_option_content] {\n\tpadding: .5em 1rem .5rem 0;\n\ttext-align: left;\n\tbox-shadow: var(--mol_theme_line);\n\tflex: 1 0 auto;\n}\n\n[mol_select_no_options] {\n\tpadding: .5em 1rem;\n\ttext-align: left;\n\tdisplay: block;\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_select_trigger] {\n\tpadding: 0;\n\tflex: 1 1 auto;\n\tdisplay: flex;\n\tjustify-content: flex-end;\n}\n\n[mol_select_trigger_icon] {\n\ttransform: rotateZ(90deg);\n\tmargin: .5rem .5rem .5rem -1rem;\n}\n:hover > [mol_select_trigger_icon] {\n\ttransform: rotateZ(90deg) scale(1.25);\n}\n\n[mol_select_menu] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n");
+    $.$mol_style_attach("mol/select/select.view.css", "[mol_select] {\n\tdisplay: flex;\n\tword-break: normal;\n\talign-self: flex-start;\n}\n\n[mol_select_anchor] {\n\tdisplay: flex;\n\tflex: 1 1 auto;\n\tjustify-content: space-between;\n}\n\n[mol_select_option_row] {\n\tmin-width: 100%;\n\tpadding: 0;\n\tjustify-content: flex-start;\n}\n\n[mol_select_bubble] {\n\tmin-width: 100%;\n}\n\n[mol_select_filter] {\n\tz-index: 2;\n\topacity: 1 !important;\n\tflex: 1 1 auto;\n\talign-self: stretch;\n}\n\n[mol_select_option_label] {\n\tpadding: .5rem .75rem;\n\ttext-align: left;\n\tmin-height: 1.5em;\n\tdisplay: block;\n}\n\n[mol_select_clear_option_content] {\n\tpadding: .5em 1rem .5rem 0;\n\ttext-align: left;\n\tbox-shadow: var(--mol_theme_line);\n\tflex: 1 0 auto;\n}\n\n[mol_select_no_options] {\n\tpadding: .5em .75rem;\n\ttext-align: left;\n\tdisplay: block;\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_select_trigger] {\n\tpadding: 0;\n\tflex: 1 1 auto;\n\tdisplay: flex;\n\tjustify-content: flex-end;\n}\n\n[mol_select_trigger_icon] {\n\ttransform: rotateZ(90deg);\n\tmargin: .5rem .5rem .5rem -.75rem;\n}\n:hover > [mol_select_trigger_icon] {\n\ttransform: rotateZ(90deg) scale(1.25);\n}\n\n[mol_select_menu] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n");
 })($ || ($ = {}));
 //select.view.css.js.map
 ;
@@ -6411,7 +6416,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\talign-items: flex-start;\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tpadding: .5rem;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n");
+    $.$mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\talign-items: flex-start;\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tpadding: .5rem .75rem;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n");
 })($ || ($ = {}));
 //check.css.js.map
 ;
@@ -7482,7 +7487,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/text/text.view.css", "[mol_text] {\n\tline-height: 1.5;\n\tbox-sizing: border-box;\n\tmax-width: 60rem;\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n\tpadding: .5rem;\n\tborder-radius: var(--mol_skin_round);\n\twhite-space: pre-line;\n\tdisplay: flex;\n\tflex-direction: column;\n\tflex: 0 0 auto;\n\ttab-size: 4;\n}\n\n[mol_text_row] {\n\tmargin: .5rem;\n\toverflow: auto;\n\tmax-width: 100%;\n}\n\n[mol_text_type=\"block\"] {\n}\n\n[mol_text_header] {\n\tdisplay: block;\n\tpadding: .5rem;\n\tfont-weight: 500;\n\tmargin: 0;\n}\n\n[mol_text_header_level=\"1\"] {\n\tfont-size: 1.5em;\n}\n\n[mol_text_header_level=\"2\"] {\n\tfont-size: 1.3em;\n}\n\n[mol_text_header_level=\"3\"] {\n\tfont-size: 1.1em;\n}\n\n[mol_text_header_level=\"4\"] {\n\tfont-size: 1.1em;\n\tfont-style: italic;\n}\n\n[mol_text_header_level=\"5\"] {\n\tfont-size: 1.1em;\n\tfont-weight: normal;\n\tfont-style: italic;\n}\n\n[mol_text_type=\"list-item\"] {\n\tdisplay: list-item;\n}\n\n[mol_text_type=\"list-item\"]:before {\n\tcontent: '•';\n\tmargin-right: 1ch;\n}\n\n[mol_text_table] {\n\tmax-width: 100%;\n\tmax-height: 75vh;\n\toverflow: auto;\n\tmargin: .5rem;\n\tflex-grow: 0;\n}\n\n[mol_text_type=\"code-indent\"] ,\n[mol_text_type=\"code\"] {\n\tfont-family: var(--mol_skin_font_monospace);\n\twhite-space: pre-wrap;\n\tborder-radius: var(--mol_skin_round);\n}\n\n[mol_text_type=\"text-link\"] {\n\tcolor: var(--mol_theme_control);\n\ttext-decoration: none;\n\tpadding: 0;\n}\n\n[mol_text_link]:hover ,\n[mol_text_link]:focus {\n\toutline: none;\n}\n\n[mol_text_image] {\n\tmax-width: 100%;\n\tmax-height: 75vh;\n\tobject-fit: scale-down;\n}\n\n[mol_text_type=\"strong\"] {\n\tfont-weight: bolder;\n}\n\n[mol_text_type=\"emphasis\"] {\n\tfont-style: italic;\n}\n\n[mol_text_type=\"strike\"] {\n\ttext-decoration: line-through;\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_text_type=\"code-keyword\"] {\n\tcolor: hsl(0, 70%, 60%);\n}\n\n[mol_text_type=\"code-field\"] {\n\tcolor: hsl(300, 70%, 60%);\n}\n\n[mol_text_type=\"code-tag\"] {\n\tcolor: hsl(330, 70%, 60%);\n}\n\n[mol_text_type=\"code-global\"] {\n\tcolor: hsl(210, 80%, 60%);\n}\n\n[mol_text_type=\"code-decorator\"] {\n\tcolor: hsl(180, 40%, 60%);\n}\n\n[mol_text_type=\"code-punctuation\"] {\n\topacity: .5;\n}\n\n[mol_text_type=\"code-string\"] {\n\tcolor: hsl(90, 40%, 50%);\n}\n\n[mol_text_type=\"code-number\"] {\n\tcolor: hsl(60, 70%, 30%);\n}\n\n[mol_text_type=\"code-call\"] {\n\tcolor: hsl(270, 60%, 60%);\n}\n\n[mol_text_type=\"code-link\"] {\n\tcolor: hsl(240, 60%, 60%);\n}\n\n[mol_text_type=\"code-comment-inline\"] ,\n[mol_text_type=\"code-comment-block\"] {\n\topacity: .5;\n}\n\n[mol_text_type=\"code-docs\"] {\n\topacity: .75;\n}\n");
+    $.$mol_style_attach("mol/text/text.view.css", "[mol_text] {\n\tline-height: 1.5;\n\tbox-sizing: border-box;\n\tmax-width: 60rem;\n\tpadding: .75rem;\n\tborder-radius: var(--mol_skin_round);\n\twhite-space: pre-line;\n\tdisplay: flex;\n\tflex-direction: column;\n\tflex: 0 0 auto;\n\ttab-size: 4;\n}\n\n[mol_text_row] {\n\tmargin: .5rem .75rem;\n\toverflow: auto;\n\tmax-width: 100%;\n}\n\n[mol_text_type=\"block\"] {\n}\n\n[mol_text_header] {\n\tdisplay: block;\n\tpadding: .75rem;\n\tfont-weight: 500;\n\tmargin: 0;\n}\n\n[mol_text_header_level=\"1\"] {\n\tfont-size: 1.5em;\n}\n\n[mol_text_header_level=\"2\"] {\n\tfont-size: 1.3em;\n}\n\n[mol_text_header_level=\"3\"] {\n\tfont-size: 1.1em;\n}\n\n[mol_text_header_level=\"4\"] {\n\tfont-size: 1.1em;\n\tfont-style: italic;\n}\n\n[mol_text_header_level=\"5\"] {\n\tfont-size: 1.1em;\n\tfont-weight: normal;\n\tfont-style: italic;\n}\n\n[mol_text_type=\"list-item\"] {\n\tdisplay: list-item;\n}\n\n[mol_text_type=\"list-item\"]:before {\n\tcontent: '•';\n\tmargin-right: 1ch;\n}\n\n[mol_text_table] {\n\tmax-width: 100%;\n\tmax-height: 75vh;\n\toverflow: auto;\n\tmargin: .5rem;\n\tflex-grow: 0;\n}\n\n[mol_text_type=\"code-indent\"] ,\n[mol_text_type=\"code\"] {\n\tfont-family: var(--mol_skin_font_monospace);\n\twhite-space: pre-wrap;\n\tborder-radius: var(--mol_skin_round);\n}\n\n[mol_text_type=\"text-link\"] {\n\tcolor: var(--mol_theme_control);\n\ttext-decoration: none;\n\tpadding: 0;\n}\n\n[mol_text_link]:hover ,\n[mol_text_link]:focus {\n\toutline: none;\n}\n\n[mol_text_image] {\n\tmax-width: 100%;\n\tmax-height: 75vh;\n\tobject-fit: scale-down;\n}\n\n[mol_text_type=\"strong\"] {\n\tfont-weight: bolder;\n}\n\n[mol_text_type=\"emphasis\"] {\n\tfont-style: italic;\n}\n\n[mol_text_type=\"strike\"] {\n\ttext-decoration: line-through;\n\tcolor: var(--mol_theme_shade);\n}\n\n[mol_text_type=\"code-keyword\"] {\n\tcolor: hsl(0, 70%, 60%);\n}\n\n[mol_text_type=\"code-field\"] {\n\tcolor: hsl(300, 70%, 60%);\n}\n\n[mol_text_type=\"code-tag\"] {\n\tcolor: hsl(330, 70%, 60%);\n}\n\n[mol_text_type=\"code-global\"] {\n\tcolor: hsl(210, 80%, 60%);\n}\n\n[mol_text_type=\"code-decorator\"] {\n\tcolor: hsl(180, 40%, 60%);\n}\n\n[mol_text_type=\"code-punctuation\"] {\n\topacity: .5;\n}\n\n[mol_text_type=\"code-string\"] {\n\tcolor: hsl(90, 40%, 50%);\n}\n\n[mol_text_type=\"code-number\"] {\n\tcolor: hsl(60, 70%, 30%);\n}\n\n[mol_text_type=\"code-call\"] {\n\tcolor: hsl(270, 60%, 60%);\n}\n\n[mol_text_type=\"code-link\"] {\n\tcolor: hsl(240, 60%, 60%);\n}\n\n[mol_text_type=\"code-comment-inline\"] ,\n[mol_text_type=\"code-comment-block\"] {\n\topacity: .5;\n}\n\n[mol_text_type=\"code-docs\"] {\n\topacity: .75;\n}\n");
 })($ || ($ = {}));
 //text.view.css.js.map
 ;
@@ -7587,7 +7592,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/textarea/textarea.view.css", "[mol_textarea] {\n\tflex: 1 1 auto;\n\tdisplay: flex;\n\tflex-direction: column;\n\tposition: relative;\n\tfont-family: var(--mol_skin_font_monospace);\n\tz-index: 0;\n}\n\n[mol_textarea_view] {\n\tmax-width: none;\n\tpadding: 0 .5rem;\n\tpointer-events: none;\n\twhite-space: pre-wrap;\n\tz-index: 1;\n\tbox-shadow: none;\n}\n\n[mol_textarea_edit] {\n\tz-index: -1 !important;\n\tpadding: .5rem 1rem;\n\tposition: absolute;\n\tleft: 0;\n\ttop: 0;\n\twidth: 100%;\n\theight: 100%;\n\tcolor: transparent;\n\tcaret-color: var(--mol_theme_text);\n\tresize: none;\n\twhite-space: pre-wrap;\n\ttab-size: 4;\n}\n\n[mol_textarea_edit][mol_textarea_edit] {\n\t/* background: none; */\n}\n");
+    $.$mol_style_attach("mol/textarea/textarea.view.css", "[mol_textarea] {\n\tflex: 1 1 auto;\n\tdisplay: flex;\n\tflex-direction: column;\n\tposition: relative;\n\tfont-family: var(--mol_skin_font_monospace);\n\tz-index: 0;\n}\n\n[mol_textarea_view] {\n\tmax-width: none;\n\tpointer-events: none;\n\twhite-space: pre-wrap;\n\tz-index: 1;\n\tbox-shadow: none;\n}\n\n[mol_textarea_edit] {\n\tz-index: -1 !important;\n\tpadding: 1.25rem 1.5rem;\n\tposition: absolute;\n\tleft: 0;\n\ttop: 0;\n\twidth: 100%;\n\theight: 100%;\n\tcolor: transparent;\n\tcaret-color: var(--mol_theme_text);\n\tresize: none;\n\twhite-space: pre-wrap;\n\ttab-size: 4;\n}\n\n[mol_textarea_edit][mol_textarea_edit] {\n\t/* background: none; */\n}\n");
 })($ || ($ = {}));
 //textarea.view.css.js.map
 ;
@@ -7678,7 +7683,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tags_page] ,\n[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 20rem;\n}\t\n\n[hyoo_notes_note_page] {\n\tflex: 0 0 60rem;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .5rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 0 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .5rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 1rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n\tpadding: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
+    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tags_page] ,\n[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\t\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 60rem;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 1 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 1 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .75rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 1 0 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
 })($ || ($ = {}));
 //notes.view.css.js.map
 ;
@@ -7694,10 +7699,13 @@ var $;
         pages() {
             return [];
         }
+        Tags_page_title() {
+            return this.Tags_page().Title();
+        }
         Tags_page() {
             return ((obj) => {
                 obj.title = () => this.tags_title();
-                obj.tools = () => [this.Tags_all()];
+                obj.head = () => [this.Tags_page_title(), this.Tags_all(), this.Tag_filter()];
                 obj.body = () => this.tags_body();
                 return obj;
             })(new this.$.$mol_page());
@@ -7719,9 +7727,6 @@ var $;
                 return obj;
             })(new this.$.$mol_icon_filter_remove());
         }
-        tags_body() {
-            return [this.Tag_filter(), this.Tag_add(), this.Tag_list()];
-        }
         Tag_filter() {
             return ((obj) => {
                 obj.query = (val) => this.tag_filter(val);
@@ -7734,6 +7739,9 @@ var $;
         }
         tag_filter_hint() {
             return this.$.$mol_locale.text("$hyoo_notes_tag_filter_hint");
+        }
+        tags_body() {
+            return [this.Tag_add(), this.Tag_list()];
         }
         Tag_add() {
             return ((obj) => {
@@ -7762,10 +7770,13 @@ var $;
         tag_rows() {
             return [];
         }
+        Notes_page_title(tag) {
+            return this.Notes_page(tag).Title();
+        }
         Notes_page(tag) {
             return ((obj) => {
                 obj.title = () => this.notes_title();
-                obj.tools = () => [this.Note_add()];
+                obj.head = () => [this.Notes_page_title(tag), this.Note_add(), this.Note_filter()];
                 obj.body = () => this.notes_body();
                 return obj;
             })(new this.$.$mol_page());
@@ -7788,9 +7799,6 @@ var $;
         note_add(event, force) {
             return (event !== void 0) ? event : null;
         }
-        notes_body() {
-            return [this.Note_filter(), this.Notes_list(), this.Tag_drop()];
-        }
         Note_filter() {
             return ((obj) => {
                 obj.query = (val) => this.note_filter(val);
@@ -7799,6 +7807,9 @@ var $;
         }
         note_filter(val, force) {
             return (val !== void 0) ? val : "";
+        }
+        notes_body() {
+            return [this.Notes_list(), this.Tag_drop()];
         }
         Notes_list() {
             return ((obj) => {
@@ -7890,10 +7901,13 @@ var $;
         note_current_content(val, force) {
             return (val !== void 0) ? val : "";
         }
+        Tagging_page_title() {
+            return this.Tagging_page().Title();
+        }
         Tagging_page() {
             return ((obj) => {
                 obj.title = () => this.tagging_title();
-                obj.tools = () => [this.Tagging_close()];
+                obj.head = () => [this.Tagging_page_title(), this.Tagging_close(), this.Tagging_filter()];
                 obj.body = () => this.tagging_body();
                 return obj;
             })(new this.$.$mol_page());
@@ -7915,9 +7929,6 @@ var $;
                 return obj;
             })(new this.$.$mol_icon_close());
         }
-        tagging_body() {
-            return [this.Tagging_filter(), this.Tagging_add(), this.Tagging_list(), this.Note_drop()];
-        }
         Tagging_filter() {
             return ((obj) => {
                 obj.query = (val) => this.tagging_filter(val);
@@ -7927,6 +7938,9 @@ var $;
         }
         tagging_filter(val, force) {
             return (val !== void 0) ? val : "";
+        }
+        tagging_body() {
+            return [this.Tagging_add(), this.Tagging_list(), this.Note_drop()];
         }
         Tagging_add() {
             return ((obj) => {
@@ -8234,7 +8248,6 @@ var $;
             }
             tags_body() {
                 return [
-                    this.Tag_filter(),
                     ...this.tag_add_showed() ? [this.Tag_add()] : [],
                     this.Tag_list(),
                 ];
@@ -8249,7 +8262,6 @@ var $;
             }
             tagging_body() {
                 return [
-                    this.Tagging_filter(),
                     ...this.tagging_add_showed() ? [this.Tagging_add()] : [],
                     this.Tagging_list(),
                     this.Note_drop(),
@@ -8260,7 +8272,6 @@ var $;
             }
             notes_body() {
                 return [
-                    ...this.notes_filter_showed() ? [this.Note_filter()] : [],
                     this.Notes_list(),
                     ...this.tag() ? [this.Tag_drop()] : [],
                 ];

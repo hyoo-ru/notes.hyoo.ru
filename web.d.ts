@@ -630,6 +630,7 @@ declare namespace $ {
         static vary<Name extends string>(name: Name): $mol_style_func<"var", Name>;
         static url<Href extends string>(href: Href): $mol_style_func<"url", string>;
         static hsla(hue: number, saturation: number, lightness: number, alpha: number): $mol_style_func<"hsla", (number | $mol_style_unit<"%">)[]>;
+        static rgba(red: number, green: number, blue: number, alpha: number): $mol_style_func<"rgba", number[]>;
     }
 }
 
@@ -1044,7 +1045,7 @@ declare namespace $ {
         };
         box?: {
             shadow?: readonly {
-                inset: boolean;
+                inset?: boolean;
                 x: Length;
                 y: Length;
                 blur: Length;
@@ -2422,28 +2423,30 @@ declare namespace $ {
             mol_theme: string;
         };
         pages(): readonly any[];
+        Tags_page_title(): $$.$mol_button;
         Tags_page(): $$.$mol_page;
         tags_title(): string;
         Tags_all(): $$.$mol_link;
         Tags_all_icon(): $mol_icon_filter_remove;
-        tags_body(): readonly any[];
         Tag_filter(): $$.$mol_search;
         tag_filter(val?: any, force?: $mol_mem_force): any;
         tag_filter_hint(): string;
+        tags_body(): readonly any[];
         Tag_add(): $mol_button_minor;
         Tag_add_icon(): $mol_icon_plus;
         tag_add_title(): string;
         tag_add(event?: any, force?: $mol_mem_force): any;
         Tag_list(): $$.$mol_list;
         tag_rows(): readonly any[];
+        Notes_page_title(tag: any): $$.$mol_button;
         Notes_page(tag: any): $$.$mol_page;
         notes_title(): string;
         Note_add(): $mol_button_major;
         Note_add_icon(): $mol_icon_plus;
         note_add(event?: any, force?: $mol_mem_force): any;
-        notes_body(): readonly any[];
         Note_filter(): $$.$mol_search;
         note_filter(val?: any, force?: $mol_mem_force): any;
+        notes_body(): readonly any[];
         Notes_list(): $$.$mol_list;
         note_rows(): readonly any[];
         Note_add_hint(): $mol_view;
@@ -2461,13 +2464,14 @@ declare namespace $ {
         Note_content(): $$.$mol_textarea;
         note_content_hint(): string;
         note_current_content(val?: any, force?: $mol_mem_force): any;
+        Tagging_page_title(): $$.$mol_button;
         Tagging_page(): $$.$mol_page;
         tagging_title(): string;
         Tagging_close(): $$.$mol_link;
         Tagging_close_icon(): $mol_icon_close;
-        tagging_body(): readonly any[];
         Tagging_filter(): $$.$mol_search;
         tagging_filter(val?: any, force?: $mol_mem_force): any;
+        tagging_body(): readonly any[];
         Tagging_add(): $mol_button_minor;
         Tagging_add_icon(): $mol_icon_plus;
         tagging_add(event?: any, force?: $mol_mem_force): any;
@@ -2504,11 +2508,11 @@ declare namespace $.$$ {
         tag(next?: string | null): string | null;
         tagging(next?: boolean): boolean;
         tag_add_showed(): boolean;
-        tags_body(): ($mol_list | $mol_search | $mol_button_minor)[];
+        tags_body(): ($mol_list | $mol_button_minor)[];
         tagging_add_showed(): boolean;
-        tagging_body(): ($mol_list | $mol_search | $mol_button_minor)[];
+        tagging_body(): ($mol_list | $mol_button_minor)[];
         notes_filter_showed(): boolean;
-        notes_body(): ($mol_list | $mol_search | $mol_button_minor)[];
+        notes_body(): ($mol_list | $mol_button_minor)[];
         tag_add(): void;
         tag_drop(): void;
         tagging_add(): void;
