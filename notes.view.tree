@@ -3,14 +3,16 @@ $hyoo_notes $mol_book2
 	pages /
 	Tags_page $mol_page
 		title <= tags_title @ \Tags
-		tools /
+		Title => Tags_page_title
+		head /
+			<= Tags_page_title
 			<= Tags_all $mol_link
 				arg * tag null
 				sub / <= Tags_all_icon $mol_icon_filter_remove
-		body <= tags_body /
 			<= Tag_filter $mol_search
 				query?val <=> tag_filter?val \
 				hint <= tag_filter_hint @ \Search or add...
+		body <= tags_body /
 			<= Tag_add $mol_button_minor
 				sub /
 					<= Tag_add_icon $mol_icon_plus
@@ -20,15 +22,17 @@ $hyoo_notes $mol_book2
 				rows <= tag_rows /
 	Notes_page!tag $mol_page
 		title <= notes_title @ \Notes
-		tools /
+		Title => Notes_page_title!tag
+		head /
+			<= Notes_page_title!tag
 			<= Note_add $mol_button_major
 				sub /
 					<= Note_add_icon $mol_icon_plus
 					- <= note_add_title @ \Add new
 				click?event <=> note_add?event null
-		body <= notes_body /
 			<= Note_filter $mol_search
 				query?val <=> note_filter?val \
+		body <= notes_body /
 			<= Notes_list $mol_list
 				rows <= note_rows /
 				Empty <= Note_add_hint $mol_view
@@ -55,14 +59,16 @@ $hyoo_notes $mol_book2
 				value?val <=> note_current_content?val \
 	Tagging_page $mol_page
 		title <= tagging_title @ \Note tags
-		tools /
+		Title => Tagging_page_title
+		head /
+			<= Tagging_page_title
 			<= Tagging_close $mol_link
 				arg * tagging null
 				sub / <= Tagging_close_icon $mol_icon_close
-		body <= tagging_body /
 			<= Tagging_filter $mol_search
 				query?val <=> tagging_filter?val \
 				hint <= tag_filter_hint
+		body <= tagging_body /
 			<= Tagging_add $mol_button_minor
 				sub /
 					<= Tagging_add_icon $mol_icon_plus

@@ -4,11 +4,11 @@
 }
 
 [hyoo_notes_notes_page] {
-	flex: 0 0 20rem;
+	flex: 0 0 30rem;
 }	
 
 [hyoo_notes_note_page] {
-	flex: 0 0 60rem;
+	flex: 1000 0 60rem;
 }
 
 [hyoo_notes_tags_page_body] {
@@ -23,7 +23,7 @@
 
 [hyoo_notes_tag_row] {
 	display: flex;
-	padding: .25rem;
+	padding: .5rem;
 }
 
 [hyoo_notes_tag_row] > * {
@@ -35,26 +35,26 @@
 }
 
 [hyoo_notes_tag_filter] {
-	flex: 0 0 auto;
+	flex: 1 0 auto;
 	align-self: stretch;
 }
 
 [hyoo_notes_tagging_filter] {
-	flex: 0 0 auto;
+	flex: 1 0 auto;
 	align-self: stretch;
 }
 
 [hyoo_notes_tag_list] {
-	padding: .5rem;
+	padding: .75rem;
 }
 
 [hyoo_notes_tagging_list] {
-	padding: .5rem;
+	padding: .75rem;
 	flex: 1 0 auto;
 }
 
 [hyoo_notes_note_filter] {
-	flex: 0 0 auto;
+	flex: 1 0 auto;
 	align-self: stretch;
 }
 
@@ -64,13 +64,13 @@
 }
 
 [hyoo_notes_notes_list] {
-	padding: .5rem;
+	padding: .75rem;
 	flex: 1 0 auto;
 }
 
 [hyoo_notes_note_add_hint] {
 	display: flex;
-	padding: 0 1rem;
+	padding: 0 .75rem;
 	justify-content: flex-end;
 	align-items: center;
 	color: var(--mol_theme_shade);
@@ -83,7 +83,7 @@
 
 [hyoo_notes_note_row] {
 	display: flex;
-	padding: .25rem;
+	padding: .5rem;
 }
 
 [hyoo_notes_note_row] > * {
@@ -96,7 +96,6 @@
 
 [hyoo_notes_tagging_tag_row] {
 	display: flex;
-	padding: .25rem;
 }
 
 [hyoo_notes_tagging_tag_row] > * {

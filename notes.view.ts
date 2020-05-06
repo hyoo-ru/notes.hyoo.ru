@@ -53,7 +53,6 @@ namespace $.$$ {
 
 		tags_body() {
 			return [
-				this.Tag_filter() ,
 				... this.tag_add_showed() ? [ this.Tag_add() ] : [] ,
 				this.Tag_list() ,
 			]
@@ -68,7 +67,6 @@ namespace $.$$ {
 
 		tagging_body() {
 			return [
-				this.Tagging_filter() ,
 				... this.tagging_add_showed() ? [ this.Tagging_add() ] : [] ,
 				this.Tagging_list() ,
 				this.Note_drop() ,
@@ -81,7 +79,7 @@ namespace $.$$ {
 
 		notes_body() {
 			return [
-				... this.notes_filter_showed() ? [ this.Note_filter() ] : [] ,
+				// ... this.notes_filter_showed() ? [ this.Note_filter() ] : [] ,
 				this.Notes_list() ,
 				... this.tag() ? [ this.Tag_drop() ] : [] ,
 			]
