@@ -2128,40 +2128,6 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    var $$;
-    (function ($$) {
-        $.$mol_test({
-            'handle clicks by default'() {
-                let clicked = false;
-                const clicker = $$.$mol_button.make({
-                    event_click: (event) => { clicked = true; },
-                });
-                const element = clicker.dom_tree();
-                const event = $.$mol_dom_context.document.createEvent('mouseevent');
-                event.initEvent('click', true, true);
-                element.dispatchEvent(event);
-                $.$mol_assert_ok(clicked);
-            },
-            'no handle clicks if disabled'() {
-                let clicked = false;
-                const clicker = $$.$mol_button.make({
-                    event_click: (event) => { clicked = true; },
-                    enabled: () => false,
-                });
-                const element = clicker.dom_tree();
-                const event = $.$mol_dom_context.document.createEvent('mouseevent');
-                event.initEvent('click', true, true);
-                element.dispatchEvent(event);
-                $.$mol_assert_not(clicked);
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-//button.test.js.map
-;
-"use strict";
-var $;
-(function ($) {
     $.$mol_test_mocks.push(context => {
         let $mol_state_local_mock = (() => {
             class $mol_state_local_mock extends $.$mol_state_local {
@@ -2226,6 +2192,40 @@ var $;
     });
 })($ || ($ = {}));
 //encode.test.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $.$mol_test({
+            'handle clicks by default'() {
+                let clicked = false;
+                const clicker = $$.$mol_button.make({
+                    event_click: (event) => { clicked = true; },
+                });
+                const element = clicker.dom_tree();
+                const event = $.$mol_dom_context.document.createEvent('mouseevent');
+                event.initEvent('click', true, true);
+                element.dispatchEvent(event);
+                $.$mol_assert_ok(clicked);
+            },
+            'no handle clicks if disabled'() {
+                let clicked = false;
+                const clicker = $$.$mol_button.make({
+                    event_click: (event) => { clicked = true; },
+                    enabled: () => false,
+                });
+                const element = clicker.dom_tree();
+                const event = $.$mol_dom_context.document.createEvent('mouseevent');
+                event.initEvent('click', true, true);
+                element.dispatchEvent(event);
+                $.$mol_assert_not(clicked);
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//button.test.js.map
 ;
 "use strict";
 var $;

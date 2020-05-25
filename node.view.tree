@@ -99,6 +99,15 @@ $mol_icon_filter_remove $mol_icon path \M14.76,20.83L17.6,18L14.76,15.17L16.17,1
 
 $mol_bar $mol_view
 
+$mol_hotkey $mol_plugin
+	event *
+		^
+		keydown?event <=> keydown?event null
+	key *
+	mod_ctrl false
+	mod_alt false
+	mod_shift false
+
 $mol_meter $mol_plugin
 	zoom 1
 	-
@@ -243,6 +252,9 @@ $mol_icon_cross $mol_icon path \M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12
 
 $mol_search $mol_bar
 	query?val \
+	plugins /
+		<= Hotkey $mol_hotkey
+			key * escape?val <=> event_clear?val null
 	sub /
 		<= Suggest $mol_select
 			value?val <=> suggest_selected?val \
@@ -257,6 +269,7 @@ $mol_search $mol_bar
 			sub /
 				<= Clear_icon $mol_icon_cross
 			event_click?val <=> event_clear?val null
+			hint <= clear_hint @ \Clear
 
 $mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
 
@@ -458,7 +471,9 @@ $mol_check_box $mol_check
 
 $hyoo_notes $mol_book2
 	attr * mol_theme \$mol_theme_auto
+	note_default_title @ \New note
 	pages /
+	-
 	Tags_page $mol_page
 		title <= tags_title @ \Tags
 		Title => Tags_page_title
@@ -467,9 +482,10 @@ $hyoo_notes $mol_book2
 			<= Tags_all $mol_link
 				arg * tag null
 				sub / <= Tags_all_icon $mol_icon_filter_remove
+				hint <= tags_all_hint @ \All tags
 			<= Tag_filter $mol_search
 				query?val <=> tag_filter?val \
-				hint <= tag_filter_hint @ \Search or add...
+				hint <= filter_adder_hint @ \Search or add...
 		body <= tags_body /
 			<= Tag_add $mol_button_minor
 				sub /
@@ -478,28 +494,32 @@ $hyoo_notes $mol_book2
 				click?event <=> tag_add?event null
 			<= Tag_list $mol_list
 				rows <= tag_rows /
+	-
 	Notes_page!tag $mol_page
 		title <= notes_title @ \Notes
 		Title => Notes_page_title!tag
-		head /
+		- head /
 			<= Notes_page_title!tag
+		tools / 
+			<= Note_filter $mol_search
+				query?val <=> note_filter?val \
+				hint <= filter_adder_hint
 			<= Note_add $mol_button_major
 				sub /
 					<= Note_add_icon $mol_icon_plus
-					- <= note_add_title @ \Add new
+				hint <= notes_list_add_title @ \Add new
 				click?event <=> note_add?event null
-			<= Note_filter $mol_search
-				query?val <=> note_filter?val \
 		body <= notes_body /
 			<= Notes_list $mol_list
 				rows <= note_rows /
 				Empty <= Note_add_hint $mol_view
 					sub /
-						<= notes_list_add_title @ \Add new
+						<= notes_list_add_title
 						<= Notes_list_add_icon $mol_icon_arrow_up_bold
 			<= Tag_drop $mol_button_minor
 				title <= tag_drop_title @ \Delete tag
 				click?event <=> tag_drop?event null
+	-
 	Note_page!id $mol_page
 		title <= note_current_title \
 		tools /
@@ -515,6 +535,7 @@ $hyoo_notes $mol_book2
 			<= Note_content $mol_textarea
 				hint <= note_content_hint @ \Note content
 				value?val <=> note_current_content?val \
+	-
 	Tagging_page $mol_page
 		title <= tagging_title @ \Note tags
 		Title => Tagging_page_title
@@ -525,7 +546,7 @@ $hyoo_notes $mol_book2
 				sub / <= Tagging_close_icon $mol_icon_close
 			<= Tagging_filter $mol_search
 				query?val <=> tagging_filter?val \
-				hint <= tag_filter_hint
+				hint <= filter_adder_hint
 		body <= tagging_body /
 			<= Tagging_add $mol_button_minor
 				sub /
@@ -537,7 +558,7 @@ $hyoo_notes $mol_book2
 			<= Note_drop $mol_button_minor
 				title <= note_drop_title @ \Delete note
 				click?event <=> note_drop?event null
-	note_default_title @ \New note
+	-
 	Tag_row!id $mol_link
 		sub /
 			<= Tag_icon!id $mol_icon_folder
@@ -548,6 +569,7 @@ $hyoo_notes $mol_book2
 			tag <= id!id \
 			note null
 			tagging null
+	-
 	Note_row!id $mol_link
 		sub /
 			<= Note_icon!id $mol_icon_card_text_outline
@@ -556,6 +578,7 @@ $hyoo_notes $mol_book2
 				needle <= note_filter
 		arg *
 			note <= id!id \
+	-
 	Tagging_tag_row!id $mol_check_box
 		checked?val <=> tagging_tag!id?val false
 		label /

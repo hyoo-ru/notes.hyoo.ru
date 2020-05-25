@@ -1,4 +1,5 @@
 {
+	"$hyoo_notes_filter_adder_hint": "Найти или добавить...",
 	"$hyoo_notes_note_content_hint": "Содержимое заметки",
 	"$hyoo_notes_note_default_title": "Новая заметка",
 	"$hyoo_notes_note_drop_title": "Удалить заметку",
@@ -6,9 +7,10 @@
 	"$hyoo_notes_notes_title": "Заметки",
 	"$hyoo_notes_tag_add_title": "Добавить эту метку",
 	"$hyoo_notes_tag_drop_title": "Удалить метку",
-	"$hyoo_notes_tag_filter_hint": "Найти или добавить...",
 	"$hyoo_notes_tagging_title": "Метки заметки",
+	"$hyoo_notes_tags_all_hint": "Все метки",
 	"$hyoo_notes_tags_title": "Метки",
+	"$mol_search_clear_hint": "Очистить",
 	"$mol_search_hint": "Поиск..",
 	"$mol_select_hint": "Поиск..",
 	"$mol_select_no_options_message": "Нет вариантов"
