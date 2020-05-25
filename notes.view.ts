@@ -154,7 +154,10 @@ namespace $.$$ {
 			this.note_ids([ id , ... this.note_ids() ])
 			this.note_tags( id , $mol_maybe( this.tag() ) )
 			this.note( id )
-			setTimeout( ()=> this.Note_content().Edit().focused( true ) , 50 )
+			const title = this.note_filter()
+			this.note_content( id , title ? title + '\n\n' : '' )
+			this.note_filter('')
+			setTimeout( ()=> this.Note_content().Edit().focused( true ) , 500 )
 		}
 
 		note_drop() {

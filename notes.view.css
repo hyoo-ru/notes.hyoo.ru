@@ -5,7 +5,12 @@
 
 [hyoo_notes_notes_page] {
 	flex: 0 0 30rem;
-}	
+}
+
+[hyoo_notes_notes_page_tools] {
+	flex-wrap: nowrap;
+	flex: 100000 1 10rem;
+}
 
 [hyoo_notes_note_page] {
 	flex: 1000 0 60rem;
@@ -54,7 +59,7 @@
 }
 
 [hyoo_notes_note_filter] {
-	flex: 1 0 100%;
+	flex: 1 1 auto;
 	align-self: stretch;
 }
 
