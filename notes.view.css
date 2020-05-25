@@ -35,12 +35,12 @@
 }
 
 [hyoo_notes_tag_filter] {
-	flex: 1 0 auto;
+	flex: 1 0 100%;
 	align-self: stretch;
 }
 
 [hyoo_notes_tagging_filter] {
-	flex: 1 0 auto;
+	flex: 1 0 100%;
 	align-self: stretch;
 }
 
@@ -54,7 +54,7 @@
 }
 
 [hyoo_notes_note_filter] {
-	flex: 1 0 auto;
+	flex: 1 0 100%;
 	align-self: stretch;
 }
 
