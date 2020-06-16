@@ -1,5 +1,6 @@
 $hyoo_notes $mol_book2
-	attr * mol_theme \$mol_theme_auto
+	plugins /
+		<= Theme $mol_theme_auto
 	note_default_title @ \New note
 	pages /
 	-
@@ -27,17 +28,25 @@ $hyoo_notes $mol_book2
 	Notes_page!tag $mol_page
 		title <= notes_title @ \Notes
 		Title => Notes_page_title!tag
-		- head /
+		Tools => Notes_page_tools!tag
+		tools /
+			<= Source_link $mol_link
+				uri \https://github.com/hyoo-ru/notes.hyoo.ru
+				hint <= source_hint @ \Source code
+				sub / <= Souce_icon $mol_icon_github_circle
+		head /
 			<= Notes_page_title!tag
-		tools / 
-			<= Note_filter $mol_search
-				query?val <=> note_filter?val \
-				hint <= filter_adder_hint
-			<= Note_add $mol_button_major
-				sub /
-					<= Note_add_icon $mol_icon_plus
-				hint <= notes_list_add_title @ \Add new
-				click?event <=> note_add?event null
+			<= Notes_page_tools!tag
+			<= Notes_page_add $mol_view sub /
+				<= Note_filter $mol_search
+					query?val <=> note_filter?val \
+					submit?event <=> note_add_short?event null
+					hint <= filter_adder_hint
+				<= Note_add $mol_button_major
+					sub /
+						<= Note_add_icon $mol_icon_plus
+					hint <= notes_list_add_title @ \Add new
+					click?event <=> note_add_long?event null
 		body <= notes_body /
 			<= Notes_list $mol_list
 				rows <= note_rows /

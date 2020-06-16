@@ -149,14 +149,18 @@ namespace $.$$ {
 			.map( id => this.Note_row( id ) )
 		}
 		
-		note_add() {
+		note_add_short() {
 			const id = $mol_stub_code()
 			this.note_ids([ id , ... this.note_ids() ])
 			this.note_tags( id , $mol_maybe( this.tag() ) )
-			this.note( id )
 			const title = this.note_filter()
 			this.note_content( id , title ? title + '\n\n' : '' )
 			this.note_filter('')
+		}
+
+		note_add_long() {
+			this.note_add_short()
+			this.note( this.note_ids()[0] )
 			setTimeout( ()=> this.Note_content().Edit().focused( true ) , 500 )
 		}
 

@@ -7,9 +7,9 @@
 	flex: 0 0 30rem;
 }
 
-[hyoo_notes_notes_page_tools] {
+[hyoo_notes_notes_page_add] {
 	flex-wrap: nowrap;
-	flex: 100000 1 10rem;
+	flex: auto;
 }
 
 [hyoo_notes_note_page] {
