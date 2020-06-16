@@ -1902,6 +1902,14 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_link_source extends $mol_link {
+        hint(): string;
+        sub(): readonly any[];
+        Icon(): $mol_icon_github_circle;
+    }
+}
+
+declare namespace $ {
     class $mol_button_major extends $mol_button_typed {
         attr(): {
             mol_theme: string;
@@ -2434,9 +2442,7 @@ declare namespace $ {
         Notes_page_tools(tag: any): $mol_view;
         Notes_page(tag: any): $$.$mol_page;
         notes_title(): string;
-        Source_link(): $$.$mol_link;
-        source_hint(): string;
-        Souce_icon(): $mol_icon_github_circle;
+        Source_link(): $mol_link_source;
         Notes_page_add(): $mol_view;
         Note_filter(): $$.$mol_search;
         note_filter(val?: any, force?: $mol_mem_force): any;
