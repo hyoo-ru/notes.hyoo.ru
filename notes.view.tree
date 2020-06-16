@@ -30,10 +30,8 @@ $hyoo_notes $mol_book2
 		Title => Notes_page_title!tag
 		Tools => Notes_page_tools!tag
 		tools /
-			<= Source_link $mol_link
+			<= Source_link $mol_link_source
 				uri \https://github.com/hyoo-ru/notes.hyoo.ru
-				hint <= source_hint @ \Source code
-				sub / <= Souce_icon $mol_icon_github_circle
 		head /
 			<= Notes_page_title!tag
 			<= Notes_page_tools!tag
