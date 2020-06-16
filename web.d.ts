@@ -1798,6 +1798,9 @@ declare namespace $ {
         };
         event_change(event?: any, force?: $mol_mem_force): any;
         event_key_press(event?: any, force?: $mol_mem_force): any;
+        plugins(): readonly any[];
+        Submit(): $$.$mol_hotkey;
+        submit(event?: any, force?: $mol_mem_force): any;
     }
 }
 
@@ -1807,7 +1810,6 @@ declare namespace $ {
 declare namespace $.$$ {
     class $mol_string extends $.$mol_string {
         event_change(next?: Event): void;
-        event_key_press(next?: KeyboardEvent): void;
         disabled(): boolean;
         autocomplete_native(): "on" | "off";
     }
@@ -1851,7 +1853,7 @@ declare namespace $ {
         Filter(): $$.$mol_string;
         filter_hint(): string;
         hint(): string;
-        debounce(): number;
+        submit(event?: any, force?: $mol_mem_force): any;
         Trigger_icon(): $mol_icon_chevron;
     }
 }
@@ -1872,12 +1874,12 @@ declare namespace $.$$ {
         options_filtered(): readonly string[];
         option_label(id: string): any;
         option_rows(): $mol_view[];
-        option_focused(component?: $mol_view): $mol_view;
+        option_focused(component?: $mol_view): $mol_view | $mol_string;
         event_select(id: string, event?: MouseEvent): void;
-        nav_components(): $mol_view[];
+        nav_components(): ($mol_view | $mol_string)[];
         option_content_current(): readonly any[];
         trigger_content(): any[];
-        menu_content(): $mol_view[];
+        menu_content(): ($mol_view | $mol_string)[];
     }
 }
 
@@ -1899,7 +1901,7 @@ declare namespace $ {
         hint(): string;
         suggests_showed(): boolean;
         suggests(): readonly string[];
-        debounce(): number;
+        submit(event?: any, force?: $mol_mem_force): any;
         Clear(): $mol_button_minor;
         Clear_icon(): $mol_icon_cross;
         clear_hint(): string;
@@ -1920,6 +1922,12 @@ declare namespace $.$$ {
 
 declare namespace $ {
     class $mol_icon_plus extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_github_circle extends $mol_icon {
         path(): string;
     }
 }
@@ -2433,9 +2441,8 @@ declare namespace $ {
 
 declare namespace $ {
     class $hyoo_notes extends $mol_book2 {
-        attr(): {
-            mol_theme: string;
-        };
+        plugins(): readonly any[];
+        Theme(): $$.$mol_theme_auto;
         note_default_title(): string;
         pages(): readonly any[];
         Tags_page_title(): $$.$mol_button;
@@ -2455,14 +2462,20 @@ declare namespace $ {
         Tag_list(): $$.$mol_list;
         tag_rows(): readonly any[];
         Notes_page_title(tag: any): $$.$mol_button;
+        Notes_page_tools(tag: any): $mol_view;
         Notes_page(tag: any): $$.$mol_page;
         notes_title(): string;
+        Source_link(): $$.$mol_link;
+        source_hint(): string;
+        Souce_icon(): $mol_icon_github_circle;
+        Notes_page_add(): $mol_view;
         Note_filter(): $$.$mol_search;
         note_filter(val?: any, force?: $mol_mem_force): any;
+        note_add_short(event?: any, force?: $mol_mem_force): any;
         Note_add(): $mol_button_major;
         Note_add_icon(): $mol_icon_plus;
         notes_list_add_title(): string;
-        note_add(event?: any, force?: $mol_mem_force): any;
+        note_add_long(event?: any, force?: $mol_mem_force): any;
         notes_body(): readonly any[];
         Notes_list(): $$.$mol_list;
         note_rows(): readonly any[];
@@ -2691,7 +2704,8 @@ declare namespace $.$$ {
         tagging_rows(): $mol_check_box[];
         note_ids_available(): string[];
         note_rows(): $mol_link[];
-        note_add(): void;
+        note_add_short(): void;
+        note_add_long(): void;
         note_drop(): void;
         notes_title(): string;
         tagging_tag(tag: string, next?: boolean): boolean;

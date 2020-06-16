@@ -5363,6 +5363,20 @@ var $;
         event_key_press(event, force) {
             return (event !== void 0) ? event : null;
         }
+        plugins() {
+            return [this.Submit()];
+        }
+        Submit() {
+            return ((obj) => {
+                obj.key = () => ({
+                    "enter": (event) => this.submit(event),
+                });
+                return obj;
+            })(new this.$.$mol_hotkey());
+        }
+        submit(event, force) {
+            return (event !== void 0) ? event : null;
+        }
     }
     __decorate([
         $.$mol_mem
@@ -5379,6 +5393,12 @@ var $;
     __decorate([
         $.$mol_mem
     ], $mol_string.prototype, "event_key_press", null);
+    __decorate([
+        $.$mol_mem
+    ], $mol_string.prototype, "Submit", null);
+    __decorate([
+        $.$mol_mem
+    ], $mol_string.prototype, "submit", null);
     $.$mol_string = $mol_string;
 })($ || ($ = {}));
 //string.view.tree.js.map
@@ -5400,13 +5420,6 @@ var $;
                 if (!next)
                     return;
                 this.value(next.target.value);
-            }
-            event_key_press(next) {
-                if (!next)
-                    return;
-                if (next.keyCode === $.$mol_keyboard_code.enter) {
-                    this.value(next.target.value);
-                }
             }
             disabled() {
                 return !this.enabled();
@@ -5545,7 +5558,7 @@ var $;
             return ((obj) => {
                 obj.value = (val) => this.filter_pattern(val);
                 obj.hint = () => this.filter_hint();
-                obj.debounce = () => this.debounce();
+                obj.submit = (event) => this.submit(event);
                 return obj;
             })(new this.$.$mol_string());
         }
@@ -5555,8 +5568,8 @@ var $;
         hint() {
             return this.$.$mol_locale.text("$mol_select_hint");
         }
-        debounce() {
-            return 200;
+        submit(event, force) {
+            return (event !== void 0) ? event : null;
         }
         Trigger_icon() {
             return ((obj) => {
@@ -5609,6 +5622,9 @@ var $;
     __decorate([
         $.$mol_mem
     ], $mol_select.prototype, "Filter", null);
+    __decorate([
+        $.$mol_mem
+    ], $mol_select.prototype, "submit", null);
     __decorate([
         $.$mol_mem
     ], $mol_select.prototype, "Trigger_icon", null);
@@ -5777,7 +5793,7 @@ var $;
                 obj.options_showed = () => this.suggests_showed();
                 obj.options = () => this.suggests();
                 obj.Trigger_icon = () => null;
-                obj.debounce = () => this.debounce();
+                obj.submit = (event) => this.submit(event);
                 return obj;
             })(new this.$.$mol_select());
         }
@@ -5793,8 +5809,8 @@ var $;
         suggests() {
             return [];
         }
-        debounce() {
-            return 200;
+        submit(event, force) {
+            return (event !== void 0) ? event : null;
         }
         Clear() {
             return ((obj) => {
@@ -5828,6 +5844,9 @@ var $;
     __decorate([
         $.$mol_mem
     ], $mol_search.prototype, "suggest_selected", null);
+    __decorate([
+        $.$mol_mem
+    ], $mol_search.prototype, "submit", null);
     __decorate([
         $.$mol_mem
     ], $mol_search.prototype, "Clear", null);
@@ -5888,6 +5907,18 @@ var $;
     $.$mol_icon_plus = $mol_icon_plus;
 })($ || ($ = {}));
 //plus.view.tree.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_icon_github_circle extends $.$mol_icon {
+        path() {
+            return "M12,2C6.48,2 2,6.48 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12C22,6.48 17.52,2 12,2Z";
+        }
+    }
+    $.$mol_icon_github_circle = $mol_icon_github_circle;
+})($ || ($ = {}));
+//circle.view.tree.js.map
 ;
 "use strict";
 var $;
@@ -7346,10 +7377,13 @@ var $;
 var $;
 (function ($) {
     class $hyoo_notes extends $.$mol_book2 {
-        attr() {
-            return ({
-                "mol_theme": "$mol_theme_auto",
-            });
+        plugins() {
+            return [this.Theme()];
+        }
+        Theme() {
+            return ((obj) => {
+                return obj;
+            })(new this.$.$mol_theme_auto());
         }
         note_default_title() {
             return this.$.$mol_locale.text("$hyoo_notes_note_default_title");
@@ -7435,10 +7469,14 @@ var $;
         Notes_page_title(tag) {
             return this.Notes_page(tag).Title();
         }
+        Notes_page_tools(tag) {
+            return this.Notes_page(tag).Tools();
+        }
         Notes_page(tag) {
             return ((obj) => {
                 obj.title = () => this.notes_title();
-                obj.tools = () => [this.Note_filter(), this.Note_add()];
+                obj.tools = () => [this.Source_link()];
+                obj.head = () => [this.Notes_page_title(tag), this.Notes_page_tools(tag), this.Notes_page_add()];
                 obj.body = () => this.notes_body();
                 return obj;
             })(new this.$.$mol_page());
@@ -7446,9 +7484,32 @@ var $;
         notes_title() {
             return this.$.$mol_locale.text("$hyoo_notes_notes_title");
         }
+        Source_link() {
+            return ((obj) => {
+                obj.uri = () => "https://github.com/hyoo-ru/notes.hyoo.ru";
+                obj.hint = () => this.source_hint();
+                obj.sub = () => [this.Souce_icon()];
+                return obj;
+            })(new this.$.$mol_link());
+        }
+        source_hint() {
+            return this.$.$mol_locale.text("$hyoo_notes_source_hint");
+        }
+        Souce_icon() {
+            return ((obj) => {
+                return obj;
+            })(new this.$.$mol_icon_github_circle());
+        }
+        Notes_page_add() {
+            return ((obj) => {
+                obj.sub = () => [this.Note_filter(), this.Note_add()];
+                return obj;
+            })(new this.$.$mol_view());
+        }
         Note_filter() {
             return ((obj) => {
                 obj.query = (val) => this.note_filter(val);
+                obj.submit = (event) => this.note_add_short(event);
                 obj.hint = () => this.filter_adder_hint();
                 return obj;
             })(new this.$.$mol_search());
@@ -7456,11 +7517,14 @@ var $;
         note_filter(val, force) {
             return (val !== void 0) ? val : "";
         }
+        note_add_short(event, force) {
+            return (event !== void 0) ? event : null;
+        }
         Note_add() {
             return ((obj) => {
                 obj.sub = () => [this.Note_add_icon()];
                 obj.hint = () => this.notes_list_add_title();
-                obj.click = (event) => this.note_add(event);
+                obj.click = (event) => this.note_add_long(event);
                 return obj;
             })(new this.$.$mol_button_major());
         }
@@ -7472,7 +7536,7 @@ var $;
         notes_list_add_title() {
             return this.$.$mol_locale.text("$hyoo_notes_notes_list_add_title");
         }
-        note_add(event, force) {
+        note_add_long(event, force) {
             return (event !== void 0) ? event : null;
         }
         notes_body() {
@@ -7716,6 +7780,9 @@ var $;
     }
     __decorate([
         $.$mol_mem
+    ], $hyoo_notes.prototype, "Theme", null);
+    __decorate([
+        $.$mol_mem
     ], $hyoo_notes.prototype, "Tags_page", null);
     __decorate([
         $.$mol_mem
@@ -7746,10 +7813,22 @@ var $;
     ], $hyoo_notes.prototype, "Notes_page", null);
     __decorate([
         $.$mol_mem
+    ], $hyoo_notes.prototype, "Source_link", null);
+    __decorate([
+        $.$mol_mem
+    ], $hyoo_notes.prototype, "Souce_icon", null);
+    __decorate([
+        $.$mol_mem
+    ], $hyoo_notes.prototype, "Notes_page_add", null);
+    __decorate([
+        $.$mol_mem
     ], $hyoo_notes.prototype, "Note_filter", null);
     __decorate([
         $.$mol_mem
     ], $hyoo_notes.prototype, "note_filter", null);
+    __decorate([
+        $.$mol_mem
+    ], $hyoo_notes.prototype, "note_add_short", null);
     __decorate([
         $.$mol_mem
     ], $hyoo_notes.prototype, "Note_add", null);
@@ -7758,7 +7837,7 @@ var $;
     ], $hyoo_notes.prototype, "Note_add_icon", null);
     __decorate([
         $.$mol_mem
-    ], $hyoo_notes.prototype, "note_add", null);
+    ], $hyoo_notes.prototype, "note_add_long", null);
     __decorate([
         $.$mol_mem
     ], $hyoo_notes.prototype, "Notes_list", null);
@@ -8486,7 +8565,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tags_page] ,\n[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\n\n[hyoo_notes_notes_page_tools] {\n\tflex-wrap: nowrap;\n\tflex: 100000 1 10rem;\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 60rem;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .75rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 1 1 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tpadding: .75rem;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
+    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tags_page] ,\n[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\n\n[hyoo_notes_notes_page_add] {\n\tflex-wrap: nowrap;\n\tflex: auto;\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 60rem;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .75rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 1 1 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tpadding: .75rem;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
 })($ || ($ = {}));
 //notes.view.css.js.map
 ;
@@ -8619,14 +8698,17 @@ var $;
                     .filter($.$mol_match_text(this.note_filter(), id => [this.note_content(id)]))
                     .map(id => this.Note_row(id));
             }
-            note_add() {
+            note_add_short() {
                 const id = $.$mol_stub_code();
                 this.note_ids([id, ...this.note_ids()]);
                 this.note_tags(id, $.$mol_maybe(this.tag()));
-                this.note(id);
                 const title = this.note_filter();
                 this.note_content(id, title ? title + '\n\n' : '');
                 this.note_filter('');
+            }
+            note_add_long() {
+                this.note_add_short();
+                this.note(this.note_ids()[0]);
                 setTimeout(() => this.Note_content().Edit().focused(true), 500);
             }
             note_drop() {
