@@ -1941,6 +1941,73 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_check extends $mol_button_minor {
+        attr(): {
+            mol_check_checked: any;
+            "aria-checked": any;
+            role: string;
+            disabled: boolean;
+            tabindex: number;
+            title: string;
+        };
+        checked(val?: any, force?: $mol_mem_force): any;
+        sub(): readonly any[];
+        Icon(): any;
+        label(): readonly any[];
+        Title(): $mol_view;
+        title(): string;
+    }
+}
+
+declare namespace $ {
+    function $mol_maybe<Value>(value: Value | null | undefined): Value[];
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): any[];
+        label(): readonly any[];
+    }
+}
+
+declare namespace $ {
+    class $mol_check_icon extends $mol_check {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_icon_brightness_6 extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_lights_toggle extends $mol_check_icon {
+        Icon(): $mol_icon_brightness_6;
+        Lights_icon(): $mol_icon_brightness_6;
+        hint(): string;
+        checked(val?: any, force?: $mol_mem_force): any;
+        lights(val?: any, force?: $mol_mem_force): any;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
     class $mol_button_major extends $mol_button_typed {
         attr(): {
             mol_theme: string;
@@ -1985,40 +2052,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_check extends $mol_button_minor {
-        attr(): {
-            mol_check_checked: any;
-            "aria-checked": any;
-            role: string;
-            disabled: boolean;
-            tabindex: number;
-            title: string;
-        };
-        checked(val?: any, force?: $mol_mem_force): any;
-        sub(): readonly any[];
-        Icon(): any;
-        label(): readonly any[];
-        Title(): $mol_view;
-        title(): string;
-    }
-}
-
-declare namespace $ {
-    function $mol_maybe<Value>(value: Value | null | undefined): Value[];
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): any[];
-        label(): readonly any[];
-    }
 }
 
 declare namespace $ {
@@ -2474,6 +2507,7 @@ declare namespace $ {
         Notes_page(tag: any): $$.$mol_page;
         notes_title(): string;
         Source_link(): $mol_link_source;
+        Lights(): $$.$mol_lights_toggle;
         Notes_page_add(): $mol_view;
         Note_filter(): $$.$mol_search;
         note_filter(val?: any, force?: $mol_mem_force): any;
