@@ -1739,7 +1739,6 @@ declare namespace $ {
     class $mol_string extends $mol_view {
         dom_name(): string;
         enabled(): boolean;
-        debounce(): number;
         minimal_height(): number;
         autocomplete(): boolean;
         field(): {
