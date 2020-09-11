@@ -803,7 +803,7 @@ declare namespace $ {
                 blur: Length;
                 spread: Length;
                 color: Color;
-            }[];
+            }[] | 'none' | Common;
         };
         font?: {
             style?: 'normal' | 'italic' | Common;
@@ -2658,7 +2658,7 @@ declare namespace $ {
         get normal(): $mol_time_moment;
         merge(config: $mol_time_moment_config): $mol_time_moment;
         shift(config: $mol_time_duration_config): $mol_time_moment;
-        mask(config: $mol_time_duration_config): $mol_time_moment;
+        mask(config: $mol_time_moment_config): $mol_time_moment;
         toOffset(config: $mol_time_duration_config): $mol_time_moment;
         valueOf(): number;
         toJSON(): string;
