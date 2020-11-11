@@ -27,7 +27,7 @@ $mol_speck $mol_view
 
 $mol_button $mol_view
 	enabled true
-	minimal_height 32
+	minimal_height 40
 	click?event null
 	event_click?event null
 	event *
@@ -185,7 +185,7 @@ $mol_pop_bubble $mol_scroll
 $mol_string $mol_view
 	dom_name \input
 	enabled true
-	minimal_height 32
+	minimal_height 40
 	autocomplete false
 	field *
 		^
@@ -351,7 +351,7 @@ $mol_float $mol_view
 		minHeight \auto
 
 $mol_check_expand $mol_check
-	minimal_height 32
+	minimal_height 40
 	Icon $mol_icon_chevron
 	level 0
 	style *
@@ -407,7 +407,7 @@ $mol_grid_row $mol_view
 
 $mol_grid_cell $mol_view
 	dom_name \td
-	minimal_height 32
+	minimal_height 40
 
 $mol_grid_number $mol_grid_cell
 
