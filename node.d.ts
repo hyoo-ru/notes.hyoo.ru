@@ -472,7 +472,7 @@ declare namespace $ {
     function $mol_mem_persist(): void;
     function $mol_mem<Host extends object, Field extends keyof Host, Prop extends Extract<Host[Field], (next?: any) => any>>(proto: Host, name: Field, descr?: TypedPropertyDescriptor<Prop>): {
         value: ((this: Host, next?: $mol_type_param<Prop, 0> | undefined, force?: $mol_mem_force | undefined) => any) & {
-            orig: NonNullable<Prop>;
+            orig: Function;
         };
         enumerable?: boolean | undefined;
         configurable?: boolean | undefined;
@@ -875,6 +875,10 @@ declare namespace $ {
         maxHeight?: Size;
         margin?: Directions<Length | 'auto'>;
         padding?: Directions<Length | 'auto'>;
+        border?: {
+            radius?: Length | [Length, Length];
+            style?: 'none' | 'hidden' | 'dotted' | 'dashed' | 'solid' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset' | Common;
+        };
         flex?: 'none' | 'auto' | {
             grow?: number | Common;
             shrink?: number | Common;

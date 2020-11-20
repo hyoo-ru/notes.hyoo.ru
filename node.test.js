@@ -1322,7 +1322,7 @@ var $;
                     await $mol_fiber.tick();
                 });
             }
-            const promise = new this.$.Promise(done => this.queue.push(() => (done(), promise)));
+            const promise = new this.$.Promise(done => this.queue.push(() => (done(null), promise)));
             return promise;
         }
         get value() { return this._value; }
@@ -5371,7 +5371,7 @@ var $;
                 return Math.max(Math.min(this.$.$mol_window.size().width, this.maximal_width()), this.letter_width());
             }
             minimal_height() {
-                return Math.ceil(this.maximal_width() / this.minimal_width()) * this.line_height();
+                return Math.max(1, Math.ceil(this.maximal_width() / this.minimal_width())) * this.line_height();
             }
         }
         __decorate([
