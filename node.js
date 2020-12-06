@@ -3889,7 +3889,7 @@ var $;
             return "a";
         }
         attr() {
-            return Object.assign(Object.assign({}, super.attr()), { href: this.uri(), title: this.hint(), target: this.target(), download: this.file_name(), mol_link_current: this.current(), mol_theme: this.theme() });
+            return Object.assign(Object.assign({}, super.attr()), { href: this.uri(), title: this.hint(), target: this.target(), download: this.file_name(), mol_link_current: this.current() });
         }
         sub() {
             return [
@@ -3916,9 +3916,6 @@ var $;
         }
         current() {
             return false;
-        }
-        theme() {
-            return null;
         }
         event_click(event) {
             if (event !== undefined)
@@ -4050,6 +4047,7 @@ var $;
                         color: $.$mol_theme.back,
                     },
                     color: $.$mol_theme.text,
+                    textShadow: '0 0',
                 }
             }
         },
@@ -4091,9 +4089,6 @@ var $;
             }
             minimal_height() {
                 return Math.max(super.minimal_height() || 32);
-            }
-            theme() {
-                return this.current() ? '$mol_theme_base' : null;
             }
         }
         __decorate([
@@ -4716,7 +4711,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/check/box/box.view.css", "[mol_check_box_icon] {\n\tborder-radius: var(--mol_skin_round);\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n}\n\n[mol_check]:not([mol_check_checked]) > [mol_check_box_icon] {\n\tfill: transparent;\n}\n\n[mol_check]:not([disabled]) > [mol_check_box_icon] {\n\tbackground: var(--mol_theme_field);\n\tcolor: var(--mol_theme_text);\n}\n\n[mol_check_box_title] {\n\tmargin-left: .25rem;\n}\n");
+    $.$mol_style_attach("mol/check/box/box.view.css", "[mol_check_box_icon] {\n\tborder-radius: var(--mol_skin_round);\n\tbox-shadow: 0 0 0 1px var(--mol_theme_line);\n}\n\n[mol_check]:not([mol_check_checked]) > [mol_check_box_icon] {\n\tfill: transparent;\n}\n\n[mol_check]:not([disabled]) > [mol_check_box_icon] {\n\tbackground: var(--mol_theme_field);\n\tcolor: var(--mol_theme_text);\n}\n\n[mol_check_box_title] {\n\tmargin-left: .5rem;\n}\n");
 })($ || ($ = {}));
 //box.view.css.js.map
 ;
@@ -6697,7 +6692,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("mol/button/major/major.view.css", "[mol_button_major][disabled] {\n\topacity: .5;\n}\n");
+    $.$mol_style_attach("mol/button/major/major.view.css", "[mol_button_major][disabled] {\n\topacity: .5;\n\tfilter: grayscale();\n}\n");
 })($ || ($ = {}));
 //major.view.css.js.map
 ;
