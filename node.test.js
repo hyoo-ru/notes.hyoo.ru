@@ -5125,10 +5125,6 @@ var $;
                 return event;
             return null;
         }
-        Meter() {
-            const obj = new this.$.$mol_meter();
-            return obj;
-        }
         top() {
             return this.Meter().top();
         }
@@ -5140,6 +5136,10 @@ var $;
         }
         right() {
             return this.Meter().right();
+        }
+        Meter() {
+            const obj = new this.$.$mol_meter();
+            return obj;
         }
         Anchor() {
             return null;
@@ -8264,6 +8264,9 @@ var $;
         pages() {
             return [];
         }
+        Tags_page_title() {
+            return this.Tags_page().Title();
+        }
         Tags_page() {
             const obj = new this.$.$mol_page();
             obj.title = () => this.tags_title();
@@ -8275,8 +8278,11 @@ var $;
             obj.body = () => this.tags_body();
             return obj;
         }
-        Tags_page_title() {
-            return this.Tags_page().Title();
+        Notes_page_title(tag) {
+            return this.Notes_page(tag).Title();
+        }
+        Notes_page_tools(tag) {
+            return this.Notes_page(tag).Tools();
         }
         Notes_page(tag) {
             const obj = new this.$.$mol_page();
@@ -8293,12 +8299,6 @@ var $;
             obj.body = () => this.notes_body();
             return obj;
         }
-        Notes_page_title(tag) {
-            return this.Notes_page(tag).Title();
-        }
-        Notes_page_tools(tag) {
-            return this.Notes_page(tag).Tools();
-        }
         Note_page(id) {
             const obj = new this.$.$mol_page();
             obj.title = () => this.note_current_title();
@@ -8311,6 +8311,9 @@ var $;
             ];
             return obj;
         }
+        Tagging_page_title() {
+            return this.Tagging_page().Title();
+        }
         Tagging_page() {
             const obj = new this.$.$mol_page();
             obj.title = () => this.tagging_title();
@@ -8321,9 +8324,6 @@ var $;
             ];
             obj.body = () => this.tagging_body();
             return obj;
-        }
-        Tagging_page_title() {
-            return this.Tagging_page().Title();
         }
         Tag_row(id) {
             const obj = new this.$.$mol_link();
@@ -9832,12 +9832,12 @@ var $;
 var $;
 (function ($) {
     class $mol_view_tree_test_binding_right extends $.$mol_view {
+        outer_width(v) {
+            return this.Test().width(v);
+        }
         Test() {
             const obj = new this.$.$mol_view_tree_test_binding_right_test();
             return obj;
-        }
-        outer_width(v) {
-            return this.Test().width(v);
         }
     }
     __decorate([

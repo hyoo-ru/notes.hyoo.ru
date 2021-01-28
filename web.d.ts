@@ -1754,11 +1754,11 @@ declare namespace $ {
         plugins(): readonly $mol_plugin[];
         sub(): readonly any[];
         keydown(event?: any): any;
-        Meter(): $$.$mol_meter;
         top(): number;
         bottom(): number;
         left(): number;
         right(): number;
+        Meter(): $$.$mol_meter;
         Anchor(): any;
         align(): string;
         bubble_content(): readonly (string | number | boolean | $mol_view | Node)[];
@@ -2657,14 +2657,14 @@ declare namespace $ {
         plugins(): readonly any[];
         note_default_title(): string;
         pages(): readonly any[];
-        Tags_page(): $$.$mol_page;
         Tags_page_title(): $mol_view;
-        Notes_page(tag: any): $$.$mol_page;
+        Tags_page(): $$.$mol_page;
         Notes_page_title(tag: any): $mol_view;
         Notes_page_tools(tag: any): $mol_view;
+        Notes_page(tag: any): $$.$mol_page;
         Note_page(id: any): $$.$mol_page;
-        Tagging_page(): $$.$mol_page;
         Tagging_page_title(): $mol_view;
+        Tagging_page(): $$.$mol_page;
         Tag_row(id: any): $$.$mol_link;
         Note_row(id: any): $$.$mol_link;
         Tagging_tag_row(id: any): $mol_check_box;
@@ -2951,8 +2951,8 @@ declare namespace $ {
 
 declare namespace $ {
     class $mol_view_tree_test_binding_right extends $mol_view {
-        Test(): $mol_view_tree_test_binding_right_test;
         outer_width(v?: any): any;
+        Test(): $mol_view_tree_test_binding_right_test;
     }
     class $mol_view_tree_test_binding_right_test extends $mol_view {
         width(val?: any): any;
