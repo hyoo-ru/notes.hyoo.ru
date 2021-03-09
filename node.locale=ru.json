@@ -12,9 +12,5 @@
 	"$hyoo_notes_tags_title": "Метки",
 	"$mol_lights_toggle_hint": "Переключатель света",
 	"$mol_link_source_hint": "Исходные коды",
-	"$mol_search_clear_hint": "Очистить",
-	"$mol_search_hint": "Поиск..",
-	"$mol_select_Filter_hint": "Фильтр..",
-	"$mol_select_hint": "Выбрать..",
-	"$mol_select_no_options_message": "Нет вариантов"
+	"$mol_search_hint": "Поиск.."
 }
