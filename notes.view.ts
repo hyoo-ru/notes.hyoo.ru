@@ -36,7 +36,12 @@ namespace $.$$ {
 		note_moment( note : string , next? : $mol_time_moment | null ) {
 			const str = this.$.$mol_state_local.value( `note=${ note }.moment` , next?.toString() ) || null
 			return str ? new $mol_time_moment( str ) : null
-		}		
+		}
+		
+		@ $mol_mem_key
+		note_moment_view( note: string ) {
+			return this.note_moment( note )?.toString( 'MM-DD hh:mm' ) ?? ''
+		}
 		
 		note_current_moment( next? : $mol_time_moment | null ) {
 			return this.note_moment( this.note()! , next )

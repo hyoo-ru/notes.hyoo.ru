@@ -100,6 +100,14 @@
 	margin: .5rem .25rem;
 }
 
+[hyoo_notes_note_title] {
+	flex-grow: 1;
+}
+
+[hyoo_notes_note_moment] {
+	flex-shrink: 0;
+}
+
 [hyoo_notes_tagging_tag_row] {
 	display: flex;
 }
