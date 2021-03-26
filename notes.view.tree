@@ -63,6 +63,8 @@ $hyoo_notes $mol_book2
 			<= Note_tags_manage $mol_link
 				sub / <= Note_tags_manage_icon $mol_icon_settings
 				arg * tagging \
+			<= Note_date $mol_date
+				value_moment?val <=> note_current_moment?val $mol_time_moment
 			<= Note_close $mol_link
 				arg *
 					note null

@@ -32,6 +32,16 @@ namespace $.$$ {
 			return this.note_content( this.note()! , next )
 		}		
 		
+		@ $mol_mem_key
+		note_moment( note : string , next? : $mol_time_moment | null ) {
+			const str = this.$.$mol_state_local.value( `note=${ note }.moment` , next?.toString() ) || null
+			return str ? new $mol_time_moment( str ) : null
+		}		
+		
+		note_current_moment( next? : $mol_time_moment | null ) {
+			return this.note_moment( this.note()! , next )
+		}		
+		
 		tag_ids( next? : string[] ) {
 			return this.$.$mol_state_local.value( 'tag_ids' , next ) || []
 		}
