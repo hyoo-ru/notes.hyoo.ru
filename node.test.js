@@ -9377,7 +9377,8 @@ var $;
             const obj = new this.$.$mol_link();
             obj.sub = () => [
                 this.Note_icon(id),
-                this.Note_title(id)
+                this.Note_title(id),
+                this.Note_moment(id)
             ];
             obj.arg = () => ({
                 note: this.id(id)
@@ -9726,6 +9727,16 @@ var $;
             obj.needle = () => this.note_filter();
             return obj;
         }
+        note_moment_view(id) {
+            return "";
+        }
+        Note_moment(id) {
+            const obj = new this.$.$mol_paragraph();
+            obj.sub = () => [
+                this.note_moment_view(id)
+            ];
+            return obj;
+        }
         tagging_tag(id, val) {
             if (val !== undefined)
                 return val;
@@ -9894,6 +9905,9 @@ var $;
     __decorate([
         $.$mol_mem_key
     ], $hyoo_notes.prototype, "Note_title", null);
+    __decorate([
+        $.$mol_mem_key
+    ], $hyoo_notes.prototype, "Note_moment", null);
     __decorate([
         $.$mol_mem_key
     ], $hyoo_notes.prototype, "tagging_tag", null);
@@ -10070,7 +10084,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tags_page] ,\n[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\n\n[hyoo_notes_notes_page_add] {\n\tflex-wrap: nowrap;\n\tflex: auto;\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 50rem;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .75rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 1 1 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tpadding: .75rem;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
+    $.$mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tags_page] ,\n[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\n\n[hyoo_notes_notes_page_add] {\n\tflex-wrap: nowrap;\n\tflex: auto;\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 50rem;\n}\n\n[hyoo_notes_tags_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tagging_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_tag_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tag_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_tag_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tagging_filter] {\n\tflex: 1 0 100%;\n\talign-self: stretch;\n}\n\n[hyoo_notes_tag_list] {\n\tpadding: .75rem;\n}\n\n[hyoo_notes_tagging_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_filter] {\n\tflex: 1 1 auto;\n\talign-self: stretch;\n}\n\n[hyoo_notes_notes_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n[hyoo_notes_notes_list] {\n\tpadding: .75rem;\n\tflex: 1 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_page_body] {\n\tdisplay: flex;\n\tflex-direction: column;\n\tpadding: .75rem;\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n\tpadding: .5rem;\n}\n\n[hyoo_notes_note_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_note_icon] {\n\tmargin: .5rem .25rem;\n}\n\n[hyoo_notes_note_title] {\n\tflex-grow: 1;\n}\n\n[hyoo_notes_note_moment] {\n\tflex-shrink: 0;\n}\n\n[hyoo_notes_tagging_tag_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_tagging_tag_row] > * {\n\tmargin: .25rem;\n}\n\n[hyoo_notes_tagging_tag_row_icon] {\n\tmargin: .5rem .25rem;\n}\n");
 })($ || ($ = {}));
 //notes.view.css.js.map
 ;
@@ -10108,6 +10122,10 @@ var $;
             note_moment(note, next) {
                 const str = this.$.$mol_state_local.value(`note=${note}.moment`, next === null || next === void 0 ? void 0 : next.toString()) || null;
                 return str ? new $.$mol_time_moment(str) : null;
+            }
+            note_moment_view(note) {
+                var _a, _b;
+                return (_b = (_a = this.note_moment(note)) === null || _a === void 0 ? void 0 : _a.toString('MM-DD hh:mm')) !== null && _b !== void 0 ? _b : '';
             }
             note_current_moment(next) {
                 return this.note_moment(this.note(), next);
@@ -10251,6 +10269,9 @@ var $;
         __decorate([
             $.$mol_mem_key
         ], $hyoo_notes.prototype, "note_moment", null);
+        __decorate([
+            $.$mol_mem_key
+        ], $hyoo_notes.prototype, "note_moment_view", null);
         $$.$hyoo_notes = $hyoo_notes;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));

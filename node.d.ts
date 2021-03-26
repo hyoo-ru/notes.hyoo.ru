@@ -2942,6 +2942,8 @@ declare namespace $ {
         Note_icon(id: any): $mol_icon_card_text_outline;
         note_title(id: any): string;
         Note_title(id: any): $$.$mol_dimmer;
+        note_moment_view(id: any): string;
+        Note_moment(id: any): $$.$mol_paragraph;
         tagging_tag(id: any, val?: any): any;
         Tagging_tag_title(id: any): $$.$mol_dimmer;
     }
@@ -3004,6 +3006,7 @@ declare namespace $.$$ {
         note_content(note: string, next?: string | null): string;
         note_current_content(next?: string): string;
         note_moment(note: string, next?: $mol_time_moment | null): $mol_time_moment | null;
+        note_moment_view(note: string): string;
         note_current_moment(next?: $mol_time_moment | null): $mol_time_moment | null;
         tag_ids(next?: string[]): string[];
         tag(next?: string | null): string | null;

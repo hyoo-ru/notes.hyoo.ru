@@ -720,6 +720,8 @@ $hyoo_notes $mol_book2
 			<= Note_title!id $mol_dimmer
 				haystack <= note_title!id \
 				needle <= note_filter
+			<= Note_moment!id $mol_paragraph
+				sub / <= note_moment_view!id \
 		arg *
 			note <= id!id \
 	-
