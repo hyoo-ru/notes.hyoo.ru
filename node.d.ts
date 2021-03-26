@@ -87,12 +87,10 @@ declare namespace $ {
     var $mol_dom_context: typeof globalThis;
 }
 
-/// <reference types="node" />
 interface $node {
     [key: string]: any;
 }
 declare var $node: $node;
-declare const $node_require: NodeRequire;
 
 declare namespace $ {
 }
@@ -1608,6 +1606,8 @@ declare namespace $.$$ {
         sub(): any[];
         height_max(): number;
         align(): string;
+        align_vert(): "suspense" | "top" | "bottom";
+        align_hor(): "suspense" | "left" | "right";
         keydown(event: KeyboardEvent): void;
     }
 }
@@ -2068,6 +2068,305 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_time_base {
+        static patterns: Record<string, (arg: any) => string>;
+        static formatter(pattern: string): (arg: any) => string;
+        toString(pattern: string): string;
+    }
+}
+
+declare namespace $ {
+    type $mol_time_duration_config = number | string | {
+        year?: number;
+        month?: number;
+        day?: number;
+        hour?: number;
+        minute?: number;
+        second?: number;
+    };
+    class $mol_time_duration extends $mol_time_base {
+        constructor(config?: $mol_time_duration_config);
+        readonly year: number;
+        readonly month: number;
+        readonly day: number;
+        readonly hour: number;
+        readonly minute: number;
+        readonly second: number;
+        summ(config: $mol_time_duration_config): $mol_time_duration;
+        mult(numb: number): $mol_time_duration;
+        count(config: $mol_time_duration_config): number;
+        valueOf(): number;
+        toJSON(): string;
+        toString(pattern?: string): string;
+        static patterns: {
+            '#Y': (duration: $mol_time_duration) => string;
+            '#M': (duration: $mol_time_duration) => string;
+            '#D': (duration: $mol_time_duration) => string;
+            '#h': (duration: $mol_time_duration) => string;
+            '#m': (duration: $mol_time_duration) => string;
+            '#s': (duration: $mol_time_duration) => string;
+        };
+    }
+}
+
+declare namespace $ {
+    type $mol_time_moment_config = number | Date | string | {
+        year?: number;
+        month?: number;
+        day?: number;
+        hour?: number;
+        minute?: number;
+        second?: number;
+        offset?: $mol_time_duration_config;
+    };
+    class $mol_time_moment extends $mol_time_base {
+        constructor(config?: $mol_time_moment_config);
+        readonly year: number | undefined;
+        readonly month: number | undefined;
+        readonly day: number | undefined;
+        readonly hour: number | undefined;
+        readonly minute: number | undefined;
+        readonly second: number | undefined;
+        readonly offset: $mol_time_duration | undefined;
+        get weekday(): number;
+        _native: Date | undefined;
+        get native(): Date;
+        _normal: $mol_time_moment | undefined;
+        get normal(): $mol_time_moment;
+        merge(config: $mol_time_moment_config): $mol_time_moment;
+        shift(config: $mol_time_duration_config): $mol_time_moment;
+        mask(config: $mol_time_moment_config): $mol_time_moment;
+        toOffset(config: $mol_time_duration_config): $mol_time_moment;
+        valueOf(): number;
+        toJSON(): string;
+        toString(pattern?: string): string;
+        static patterns: {
+            YYYY: (moment: $mol_time_moment) => string;
+            AD: (moment: $mol_time_moment) => string;
+            YY: (moment: $mol_time_moment) => string;
+            Month: (moment: $mol_time_moment) => string;
+            'DD Month': (moment: $mol_time_moment) => string;
+            'D Month': (moment: $mol_time_moment) => string;
+            Mon: (moment: $mol_time_moment) => string;
+            'DD Mon': (moment: $mol_time_moment) => string;
+            'D Mon': (moment: $mol_time_moment) => string;
+            '-MM': (moment: $mol_time_moment) => string;
+            MM: (moment: $mol_time_moment) => string;
+            M: (moment: $mol_time_moment) => string;
+            WeekDay: (moment: $mol_time_moment) => string;
+            WD: (moment: $mol_time_moment) => string;
+            '-DD': (moment: $mol_time_moment) => string;
+            DD: (moment: $mol_time_moment) => string;
+            D: (moment: $mol_time_moment) => string;
+            Thh: (moment: $mol_time_moment) => string;
+            hh: (moment: $mol_time_moment) => string;
+            h: (moment: $mol_time_moment) => string;
+            ':mm': (moment: $mol_time_moment) => string;
+            mm: (moment: $mol_time_moment) => string;
+            m: (moment: $mol_time_moment) => string;
+            ':ss': (moment: $mol_time_moment) => string;
+            ss: (moment: $mol_time_moment) => string;
+            s: (moment: $mol_time_moment) => string;
+            '.sss': (moment: $mol_time_moment) => string;
+            sss: (moment: $mol_time_moment) => string;
+            Z: (moment: $mol_time_moment) => string;
+        };
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_calendar extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_chevron extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_chevron_left extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_chevron_right extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_row extends $mol_view {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_hor extends $mol_view {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_hor extends $.$mol_hor {
+        minimal_width(): number;
+    }
+}
+
+declare namespace $ {
+    class $mol_calendar extends $mol_list {
+        sub(): readonly any[];
+        weeks(): readonly $mol_view[];
+        Weekday(index: any): $mol_calendar_day;
+        Week(row: any): $$.$mol_hor;
+        Day(day: any): $mol_calendar_day;
+        month_string(): string;
+        month_moment(): $mol_time_moment;
+        title(): string;
+        Title(): $mol_view;
+        head(): readonly any[];
+        Head(): $mol_view;
+        weekdays(): readonly $mol_view[];
+        Weekdays(): $$.$mol_hor;
+        weekend(index: any): boolean;
+        weekday(index: any): string;
+        week_days(row: any): readonly $mol_view[];
+        day_ghost(day: any): boolean;
+        day_holiday(day: any): boolean;
+        day_selected(day: any): boolean;
+        day_theme(day: any): string;
+        day_text(day: any): string;
+        day_content(day: any): readonly any[];
+    }
+    class $mol_calendar_day extends $mol_view {
+        minimal_height(): number;
+        minimal_width(): number;
+        attr(): {
+            mol_calendar_holiday: boolean;
+            mol_calendar_ghost: boolean;
+            mol_calendar_selected: boolean;
+            mol_theme: string;
+        };
+        holiday(): boolean;
+        ghost(): boolean;
+        selected(): boolean;
+        theme(): string;
+    }
+}
+
+declare namespace $ {
+    type $mol_time_interval_config = string | {
+        start?: $mol_time_moment_config;
+        end?: $mol_time_moment_config;
+        duration?: $mol_time_duration_config;
+    };
+    class $mol_time_interval extends $mol_time_base {
+        constructor(config: $mol_time_interval_config);
+        private _start;
+        get start(): $mol_time_moment;
+        private _end;
+        get end(): $mol_time_moment;
+        private _duration;
+        get duration(): $mol_time_duration;
+        toJSON(): string;
+        toString(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$mol {
+    class $mol_calendar extends $.$mol_calendar {
+        month_moment(): $mol_time_moment;
+        title(): string;
+        day_first(): $mol_time_moment;
+        day_last(): $mol_time_moment;
+        day_draw_from(): $mol_time_moment;
+        weekdays(): $mol_view[];
+        weekday(index: number): string;
+        weekend(index: number): boolean;
+        weeks_count(): number;
+        sub(): any[];
+        weeks(): $mol_view[];
+        week_days(index: number): $mol_view[];
+        day_text(day: string): string;
+        day_holiday(day: string): boolean;
+        day_ghost(day: string): boolean;
+        day_selected(day: string): boolean;
+        day_theme(day: string): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_date extends $mol_pop {
+        Icon(): $mol_icon_calendar;
+        Anchor(): $mol_button_minor;
+        bubble_content(): readonly any[];
+        value_number(val?: any): any;
+        value_moment(val?: any): any;
+        view_content(): readonly any[];
+        View(): $mol_button_minor;
+        date(val?: any): any;
+        hint(): string;
+        enabled(): boolean;
+        Date_input(): $$.$mol_string;
+        time(val?: any): any;
+        time_hint(): string;
+        Time_input(): $$.$mol_string;
+        Manual(): $mol_view;
+        month_moment(): any;
+        day_selected(day: any): boolean;
+        day_click(day: any, event?: any): any;
+        prev_hint(): string;
+        prev(event?: any): any;
+        Prev_icon(): $mol_icon_chevron_left;
+        Prev(): $mol_button_minor;
+        next_hint(): string;
+        next(event?: any): any;
+        Next_icon(): $mol_icon_chevron_right;
+        Next(): $mol_button_minor;
+        Calendar_tools(): $mol_view;
+        Calendar_title(): $mol_view;
+        Calendar(): $mol_date_calendar;
+    }
+    class $mol_date_calendar extends $mol_calendar {
+        day_content(day: any): readonly any[];
+        day_click(day: any, event?: any): any;
+        Day_button(day: any): $mol_button_minor;
+    }
+}
+
+declare namespace $ {
+    function $mol_try<Result>(handler: () => Result): Result | Error;
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_date extends $.$mol_date {
+        view_content(): (string | $mol_icon_calendar)[];
+        date(val?: string): string;
+        time(val?: string): string;
+        value_moment(val?: $mol_time_moment | null): $mol_time_moment | null;
+        month_moment(next?: $mol_time_moment): $mol_time_moment;
+        showed(next?: boolean): boolean;
+        day_selected(day: string): boolean;
+        day_click(day: string): void;
+        prev(): void;
+        next(): void;
+    }
+}
+
+declare namespace $ {
     class $mol_icon_close extends $mol_icon {
         path(): string;
     }
@@ -2082,12 +2381,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_icon_chevron extends $mol_icon {
-        path(): string;
-    }
 }
 
 declare namespace $ {
@@ -2616,6 +2909,8 @@ declare namespace $ {
         note_current_title(): string;
         Note_tags_manage_icon(): $mol_icon_settings;
         Note_tags_manage(): $$.$mol_link;
+        note_current_moment(val?: any): any;
+        Note_date(): $$.$mol_date;
         Note_close_icon(): $mol_icon_close;
         Note_close(): $$.$mol_link;
         note_content_hint(): string;
@@ -2678,113 +2973,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_time_base {
-        static patterns: Record<string, (arg: any) => string>;
-        static formatter(pattern: string): (arg: any) => string;
-        toString(pattern: string): string;
-    }
-}
-
-declare namespace $ {
-    type $mol_time_duration_config = number | string | {
-        year?: number;
-        month?: number;
-        day?: number;
-        hour?: number;
-        minute?: number;
-        second?: number;
-    };
-    class $mol_time_duration extends $mol_time_base {
-        constructor(config?: $mol_time_duration_config);
-        readonly year: number;
-        readonly month: number;
-        readonly day: number;
-        readonly hour: number;
-        readonly minute: number;
-        readonly second: number;
-        summ(config: $mol_time_duration_config): $mol_time_duration;
-        mult(numb: number): $mol_time_duration;
-        count(config: $mol_time_duration_config): number;
-        valueOf(): number;
-        toJSON(): string;
-        toString(pattern?: string): string;
-        static patterns: {
-            '#Y': (duration: $mol_time_duration) => string;
-            '#M': (duration: $mol_time_duration) => string;
-            '#D': (duration: $mol_time_duration) => string;
-            '#h': (duration: $mol_time_duration) => string;
-            '#m': (duration: $mol_time_duration) => string;
-            '#s': (duration: $mol_time_duration) => string;
-        };
-    }
-}
-
-declare namespace $ {
-    type $mol_time_moment_config = number | Date | string | {
-        year?: number;
-        month?: number;
-        day?: number;
-        hour?: number;
-        minute?: number;
-        second?: number;
-        offset?: $mol_time_duration_config;
-    };
-    class $mol_time_moment extends $mol_time_base {
-        constructor(config?: $mol_time_moment_config);
-        readonly year: number | undefined;
-        readonly month: number | undefined;
-        readonly day: number | undefined;
-        readonly hour: number | undefined;
-        readonly minute: number | undefined;
-        readonly second: number | undefined;
-        readonly offset: $mol_time_duration | undefined;
-        get weekday(): number;
-        _native: Date | undefined;
-        get native(): Date;
-        _normal: $mol_time_moment | undefined;
-        get normal(): $mol_time_moment;
-        merge(config: $mol_time_moment_config): $mol_time_moment;
-        shift(config: $mol_time_duration_config): $mol_time_moment;
-        mask(config: $mol_time_moment_config): $mol_time_moment;
-        toOffset(config: $mol_time_duration_config): $mol_time_moment;
-        valueOf(): number;
-        toJSON(): string;
-        toString(pattern?: string): string;
-        static patterns: {
-            YYYY: (moment: $mol_time_moment) => string;
-            AD: (moment: $mol_time_moment) => string;
-            YY: (moment: $mol_time_moment) => string;
-            Month: (moment: $mol_time_moment) => string;
-            'DD Month': (moment: $mol_time_moment) => string;
-            'D Month': (moment: $mol_time_moment) => string;
-            Mon: (moment: $mol_time_moment) => string;
-            'DD Mon': (moment: $mol_time_moment) => string;
-            'D Mon': (moment: $mol_time_moment) => string;
-            '-MM': (moment: $mol_time_moment) => string;
-            MM: (moment: $mol_time_moment) => string;
-            M: (moment: $mol_time_moment) => string;
-            WeekDay: (moment: $mol_time_moment) => string;
-            WD: (moment: $mol_time_moment) => string;
-            '-DD': (moment: $mol_time_moment) => string;
-            DD: (moment: $mol_time_moment) => string;
-            D: (moment: $mol_time_moment) => string;
-            Thh: (moment: $mol_time_moment) => string;
-            hh: (moment: $mol_time_moment) => string;
-            h: (moment: $mol_time_moment) => string;
-            ':mm': (moment: $mol_time_moment) => string;
-            mm: (moment: $mol_time_moment) => string;
-            m: (moment: $mol_time_moment) => string;
-            ':ss': (moment: $mol_time_moment) => string;
-            ss: (moment: $mol_time_moment) => string;
-            s: (moment: $mol_time_moment) => string;
-            '.sss': (moment: $mol_time_moment) => string;
-            sss: (moment: $mol_time_moment) => string;
-            Z: (moment: $mol_time_moment) => string;
-        };
-    }
-}
-
-declare namespace $ {
     function $mol_stub_select_random<Value>(list: Value[]): Value;
     function $mol_stub_strings(prefix?: string, count?: number, length?: number): any[];
     function $mol_stub_code(length?: number): string;
@@ -2810,6 +2998,8 @@ declare namespace $.$$ {
         note(next?: string | null): string | null;
         note_content(note: string, next?: string | null): string;
         note_current_content(next?: string): string;
+        note_moment(note: string, next?: $mol_time_moment | null): $mol_time_moment | null;
+        note_current_moment(next?: $mol_time_moment | null): $mol_time_moment | null;
         tag_ids(next?: string[]): string[];
         tag(next?: string | null): string | null;
         tagging(next?: boolean): boolean;

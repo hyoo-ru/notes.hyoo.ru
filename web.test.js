@@ -555,7 +555,13 @@ var $;
                         return val;
                     if ('outerHTML' in val)
                         return val.outerHTML;
-                    return JSON.stringify(val);
+                    try {
+                        return JSON.stringify(val);
+                    }
+                    catch (error) {
+                        console.error(error);
+                        return val;
+                    }
                 };
                 return $.$mol_fail(new Error(`Not like (1:${+index + 2})\n${print(head)}\n---\n${print(value)}`));
             }
@@ -2490,64 +2496,6 @@ var $;
 var $;
 (function ($) {
     $.$mol_test({
-        '$mol_syntax2_md_flow'() {
-            const check = (input, right) => {
-                const tokens = [];
-                $.$mol_syntax2_md_flow.tokenize(input, (...token) => tokens.push(token));
-                $.$mol_assert_like(JSON.stringify(tokens), JSON.stringify(right));
-            };
-            check('Hello,\nWorld..\r\n\r\n\nof Love!', [
-                ['block', 'Hello,\nWorld..\r\n\r\n\n', ['Hello,\nWorld..', '\r\n\r\n\n'], 0],
-                ['block', 'of Love!', ['of Love!', ''], 19],
-            ]);
-            check('# Header1\n\nHello!\n\n## Header2', [
-                ['header', '# Header1\n\n', ['#', ' ', 'Header1', '\n\n'], 0],
-                ['block', 'Hello!\n\n', ['Hello!', '\n\n'], 11],
-                ['header', '## Header2', ['##', ' ', 'Header2', ''], 19],
-            ]);
-            check('```\nstart()\n```\n\n```js\nrestart()\n```\n\nHello!\n\n```\nstop()\n```', [
-                ['code', '```\nstart()\n```\n\n', ['```', '', 'start()\n', '```', '\n\n'], 0],
-                ['code', '```js\nrestart()\n```\n\n', ['```', 'js', 'restart()\n', '```', '\n\n'], 17],
-                ['block', 'Hello!\n\n', ['Hello!', '\n\n'], 38],
-                ['code', '```\nstop()\n```', ['```', '', 'stop()\n', '```', ''], 46],
-            ]);
-            check('| header1 | header2\n|----|----\n| Cell11 | Cell12\n| Cell21 | Cell22\n\n| Cell11 | Cell12\n| Cell21 | Cell22\n', [
-                ['table', '| header1 | header2\n|----|----\n| Cell11 | Cell12\n| Cell21 | Cell22\n\n', ['| header1 | header2\n|----|----\n| Cell11 | Cell12\n| Cell21 | Cell22\n', '\n'], 0],
-                ['table', '| Cell11 | Cell12\n| Cell21 | Cell22\n', ['| Cell11 | Cell12\n| Cell21 | Cell22\n', ''], 68],
-            ]);
-        },
-    });
-})($ || ($ = {}));
-//md.test.js.map
-;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_test({
-        'convertion to primitives'() {
-            var unit = new $.$mol_unit_money_usd(5);
-            $.$mol_assert_equal(unit.valueOf(), 5);
-            $.$mol_assert_equal(unit * 2, 10);
-            $.$mol_assert_equal(unit + '', '5');
-            $.$mol_assert_equal(`${unit}`, '$5');
-            $.$mol_assert_equal(unit.toString(), '$5');
-            $.$mol_assert_equal(String(unit), '$5');
-        },
-        'arithmetic'() {
-            var usd1 = new $.$mol_unit_money_usd(2);
-            var usd2 = new $.$mol_unit_money_usd(3);
-            var rur = new $.$mol_unit_money_rur(2);
-            $.$mol_assert_equal($.$mol_unit.summ(usd1, usd2).toString(), '$5');
-            $.$mol_assert_equal(usd1.mult(2).toString(), '$4');
-        },
-    });
-})($ || ($ = {}));
-//unit.test.js.map
-;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_test({
         'parse and serial'() {
             $.$mol_assert_equal(new $.$mol_time_duration('P42.1Y').toString(), 'P42.1YT');
             $.$mol_assert_equal(new $.$mol_time_duration('P42.1M').toString(), 'P42.1MT');
@@ -2607,7 +2555,7 @@ var $;
             $.$mol_assert_equal(new $.$mol_time_moment('2014-01').shift('PT-8760h').toString(), '2013-01');
         },
         'normalization'() {
-            $.$mol_assert_equal(new $.$mol_time_moment('2015-07-35').normal.toString(), '2015-08-04');
+            $.$mol_assert_equal(new $.$mol_time_moment({ year: 2015, month: 6, day: 34 }).normal.toString(), '2015-08-04');
         },
         'iso week day'() {
             $.$mol_assert_equal(new $.$mol_time_moment('2017-09-17').weekday, 6);
@@ -2616,6 +2564,88 @@ var $;
     });
 })($ || ($ = {}));
 //moment.test.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_test({
+        'triplets'() {
+            $.$mol_assert_equal(new $.$mol_time_interval('2015-01-01/P1M').end.toString(), '2015-02-01');
+            $.$mol_assert_equal(new $.$mol_time_interval('P1M/2015-02-01').start.toString(), '2015-01-01');
+            $.$mol_assert_equal(new $.$mol_time_interval('2015-01-01/2015-02-01').duration.toString(), 'PT2678400S');
+        }
+    });
+})($ || ($ = {}));
+//interval.test.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_test({
+        'return result without errors'() {
+            $.$mol_assert_equal($.$mol_try(() => false), false);
+        },
+    });
+})($ || ($ = {}));
+//try.test.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_test({
+        '$mol_syntax2_md_flow'() {
+            const check = (input, right) => {
+                const tokens = [];
+                $.$mol_syntax2_md_flow.tokenize(input, (...token) => tokens.push(token));
+                $.$mol_assert_like(JSON.stringify(tokens), JSON.stringify(right));
+            };
+            check('Hello,\nWorld..\r\n\r\n\nof Love!', [
+                ['block', 'Hello,\nWorld..\r\n\r\n\n', ['Hello,\nWorld..', '\r\n\r\n\n'], 0],
+                ['block', 'of Love!', ['of Love!', ''], 19],
+            ]);
+            check('# Header1\n\nHello!\n\n## Header2', [
+                ['header', '# Header1\n\n', ['#', ' ', 'Header1', '\n\n'], 0],
+                ['block', 'Hello!\n\n', ['Hello!', '\n\n'], 11],
+                ['header', '## Header2', ['##', ' ', 'Header2', ''], 19],
+            ]);
+            check('```\nstart()\n```\n\n```js\nrestart()\n```\n\nHello!\n\n```\nstop()\n```', [
+                ['code', '```\nstart()\n```\n\n', ['```', '', 'start()\n', '```', '\n\n'], 0],
+                ['code', '```js\nrestart()\n```\n\n', ['```', 'js', 'restart()\n', '```', '\n\n'], 17],
+                ['block', 'Hello!\n\n', ['Hello!', '\n\n'], 38],
+                ['code', '```\nstop()\n```', ['```', '', 'stop()\n', '```', ''], 46],
+            ]);
+            check('| header1 | header2\n|----|----\n| Cell11 | Cell12\n| Cell21 | Cell22\n\n| Cell11 | Cell12\n| Cell21 | Cell22\n', [
+                ['table', '| header1 | header2\n|----|----\n| Cell11 | Cell12\n| Cell21 | Cell22\n\n', ['| header1 | header2\n|----|----\n| Cell11 | Cell12\n| Cell21 | Cell22\n', '\n'], 0],
+                ['table', '| Cell11 | Cell12\n| Cell21 | Cell22\n', ['| Cell11 | Cell12\n| Cell21 | Cell22\n', ''], 68],
+            ]);
+        },
+    });
+})($ || ($ = {}));
+//md.test.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_test({
+        'convertion to primitives'() {
+            var unit = new $.$mol_unit_money_usd(5);
+            $.$mol_assert_equal(unit.valueOf(), 5);
+            $.$mol_assert_equal(unit * 2, 10);
+            $.$mol_assert_equal(unit + '', '5');
+            $.$mol_assert_equal(`${unit}`, '$5');
+            $.$mol_assert_equal(unit.toString(), '$5');
+            $.$mol_assert_equal(String(unit), '$5');
+        },
+        'arithmetic'() {
+            var usd1 = new $.$mol_unit_money_usd(2);
+            var usd2 = new $.$mol_unit_money_usd(3);
+            var rur = new $.$mol_unit_money_rur(2);
+            $.$mol_assert_equal($.$mol_unit.summ(usd1, usd2).toString(), '$5');
+            $.$mol_assert_equal(usd1.mult(2).toString(), '$4');
+        },
+    });
+})($ || ($ = {}));
+//unit.test.js.map
 ;
 "use strict";
 var $;

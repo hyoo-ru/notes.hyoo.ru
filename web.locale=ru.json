@@ -10,6 +10,8 @@
 	"$hyoo_notes_tagging_title": "Метки заметки",
 	"$hyoo_notes_tags_all_hint": "Все метки",
 	"$hyoo_notes_tags_title": "Метки",
+	"$mol_date_next_hint": "Следующий месяц",
+	"$mol_date_prev_hint": "Предыдущий месяц",
 	"$mol_lights_toggle_hint": "Переключатель света",
 	"$mol_link_source_hint": "Исходные коды",
 	"$mol_search_hint": "Поиск.."

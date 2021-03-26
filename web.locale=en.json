@@ -10,6 +10,8 @@
 	"$hyoo_notes_tagging_title": "Note tags",
 	"$hyoo_notes_tags_all_hint": "All tags",
 	"$hyoo_notes_tags_title": "Tags",
+	"$mol_date_next_hint": "Next month",
+	"$mol_date_prev_hint": "Previous month",
 	"$mol_lights_toggle_hint": "Toggle lights",
 	"$mol_link_source_hint": "Source code",
 	"$mol_search_hint": "Search..."
