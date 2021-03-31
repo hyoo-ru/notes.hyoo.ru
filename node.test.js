@@ -6194,6 +6194,62 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    class $mol_status extends $.$mol_view {
+        status() {
+            return null;
+        }
+        minimal_height() {
+            return 24;
+        }
+        minimal_width() {
+            return 0;
+        }
+        sub() {
+            return [
+                this.message()
+            ];
+        }
+        message() {
+            return "";
+        }
+    }
+    $.$mol_status = $mol_status;
+})($ || ($ = {}));
+//status.view.tree.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_style_attach("mol/status/status.view.css", "[mol_status] {\n\ttext-align: center;\n\tpadding: .5rem;\n\tborder-radius: var(--mol_skin_round);\n\tdisplay: block;\n}\n\n[mol_status]:not([mol_view_error=\"Promise\"]) {\n\tbackground: var(--mol_skin_warn);\n\tcolor: var(--mol_skin_warn_text);\n}\n\n[mol_status]:not([mol_view_error=\"Promise\"]):empty {\n\tdisplay: none;\n}\n");
+})($ || ($ = {}));
+//status.view.css.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_status extends $.$mol_status {
+            message() {
+                var _a;
+                try {
+                    return (_a = this.status()) !== null && _a !== void 0 ? _a : null;
+                }
+                catch (error) {
+                    if (error instanceof Promise)
+                        $.$mol_fail_hidden(error);
+                    return error.message;
+                }
+            }
+        }
+        $$.$mol_status = $mol_status;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//status.view.js.map
+;
+"use strict";
+var $;
+(function ($) {
     class $mol_icon_github_circle extends $.$mol_icon {
         path() {
             return "M12,2C6.48,2 2,6.48 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12C22,6.48 17.52,2 12,2Z";
@@ -6663,12 +6719,6 @@ var $;
             });
         }
         toOffset(config) {
-            if (this.hour === undefined)
-                return this;
-            if (this.minute === undefined)
-                return this;
-            if (this.second === undefined)
-                return this;
             const duration = new $.$mol_time_duration(config);
             const offset = this.offset || new $mol_time_moment().offset;
             const moment = this.shift(duration.summ(offset.mult(-1)));
@@ -9329,6 +9379,7 @@ var $;
             const obj = new this.$.$mol_page();
             obj.title = () => this.notes_title();
             obj.tools = () => [
+                this.Reminders(),
                 this.Source_link(),
                 this.Lights()
             ];
@@ -9476,6 +9527,14 @@ var $;
         }
         notes_title() {
             return this.$.$mol_locale.text('$hyoo_notes_notes_title');
+        }
+        reminders() {
+            return null;
+        }
+        Reminders() {
+            const obj = new this.$.$mol_status();
+            obj.status = () => this.reminders();
+            return obj;
         }
         Source_link() {
             const obj = new this.$.$mol_link_source();
@@ -9806,6 +9865,9 @@ var $;
     ], $hyoo_notes.prototype, "Tag_list", null);
     __decorate([
         $.$mol_mem
+    ], $hyoo_notes.prototype, "Reminders", null);
+    __decorate([
+        $.$mol_mem
     ], $hyoo_notes.prototype, "Source_link", null);
     __decorate([
         $.$mol_mem
@@ -9924,6 +9986,26 @@ var $;
     $.$hyoo_notes = $hyoo_notes;
 })($ || ($ = {}));
 //notes.view.tree.js.map
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_notify {
+        static allowed(next) {
+            return false;
+        }
+        static show(info) {
+        }
+    }
+    __decorate([
+        $.$mol_mem
+    ], $mol_notify, "allowed", null);
+    __decorate([
+        $.$mol_fiber.method
+    ], $mol_notify, "show", null);
+    $.$mol_notify = $mol_notify;
+})($ || ($ = {}));
+//notify.node.js.map
 ;
 "use strict";
 var $;
@@ -10109,6 +10191,26 @@ var $;
                     ...this.tagging() ? [this.Tagging_page()] : [],
                 ];
             }
+            note_reminder(note) {
+                const moment = this.note_moment(note);
+                if (!moment)
+                    return null;
+                const timeout = new $.$mol_time_interval({ start: new $.$mol_time_moment, end: moment }).duration.valueOf();
+                if (timeout < 0)
+                    return null;
+                this.$.$mol_notify.allowed(true);
+                return new $.$mol_after_timeout(timeout, () => {
+                    this.$.$mol_notify.show({
+                        context: this.note_title(note),
+                        message: moment.toString('YYYY-MM-DD hh:mm'),
+                        uri: this.$.$mol_state_arg.make_link({ note })
+                    });
+                });
+            }
+            reminders() {
+                this.note_ids().map(id => this.note_reminder(id));
+                return null;
+            }
             note_ids(next) {
                 return this.$.$mol_state_local.value('note_ids', next) || [];
             }
@@ -10127,7 +10229,7 @@ var $;
                 return this.note_content(this.note(), next);
             }
             note_moment(note, next) {
-                const str = this.$.$mol_state_local.value(`note=${note}.moment`, next === null || next === void 0 ? void 0 : next.toString()) || null;
+                const str = this.$.$mol_state_local.value(`note=${note}.moment`, next && next.toString()) || null;
                 return str ? new $.$mol_time_moment(str) : null;
             }
             note_moment_view(note) {
@@ -10273,6 +10375,12 @@ var $;
                 return next;
             }
         }
+        __decorate([
+            $.$mol_mem_key
+        ], $hyoo_notes.prototype, "note_reminder", null);
+        __decorate([
+            $.$mol_mem
+        ], $hyoo_notes.prototype, "reminders", null);
         __decorate([
             $.$mol_mem_key
         ], $hyoo_notes.prototype, "note_moment", null);
@@ -13262,11 +13370,11 @@ var $;
             $.$mol_assert_equal(new $.$mol_time_moment('2014-01').shift('PT-8760h').toString(), '2013-01');
         },
         'normalization'() {
-            $.$mol_assert_equal(new $.$mol_time_moment({ year: 2015, month: 6, day: 34 }).normal.toString(), '2015-08-04');
+            $.$mol_assert_equal(new $.$mol_time_moment({ year: 2015, month: 6, day: 34 }).normal.toString(), '2015-08-03');
         },
         'iso week day'() {
-            $.$mol_assert_equal(new $.$mol_time_moment('2017-09-17').weekday, 6);
-            $.$mol_assert_equal(new $.$mol_time_moment('2017-09-18').weekday, 0);
+            $.$mol_assert_equal(new $.$mol_time_moment('2017-09-18').weekday, 6);
+            $.$mol_assert_equal(new $.$mol_time_moment('2017-09-19').weekday, 0);
         },
     });
 })($ || ($ = {}));

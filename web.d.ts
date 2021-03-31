@@ -2004,6 +2004,25 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_status extends $mol_view {
+        status(): any;
+        minimal_height(): number;
+        minimal_width(): number;
+        sub(): readonly any[];
+        message(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_status extends $.$mol_status {
+        message(): any;
+    }
+}
+
+declare namespace $ {
     class $mol_icon_github_circle extends $mol_icon {
         path(): string;
     }
@@ -2908,6 +2927,8 @@ declare namespace $ {
         Tag_list(): $$.$mol_list;
         tags_body(): readonly any[];
         notes_title(): string;
+        reminders(): any;
+        Reminders(): $$.$mol_status;
         Source_link(): $mol_link_source;
         Lights(): $$.$mol_lights_toggle;
         note_filter(val?: any): any;
@@ -2965,6 +2986,22 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_service(): ServiceWorkerRegistration;
+    function $mol_service_handler<E extends Event>(handle: (event: E) => Promise<any>): (event: E) => void;
+}
+
+declare namespace $ {
+    class $mol_notify {
+        static allowed(next?: boolean): boolean;
+        static show(info: {
+            context: string;
+            message: string;
+            uri: string;
+        }): void;
+    }
+}
+
+declare namespace $ {
     function $mol_match_text<Variant>(query: string, values: (variant: Variant) => string[]): (variant: Variant) => boolean;
 }
 
@@ -3015,6 +3052,8 @@ declare namespace $ {
 declare namespace $.$$ {
     class $hyoo_notes extends $.$hyoo_notes {
         pages(): $mol_page[];
+        note_reminder(note: string): $mol_after_timeout | null;
+        reminders(): null;
         note_ids(next?: string[]): string[];
         note_tags(id: string, next?: string[] | null): string[];
         note(next?: string | null): string | null;
