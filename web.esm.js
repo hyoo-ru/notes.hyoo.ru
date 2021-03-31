@@ -9887,7 +9887,7 @@ var $;
                     body = not.body + '\n' + body;
                 not.close();
             }
-            const vibrate = [500, 110, 500, 110, 450, 110, 200, 110, 170, 40, 450, 110, 200, 110, 170, 40, 500];
+            const vibrate = [100, 200, 300, 400, 500];
             await $.$mol_service().showNotification(title, { body, data, vibrate, tag });
         });
         self.addEventListener('notificationclick', $.$mol_service_handler(async (event) => {
