@@ -10,6 +10,33 @@ namespace $.$$ {
 				... this.tagging() ? [ this.Tagging_page() ] : [] ,
 			]
 		}
+		
+		@ $mol_mem_key
+		note_reminder( note: string ) {
+			
+			const moment = this.note_moment( note )
+			if( !moment ) return null
+			
+			const timeout = new $mol_time_interval({ start: new $mol_time_moment, end: moment }).duration.valueOf()
+			if( timeout < 0 ) return null
+			
+			this.$.$mol_notify.allowed( true )
+			
+			return new $mol_after_timeout( timeout, ()=> {
+				this.$.$mol_notify.show({
+					context: this.note_title( note ),
+					message: moment.toString( 'YYYY-MM-DD hh:mm' ),
+					uri: this.$.$mol_state_arg.make_link({ note })
+				})
+			} )
+			
+		}
+		
+		@ $mol_mem
+		reminders() {
+			this.note_ids().map( id => this.note_reminder( id ) )
+			return null
+		}
 
 		note_ids( next? : string[] ) {
 			return this.$.$mol_state_local.value( 'note_ids' , next ) || []
@@ -34,7 +61,7 @@ namespace $.$$ {
 		
 		@ $mol_mem_key
 		note_moment( note : string , next? : $mol_time_moment | null ) {
-			const str = this.$.$mol_state_local.value( `note=${ note }.moment` , next?.toString() ) || null
+			const str = this.$.$mol_state_local.value( `note=${ note }.moment` , next && next.toString() ) || null
 			return str ? new $mol_time_moment( str ) : null
 		}
 		

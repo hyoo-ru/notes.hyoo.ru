@@ -30,6 +30,7 @@ $hyoo_notes $mol_book2
 		Title => Notes_page_title!tag
 		Tools => Notes_page_tools!tag
 		tools /
+			<= Reminders $mol_status status <= reminders null
 			<= Source_link $mol_link_source
 				uri \https://github.com/hyoo-ru/notes.hyoo.ru
 			<= Lights $mol_lights_toggle
