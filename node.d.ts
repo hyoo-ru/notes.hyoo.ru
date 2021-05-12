@@ -2328,7 +2328,7 @@ declare namespace $ {
 declare namespace $ {
 }
 
-declare namespace $.$mol {
+declare namespace $.$$ {
     class $mol_calendar extends $.$mol_calendar {
         month_moment(): $mol_time_moment;
         title(): string;
