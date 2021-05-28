@@ -305,7 +305,7 @@ $mol_icon_settings $mol_icon path \M12,15.5C10.07,15.5 8.5,13.93 8.5,12C8.5,10.0
 
 $mol_pick $mol_pop
 	Anchor <= Trigger $mol_check
-		enabled <= enabled true
+		enabled <= trigger_enabled true
 		checked?event <=> showed?event
 		sub <= trigger_content /$mol_view_content
 		hint <= hint \
