@@ -49,12 +49,7 @@
 	align-self: stretch;
 }
 
-[hyoo_notes_tag_list] {
-	padding: .75rem;
-}
-
 [hyoo_notes_tagging_list] {
-	padding: .75rem;
 	flex: 1 0 auto;
 }
 
@@ -69,7 +64,6 @@
 }
 
 [hyoo_notes_notes_list] {
-	padding: .75rem;
 	flex: 0 0 auto;
 }
 

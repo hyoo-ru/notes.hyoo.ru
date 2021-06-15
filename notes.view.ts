@@ -188,6 +188,10 @@ namespace $.$$ {
 		note_rows() {
 			return this.note_ids_available()
 			.filter( $mol_match_text( this.note_filter() , id => [ this.note_content( id ) ] ) )
+			.sort( ( a, b )=>
+				( this.note_moment( a )?.valueOf() ?? Number.POSITIVE_INFINITY )
+				- ( this.note_moment( b )?.valueOf() ?? Number.POSITIVE_INFINITY )
+			)
 			.map( id => this.Note_row( id ) )
 		}
 		
