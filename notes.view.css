@@ -99,7 +99,10 @@
 }
 
 [hyoo_notes_note_moment] {
-	flex-shrink: 0;
+	flex-shrink: 1000;
+    flex-basis: 11ch;
+    min-width: max-content;
+    font-family: monospace;
 }
 
 [hyoo_notes_tagging_tag_row] {
