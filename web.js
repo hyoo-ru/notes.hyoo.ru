@@ -10260,9 +10260,9 @@ var $;
             const clients = await self['clients'].matchAll({ includeUncontrolled: true });
             event.notification.close();
             if (clients.length) {
-                const last = clients[0];
-                last.focus();
-                last.navigate(event.notification.data);
+                const last = clients[clients.length - 1];
+                await last.focus();
+                await last.navigate(event.notification.data);
             }
             else {
                 await self['clients'].openWindow(event.notification.data);
