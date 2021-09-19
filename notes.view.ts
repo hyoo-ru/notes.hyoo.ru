@@ -60,9 +60,9 @@ namespace $.$$ {
 		}		
 		
 		@ $mol_mem_key
-		note_moment( note : string , next? : $mol_time_moment | null ) {
+		note_moment( note : string , next? : $mol_time_moment ) {
 			const str = this.$.$mol_state_local.value( `note=${ note }.moment` , next && next.toString() ) || null
-			return str ? new $mol_time_moment( str ) : null
+			return str ? new $mol_time_moment( str ) : null!
 		}
 		
 		@ $mol_mem_key
@@ -70,7 +70,7 @@ namespace $.$$ {
 			return this.note_moment( note )?.toString( 'MM-DD hh:mm' ) ?? ''
 		}
 		
-		note_current_moment( next? : $mol_time_moment | null ) {
+		note_current_moment( next? : $mol_time_moment ) {
 			return this.note_moment( this.note()! , next )
 		}		
 		
