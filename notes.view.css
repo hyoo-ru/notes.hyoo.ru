@@ -115,3 +115,7 @@
 [hyoo_notes_tagging_tag_row_icon] {
 	margin: .5rem .25rem;
 }
+
+[hyoo_notes] [mol_page_body] > * {
+	margin: var(--mol_gap_block);
+}
