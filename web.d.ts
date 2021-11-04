@@ -2978,6 +2978,7 @@ declare namespace $ {
         type(val?: any): string;
         link(val?: any): string;
         title(val?: any): string;
+        Image(): $mol_image;
     }
 }
 
