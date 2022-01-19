@@ -323,7 +323,7 @@ $mol_pick $mol_pop
 		minimal_width 40
 		minimal_height 40
 		enabled <= trigger_enabled true
-		checked?event <=> showed?event
+		checked?val <=> showed?val
 		sub <= trigger_content /$mol_view_content
 		hint <= hint \
 
@@ -466,8 +466,7 @@ $mol_textarea $mol_view
 		keydown?event <=> press?event null
 		pointermove?event <=> hover?event null
 	sub /
-		<= Edit $mol_string
-			dom_name \textarea
+		<= Edit $mol_textarea_edit
 			value?val <=> value?val \
 			hint <= hint \ 
 			enabled <= enabled true
@@ -479,6 +478,12 @@ $mol_textarea $mol_view
 			row_numb!index <= row_numb!index 0
 			sidebar_showed <= sidebar_showed
 			highlight <= highlight \
+
+$mol_textarea_edit $mol_string
+	dom_name \textarea
+	field *
+		^
+		scrollTop 0
 
 $mol_icon_folder $mol_icon path \M10,4H4C2.89,4 2,4.89 2,6V18C2,19.1 2.9,20 4,20H20C21.1,20 22,19.1 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z
 
