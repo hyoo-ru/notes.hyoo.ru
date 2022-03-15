@@ -63,6 +63,10 @@
 	flex-direction: column;
 }
 
+[hyoo_notes_notes_page_foot] {
+	padding: var(--mol_gap_block);
+}
+
 [hyoo_notes_notes_list] {
 	flex: 0 0 auto;
 }
