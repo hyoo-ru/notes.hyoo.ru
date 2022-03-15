@@ -2723,7 +2723,7 @@ declare namespace $.$$ {
         tagging_add_showed(): boolean;
         tagging_body(): ($mol_button_minor | $mol_list)[];
         notes_filter_showed(): boolean;
-        notes_body(): ($mol_button_minor | $mol_list)[];
+        notes_foot(): $mol_button_minor[];
         tag_add(): void;
         tag_drop(): void;
         tagging_add(): void;
