@@ -2583,10 +2583,11 @@ declare namespace $ {
         Notes_list_add_icon(): $mol_icon_arrow_up_bold;
         Note_add_hint(): $mol_view;
         Notes_list(): $$.$mol_list;
+        notes_body(): readonly any[];
         tag_drop_title(): string;
         tag_drop(event?: any): any;
         Tag_drop(): $mol_button_minor;
-        notes_body(): readonly any[];
+        notes_foot(): readonly any[];
         note_current_title(): string;
         Note_tags_manage_icon(): $mol_icon_settings;
         Note_tags_manage(): $$.$mol_link;

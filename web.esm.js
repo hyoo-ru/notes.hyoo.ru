@@ -8351,6 +8351,7 @@ var $;
                 this.Notes_page_add()
             ];
             obj.body = () => this.notes_body();
+            obj.foot = () => this.notes_foot();
             return obj;
         }
         Note_page(id) {
@@ -8574,6 +8575,11 @@ var $;
             obj.Empty = () => this.Note_add_hint();
             return obj;
         }
+        notes_body() {
+            return [
+                this.Notes_list()
+            ];
+        }
         tag_drop_title() {
             return this.$.$mol_locale.text('$hyoo_notes_tag_drop_title');
         }
@@ -8588,9 +8594,8 @@ var $;
             obj.click = (event) => this.tag_drop(event);
             return obj;
         }
-        notes_body() {
+        notes_foot() {
             return [
-                this.Notes_list(),
                 this.Tag_drop()
             ];
         }

@@ -551,6 +551,7 @@ $hyoo_notes $mol_book2
 					sub /
 						<= notes_list_add_title
 						<= Notes_list_add_icon $mol_icon_arrow_up_bold
+		foot <= notes_foot /
 			<= Tag_drop $mol_button_minor
 				title <= tag_drop_title @ \Delete tag
 				click?event <=> tag_drop?event null
