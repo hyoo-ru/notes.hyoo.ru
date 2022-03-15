@@ -119,10 +119,8 @@ namespace $.$$ {
 			return this.note_ids_available().length > 1
 		}
 
-		notes_body() {
+		notes_foot() {
 			return [
-				// ... this.notes_filter_showed() ? [ this.Note_filter() ] : [] ,
-				this.Notes_list() ,
 				... this.tag() ? [ this.Tag_drop() ] : [] ,
 			]
 		}
