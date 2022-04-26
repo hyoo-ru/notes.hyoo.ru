@@ -4,10 +4,9 @@ namespace $.$$ {
 
 		pages() {
 			return [
-				this.Tags_page() ,
-				this.Notes_page( this.tag() ) ,
-				... this.note() ? [ this.Note_page( this.note() ) ] : [] ,
-				... this.tagging() ? [ this.Tagging_page() ] : [] ,
+				this.Tagging_page(),
+				this.Notes_page( this.tag() ),
+				... this.note() ? [ this.Note_page( this.note() ) ] : [],
 			]
 		}
 		
@@ -82,24 +81,6 @@ namespace $.$$ {
 			return this.$.$mol_state_arg.value( 'tag' , next )
 		}
 
-		tagging( next? : boolean ) {
-			return this.$.$mol_state_arg.value( 'tagging' , next === undefined ? undefined : next ? '' : null ) === ''
-		}
-
-		tag_add_showed() {
-			const id = this.tag_filter()
-			if( !id ) return false
-			if( this.tag_ids().includes( id ) ) return false
-			return true
-		}
-
-		tags_body() {
-			return [
-				... this.tag_add_showed() ? [ this.Tag_add() ] : [] ,
-				this.Tag_list() ,
-			]
-		}
-
 		tagging_add_showed() {
 			const id = this.tagging_filter()
 			if( !id ) return false
@@ -107,11 +88,11 @@ namespace $.$$ {
 			return true
 		}
 
-		tagging_body() {
+		@ $mol_mem
+		tagging_tools() {
 			return [
+				this.Tagging_filter() ,
 				... this.tagging_add_showed() ? [ this.Tagging_add() ] : [] ,
-				this.Tagging_list() ,
-				this.Note_drop() ,
 			]
 		}
 
@@ -119,25 +100,11 @@ namespace $.$$ {
 			return this.note_ids_available().length > 1
 		}
 
-		notes_body() {
-			return [
-				// ... this.notes_filter_showed() ? [ this.Note_filter() ] : [] ,
-				this.Notes_list() ,
-				... this.tag() ? [ this.Tag_drop() ] : [] ,
-			]
-		}
-
 		tag_add() {
-			const id = this.tag_filter()
+			const id = this.tagging_filter()
 			this.tag_ids([ id , ... this.tag_ids() ])
 			this.tag( id )
-			this.tag_filter( '' )
-		}
-
-		tag_drop() {
-			const tag = this.tag()
-			this.tag_ids( this.tag_ids().filter( id => id !== tag ) )
-			this.tag( null )
+			this.tagging_filter( '' )
 		}
 
 		tagging_add() {
@@ -163,16 +130,18 @@ namespace $.$$ {
 			return this.note_title( this.note()! )
 		}
 
-		tag_rows() {
-			return this.tag_ids()
-			.filter( $mol_match_text( this.tag_filter() , id => [ id ] ) )
-			.map( id => this.Tag_row( id ) )
-		}
-		
 		tagging_rows() {
 			return this.tag_ids()
 			.filter( $mol_match_text( this.tagging_filter() , id => [ id ] ) )
 			.map( id => this.Tagging_tag_row( id ) )
+		}
+		
+		@ $mol_mem_key
+		tagging_tag_row( id: string ) {
+			return [
+				this.Tag_link(id),
+				... this.note() ? [ this.Tag_toggle(id) ] : [],
+			]
 		}
 		
 		note_ids_available() {
@@ -210,15 +179,28 @@ namespace $.$$ {
 			setTimeout( ()=> this.Note_content().Edit().focused( true ) , 500 )
 		}
 
-		note_drop() {
+		note_archived( next?: boolean ) {
+			
 			const note = this.note()!
-			this.note_ids( this.note_ids().filter( id => id !== note ) )
-			this.note_tags( note , null )
-			this.note_content( note , null )
-			this.note( null )
-			this.tagging( false )
+			if( next === undefined ) return !this.note_ids().includes( note )
+			
+			if( next ) this.note_ids( this.note_ids().filter( id => id !== note ) )
+			else this.note_ids([ note, ... this.note_ids() ])
+			
+			return next
 		}
-
+		
+		tag_archived( next?: boolean ) {
+			
+			const tag = this.tag()!
+			if( next === undefined ) return !this.tag_ids().includes( tag )
+			
+			if( next ) this.tag_ids( this.tag_ids().filter( id => id !== tag ) )
+			else this.tag_ids([ tag, ... this.tag_ids() ])
+			
+			return next
+		}
+		
 		notes_title() {
 			const tag = this.tag()
 			return tag ? this.tag_title( tag ) : super.notes_title()
