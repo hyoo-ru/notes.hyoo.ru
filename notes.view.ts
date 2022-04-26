@@ -99,6 +99,13 @@ namespace $.$$ {
 		notes_filter_showed() {
 			return this.note_ids_available().length > 1
 		}
+		
+		notes_page_tools() {
+			return [
+				this.Reminders(),
+				... this.tag() ? [ this.Tag_archived() ] : [],
+			]
+		}
 
 		tag_add() {
 			const id = this.tagging_filter()

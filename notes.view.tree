@@ -6,7 +6,7 @@ $hyoo_notes $mol_book2
 	-
 	Notes_page!tag $mol_page
 		title <= notes_title @ \All Notes
-		tools /
+		tools <= notes_page_tools /
 			<= Reminders $mol_status status <= reminders null
 			<= Tag_archived $mol_check_icon
 				hint @ \Tag Archiving
