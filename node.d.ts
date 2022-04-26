@@ -1160,6 +1160,62 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $mol_theme_auto extends $mol_plugin {
+        attr(): {
+            mol_theme: string;
+        };
+        theme(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_media extends $mol_object2 {
+        static match(query: string, next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+    function $mol_lights(this: $, next?: boolean): boolean;
+}
+
+declare namespace $.$$ {
+    class $mol_theme_auto extends $.$mol_theme_auto {
+        theme(): "$mol_theme_light" | "$mol_theme_dark";
+    }
+}
+
+declare namespace $ {
+    class $mol_status extends $mol_view {
+        status(): any;
+        minimal_height(): number;
+        minimal_width(): number;
+        sub(): readonly any[];
+        message(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+    class $mol_status extends $.$mol_status {
+        message(): any;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_trash_can extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_trash_can_outline extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
     class $mol_speck extends $mol_view {
         attr(): {
             mol_theme: string;
@@ -1374,55 +1430,11 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_icon_tick extends $mol_icon {
-        path(): string;
+    class $mol_check_icon extends $mol_check {
     }
 }
 
 declare namespace $ {
-    class $mol_check_box extends $mol_check {
-        Icon(): $mol_icon_tick;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_theme_auto extends $mol_plugin {
-        attr(): {
-            mol_theme: string;
-        };
-        theme(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_media extends $mol_object2 {
-        static match(query: string, next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
-    function $mol_lights(this: $, next?: boolean): boolean;
-}
-
-declare namespace $.$$ {
-    class $mol_theme_auto extends $.$mol_theme_auto {
-        theme(): "$mol_theme_light" | "$mol_theme_dark";
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_filter extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_filter_remove extends $mol_icon {
-        path(): string;
-    }
 }
 
 declare namespace $ {
@@ -1944,69 +1956,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_status extends $mol_view {
-        status(): any;
-        minimal_height(): number;
-        minimal_width(): number;
-        sub(): readonly any[];
-        message(): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
-    class $mol_status extends $.$mol_status {
-        message(): any;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_github_circle extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_link_source extends $mol_link {
-        hint(): string;
-        sub(): readonly any[];
-        Icon(): $mol_icon_github_circle;
-    }
-}
-
-declare namespace $ {
-    class $mol_check_icon extends $mol_check {
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_icon_brightness_6 extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_lights_toggle extends $mol_check_icon {
-        Icon(): $mol_icon_brightness_6;
-        hint(): string;
-        checked(val?: any): boolean;
-        Lights_icon(): $mol_icon_brightness_6;
-        lights(val?: any): boolean;
-    }
-}
-
-declare namespace $.$$ {
-    class $mol_lights_toggle extends $.$mol_lights_toggle {
-        lights(next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
     class $mol_button_major extends $mol_button_typed {
         attr(): {
             mol_theme: string;
@@ -2019,24 +1968,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_icon_arrow_up extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_arrow_up_bold extends $mol_icon {
-        path(): string;
-    }
-}
-
-declare namespace $ {
-    class $mol_icon_settings extends $mol_icon {
-        path(): string;
-    }
 }
 
 declare namespace $ {
@@ -2311,7 +2242,7 @@ declare namespace $ {
         value_number(val?: any): number;
         value_moment(val?: any): $mol_time_moment;
         value(val?: any): string;
-        hint(): string;
+        input_hint(): string;
         enabled(): boolean;
         Input(): $$.$mol_string;
         month_moment(): $mol_time_moment;
@@ -2869,25 +2800,55 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_icon_folder extends $mol_icon {
+    class $mol_icon_filter extends $mol_icon {
         path(): string;
     }
 }
 
 declare namespace $ {
-    class $mol_icon_card extends $mol_icon {
+    class $mol_icon_filter_remove extends $mol_icon {
         path(): string;
     }
 }
 
 declare namespace $ {
-    class $mol_icon_card_text extends $mol_icon {
+    class $mol_icon_github_circle extends $mol_icon {
         path(): string;
     }
 }
 
 declare namespace $ {
-    class $mol_icon_card_text_outline extends $mol_icon {
+    class $mol_link_source extends $mol_link {
+        hint(): string;
+        sub(): readonly any[];
+        Icon(): $mol_icon_github_circle;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_brightness_6 extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_lights_toggle extends $mol_check_icon {
+        Icon(): $mol_icon_brightness_6;
+        hint(): string;
+        checked(val?: any): boolean;
+        Lights_icon(): $mol_icon_brightness_6;
+        lights(val?: any): boolean;
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+    class $mol_icon_tag extends $mol_icon {
         path(): string;
     }
 }
@@ -2897,57 +2858,33 @@ declare namespace $ {
         plugins(): readonly any[];
         note_default_title(): string;
         pages(): readonly any[];
-        Tags_page_title(): $mol_view;
-        Tags_page(): $mol_page;
-        Notes_page_title(tag: any): $mol_view;
-        Notes_page_tools(tag: any): $mol_view;
         Notes_page(tag: any): $mol_page;
         Note_page(id: any): $mol_page;
-        Tagging_page_title(): $mol_view;
         Tagging_page(): $mol_page;
-        Tag_row(id: any): $$.$mol_link;
         Note_row(id: any): $$.$mol_link;
-        Tagging_tag_row(id: any): $mol_check_box;
+        Tagging_tag_row(id: any): $mol_view;
         Theme(): $$.$mol_theme_auto;
-        tags_title(): string;
-        Tags_all_icon(): $mol_icon_filter_remove;
-        tags_all_hint(): string;
-        Tags_all(): $$.$mol_link;
-        tag_filter(val?: any): string;
-        filter_adder_hint(): string;
-        Tag_filter(): $$.$mol_search;
-        Tag_add_icon(): $mol_icon_plus;
-        tag_add_title(): string;
-        tag_add(event?: any): any;
-        Tag_add(): $mol_button_minor;
-        tag_rows(): readonly any[];
-        Tag_list(): $$.$mol_list;
-        tags_body(): readonly any[];
         notes_title(): string;
         reminders(): any;
         Reminders(): $$.$mol_status;
-        Source_link(): $mol_link_source;
-        Lights(): $$.$mol_lights_toggle;
+        tag_archived(next?: any): boolean;
+        Tag_archived_icon(): $mol_icon_trash_can_outline;
+        Tag_archived(): $mol_check_icon;
         note_filter(val?: any): string;
         note_add_short(event?: any): any;
-        Note_filter(): $$.$mol_search;
+        Notes_filter(): $$.$mol_search;
         Note_add_icon(): $mol_icon_plus;
         notes_list_add_title(): string;
         note_add_long(event?: any): any;
         Note_add(): $mol_button_major;
         Notes_page_add(): $mol_view;
         note_rows(): readonly any[];
-        Notes_list_add_icon(): $mol_icon_arrow_up_bold;
-        Note_add_hint(): $mol_view;
         Notes_list(): $$.$mol_list;
-        notes_body(): readonly any[];
-        tag_drop_title(): string;
-        tag_drop(event?: any): any;
-        Tag_drop(): $mol_button_minor;
-        notes_foot(): readonly any[];
+        Notes_page_content(): $$.$mol_list;
         note_current_title(): string;
-        Note_tags_manage_icon(): $mol_icon_settings;
-        Note_tags_manage(): $$.$mol_link;
+        note_archived(next?: any): boolean;
+        Note_archived_icon(): $mol_icon_trash_can_outline;
+        Note_archived(): $mol_check_icon;
         note_current_moment(val?: any): $mol_time_moment;
         Note_date(): $$.$mol_date;
         Note_close_icon(): $mol_icon_close;
@@ -2956,30 +2893,34 @@ declare namespace $ {
         note_current_content(val?: any): string;
         Note_content(): $$.$mol_textarea;
         tagging_title(): string;
-        Tagging_close_icon(): $mol_icon_close;
-        Tagging_close(): $$.$mol_link;
+        Tags_all_icon(): $mol_icon_filter_remove;
+        tags_all_hint(): string;
+        Tags_all(): $$.$mol_link;
+        Source_link(): $mol_link_source;
+        Lights(): $$.$mol_lights_toggle;
         tagging_filter(val?: any): string;
-        Tagging_filter(): $$.$mol_search;
-        Tagging_add_icon(): $mol_icon_plus;
         tagging_add(event?: any): any;
+        Tagging_filter(): $$.$mol_search;
+        tag_add_title(): string;
+        Tagging_add_icon(): $mol_icon_plus;
         Tagging_add(): $mol_button_minor;
+        tagging_tools(): readonly any[];
+        Tagging_tools(): $mol_view;
         tagging_rows(): readonly any[];
         Tagging_list(): $$.$mol_list;
-        note_drop_title(): string;
-        note_drop(event?: any): any;
-        Note_drop(): $mol_button_minor;
-        tagging_body(): readonly any[];
-        Tag_icon(id: any): $mol_icon_folder;
-        tag_title(id: any): string;
-        Tag_title(id: any): $$.$mol_dimmer;
-        id(id: any): string;
-        Note_icon(id: any): $mol_icon_card_text_outline;
+        Tagging_content(): $$.$mol_list;
         note_title(id: any): string;
         Note_title(id: any): $$.$mol_dimmer;
         note_moment_view(id: any): string;
         Note_moment(id: any): $$.$mol_paragraph;
+        id(id: any): string;
+        tag_title(id: any): string;
+        Tag_title(id: any): $$.$mol_dimmer;
+        Tag_link(id: any): $$.$mol_link;
+        Tag_toggle_icon(id: any): $mol_icon_tag;
         tagging_tag(id: any, val?: any): boolean;
-        Tagging_tag_title(id: any): $$.$mol_dimmer;
+        Tag_toggle(id: any): $mol_check_icon;
+        tagging_tag_row(id: any): readonly any[];
     }
 }
 
@@ -3062,27 +3003,23 @@ declare namespace $.$$ {
         note_current_moment(next?: $mol_time_moment): $mol_time_moment;
         tag_ids(next?: string[]): string[];
         tag(next?: string | null): string | null;
-        tagging(next?: boolean): boolean;
-        tag_add_showed(): boolean;
-        tags_body(): ($mol_button_minor | $mol_list)[];
         tagging_add_showed(): boolean;
-        tagging_body(): ($mol_button_minor | $mol_list)[];
+        tagging_tools(): ($mol_button_minor | $mol_search)[];
         notes_filter_showed(): boolean;
-        notes_foot(): $mol_button_minor[];
         tag_add(): void;
-        tag_drop(): void;
         tagging_add(): void;
         tag_title(id: string): string;
         id(id: string): string;
         note_title(id: string): string;
         note_current_title(): string;
-        tag_rows(): $mol_link[];
-        tagging_rows(): $mol_check_box[];
+        tagging_rows(): $mol_view[];
+        tagging_tag_row(id: string): ($mol_link | $mol_check_icon)[];
         note_ids_available(): string[];
         note_rows(): $mol_link[];
         note_add_short(): void;
         note_add_long(): void;
-        note_drop(): void;
+        note_archived(next?: boolean): boolean;
+        tag_archived(next?: boolean): boolean;
         notes_title(): string;
         tagging_tag(tag: string, next?: boolean): boolean;
     }
