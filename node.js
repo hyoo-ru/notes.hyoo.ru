@@ -9744,10 +9744,7 @@ var $;
         Notes_page(tag) {
             const obj = new this.$.$mol_page();
             obj.title = () => this.notes_title();
-            obj.tools = () => [
-                this.Reminders(),
-                this.Tag_archived()
-            ];
+            obj.tools = () => this.notes_page_tools();
             obj.body = () => [
                 this.Notes_page_content()
             ];
@@ -9825,6 +9822,12 @@ var $;
             obj.checked = (next) => this.tag_archived(next);
             obj.Icon = () => this.Tag_archived_icon();
             return obj;
+        }
+        notes_page_tools() {
+            return [
+                this.Reminders(),
+                this.Tag_archived()
+            ];
         }
         note_filter(val) {
             if (val !== undefined)
@@ -10537,6 +10540,12 @@ var $;
             }
             notes_filter_showed() {
                 return this.note_ids_available().length > 1;
+            }
+            notes_page_tools() {
+                return [
+                    this.Reminders(),
+                    ...this.tag() ? [this.Tag_archived()] : [],
+                ];
             }
             tag_add() {
                 const id = this.tagging_filter();

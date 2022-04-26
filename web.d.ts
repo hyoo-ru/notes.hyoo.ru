@@ -2846,6 +2846,7 @@ declare namespace $ {
         tag_archived(next?: any): boolean;
         Tag_archived_icon(): $mol_icon_trash_can_outline;
         Tag_archived(): $mol_check_icon;
+        notes_page_tools(): readonly any[];
         note_filter(val?: any): string;
         note_add_short(event?: any): any;
         Notes_filter(): $$.$mol_search;
@@ -2987,6 +2988,7 @@ declare namespace $.$$ {
         tagging_add_showed(): boolean;
         tagging_tools(): ($mol_button_minor | $mol_search)[];
         notes_filter_showed(): boolean;
+        notes_page_tools(): ($mol_status | $mol_check_icon)[];
         tag_add(): void;
         tagging_add(): void;
         tag_title(id: string): string;
