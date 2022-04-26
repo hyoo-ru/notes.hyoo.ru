@@ -10222,11 +10222,19 @@ var $;
                 const moment = this.note_moment(note);
                 if (!moment)
                     return null;
-                const timeout = new $mol_time_interval({ start: new $mol_time_moment, end: moment }).duration.valueOf();
-                if (timeout < 0)
+                const duration = new $mol_time_interval({
+                    start: new $mol_time_moment,
+                    end: moment,
+                }).duration;
+                const ms = duration.valueOf();
+                if (ms < 0)
+                    return null;
+                this.$.$mol_state_time.now(1000 * 60 * 60 * 24);
+                const days = duration.count('P1D');
+                if (days > 30)
                     return null;
                 this.$.$mol_notify.allowed(true);
-                return new $mol_after_timeout(timeout, () => {
+                return new $mol_after_timeout(ms, () => {
                     this.$.$mol_notify.show({
                         context: this.note_title(note),
                         message: moment.toString('YYYY-MM-DD hh:mm'),
