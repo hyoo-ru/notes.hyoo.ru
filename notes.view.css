@@ -12,12 +12,7 @@
 
 [hyoo_notes_tagging_content],
 [hyoo_notes_notes_page_content] {
-	padding: .375rem;
-}
-
-[hyoo_notes_tagging_content] > *,
-[hyoo_notes_notes_page_content] > * {
-	margin: .375rem;
+	padding: var(--mol_gap_block);
 }
 
 [hyoo_notes_notes_list] {
@@ -57,5 +52,5 @@
 }
 
 [hyoo_notes_note_content] {
-	margin: .75rem;
+	margin: var(--mol_gap_block);
 }
