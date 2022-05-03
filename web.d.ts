@@ -2129,9 +2129,9 @@ declare namespace $ {
     class $mol_calendar extends $mol_list {
         sub(): readonly any[];
         weeks(): readonly $mol_view[];
-        Weekday(index: any): $mol_calendar_day;
-        Week(row: any): $$.$mol_hor;
-        Day(day: any): $mol_calendar_day;
+        Weekday(id: any): $mol_calendar_day;
+        Week(id: any): $$.$mol_hor;
+        Day(id: any): $mol_calendar_day;
         month_string(): string;
         month_moment(): $mol_time_moment;
         title(): string;
@@ -2140,15 +2140,15 @@ declare namespace $ {
         Head(): $mol_view;
         weekdays(): readonly $mol_view[];
         Weekdays(): $$.$mol_hor;
-        weekend(index: any): boolean;
-        weekday(index: any): string;
-        week_days(row: any): readonly $mol_view[];
-        day_ghost(day: any): boolean;
-        day_holiday(day: any): boolean;
-        day_selected(day: any): boolean;
-        day_theme(day: any): string;
-        day_text(day: any): string;
-        day_content(day: any): readonly any[];
+        weekend(id: any): boolean;
+        weekday(id: any): string;
+        week_days(id: any): readonly $mol_view[];
+        day_ghost(id: any): boolean;
+        day_holiday(id: any): boolean;
+        day_selected(id: any): boolean;
+        day_theme(id: any): string;
+        day_text(id: any): string;
+        day_content(id: any): readonly any[];
     }
     class $mol_calendar_day extends $mol_view {
         minimal_height(): number;
@@ -2222,8 +2222,8 @@ declare namespace $ {
         enabled(): boolean;
         Input(): $$.$mol_string;
         month_moment(): $mol_time_moment;
-        day_selected(day: any): boolean;
-        day_click(day: any, event?: any): any;
+        day_selected(id: any): boolean;
+        day_click(id: any, event?: any): any;
         prev_hint(): string;
         prev(event?: any): any;
         Prev_icon(): $mol_icon_chevron_left;
@@ -2237,9 +2237,9 @@ declare namespace $ {
         Calendar(): $mol_date_calendar;
     }
     class $mol_date_calendar extends $mol_calendar {
-        day_content(day: any): readonly any[];
-        day_click(day: any, event?: any): any;
-        Day_button(day: any): $mol_button_minor;
+        day_content(id: any): readonly any[];
+        day_click(id: any, event?: any): any;
+        Day_button(id: any): $mol_button_minor;
     }
 }
 
@@ -2450,7 +2450,7 @@ declare namespace $ {
     class $mol_grid extends $mol_view {
         row_height(): number;
         row_ids(): readonly string[][];
-        row_id(index: any): any;
+        row_id(id: any): any;
         col_ids(): readonly any[];
         records(): {};
         record(id: any): any;
@@ -2743,7 +2743,7 @@ declare namespace $ {
         length_max(): number;
         selection(val?: any): readonly number[];
         Edit(): $mol_textarea_edit;
-        row_numb(index: any): number;
+        row_numb(id: any): number;
         highlight(): string;
         View(): $$.$mol_text_code;
     }
@@ -2834,7 +2834,7 @@ declare namespace $ {
         plugins(): readonly any[];
         note_default_title(): string;
         pages(): readonly any[];
-        Notes_page(tag: any): $mol_page;
+        Notes_page(id: any): $mol_page;
         Note_page(id: any): $mol_page;
         Tagging_page(): $mol_page;
         Note_row(id: any): $$.$mol_link;

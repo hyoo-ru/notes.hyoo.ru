@@ -941,7 +941,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/theme/theme.css", ":root {\n\t--mol_theme_hue: 210deg;\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n}\n\n[mol_theme] {\n\t\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tfill: var(--mol_theme_text);\n\t\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 50% , calc( 54% + 44% * var(--mol_theme_luma) ) );\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 0% , calc( 50% - 30% * var(--mol_theme_luma) ) );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 0%, calc( 50% + 50% * var(--mol_theme_luma) ), .2 );\n\t\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 0%, 50%, .05 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 50%, .1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 0%, 50%, .25 );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 0%, 50%, 1 );\n\t\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 50%, calc( 55% - 10% * var(--mol_theme_luma) ) );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) + 120deg ), 70%, calc( 60% - 10% * var(--mol_theme_luma) ) );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 240deg ), 80%, calc( 50% - 10% * var(--mol_theme_luma) ) );\n\t\n}\n\n[mol_theme=\"$mol_theme_light\"] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n}\n\n[mol_theme=\"$mol_theme_dark\"] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate( 180deg );\n}\n\n[mol_theme=\"$mol_theme_base\"] {\n\t--mol_theme_luma: -2;\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 50%, 40% );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 60%, 30% );\n\t--mol_theme_current: hsl( var(--mol_theme_hue), 100%, 20% );\n}\n\n[mol_theme=\"$mol_theme_current\"] {\n\t--mol_theme_back: hsl( calc( var(--mol_theme_hue) + 120deg ), 50%, calc( 55% + 15% * var(--mol_theme_luma) ) );\n}\n\n[mol_theme=\"$mol_theme_accent\"] {\n\t--mol_theme_luma: -2;\n\t--mol_theme_back: hsl( calc( var(--mol_theme_hue) + 240deg ), 50%, 40% );\n\t--mol_theme_hover: hsl( calc( var(--mol_theme_hue) + 240deg ), 50%, 35% );\n}\n\n[mol_theme=\"$mol_theme_accent\"] [mol_theme=\"$mol_theme_accent\"] {\n\t--mol_theme_back: black;\n}\n");
+    $mol_style_attach("mol/theme/theme.css", ":root {\n\t--mol_theme_hue: 210deg;\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n}\n\n[mol_theme] {\n\t\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tfill: var(--mol_theme_text);\n}\n\t\n:root, [mol_theme] {\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 50% , calc( 54% + 44% * var(--mol_theme_luma) ) );\n\t--mol_theme_text: hsl( var(--mol_theme_hue), 0% , calc( 50% - 30% * var(--mol_theme_luma) ) );\n\t--mol_theme_field: hsl( var(--mol_theme_hue), 0%, calc( 50% + 50% * var(--mol_theme_luma) ), .2 );\n\t\n\t--mol_theme_card: hsl( var(--mol_theme_hue), 0%, 50%, .05 );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 0%, 50%, .1 );\n\t--mol_theme_line: hsl( var(--mol_theme_hue), 0%, 50%, .25 );\n\t--mol_theme_shade: hsl( var(--mol_theme_hue), 0%, 50%, 1 );\n\t\n\t--mol_theme_control: hsl( var(--mol_theme_hue), 50%, calc( 55% - 10% * var(--mol_theme_luma) ) );\n\t--mol_theme_current: hsl( calc( var(--mol_theme_hue) + 120deg ), 70%, calc( 60% - 10% * var(--mol_theme_luma) ) );\n\t--mol_theme_focus: hsl( calc( var(--mol_theme_hue) + 240deg ), 80%, calc( 50% - 10% * var(--mol_theme_luma) ) );\n\t\n}\n\n[mol_theme=\"$mol_theme_light\"] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n}\n\n[mol_theme=\"$mol_theme_dark\"] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate( 180deg );\n}\n\n[mol_theme=\"$mol_theme_base\"] {\n\t--mol_theme_luma: -2;\n\t--mol_theme_back: hsl( var(--mol_theme_hue), 50%, 40% );\n\t--mol_theme_hover: hsl( var(--mol_theme_hue), 60%, 30% );\n\t--mol_theme_current: hsl( var(--mol_theme_hue), 100%, 20% );\n}\n\n[mol_theme=\"$mol_theme_current\"] {\n\t--mol_theme_back: hsl( calc( var(--mol_theme_hue) + 120deg ), 50%, calc( 55% + 15% * var(--mol_theme_luma) ) );\n}\n\n[mol_theme=\"$mol_theme_accent\"] {\n\t--mol_theme_luma: -2;\n\t--mol_theme_back: hsl( calc( var(--mol_theme_hue) + 240deg ), 50%, 40% );\n\t--mol_theme_hover: hsl( calc( var(--mol_theme_hue) + 240deg ), 50%, 35% );\n}\n\n[mol_theme=\"$mol_theme_accent\"] [mol_theme=\"$mol_theme_accent\"] {\n\t--mol_theme_back: black;\n}\n");
 })($ || ($ = {}));
 //mol/theme/-css/theme.css.ts
 ;
@@ -7228,26 +7228,26 @@ var $;
         weeks() {
             return [];
         }
-        Weekday(index) {
+        Weekday(id) {
             const obj = new this.$.$mol_calendar_day();
-            obj.holiday = () => this.weekend(index);
+            obj.holiday = () => this.weekend(id);
             obj.sub = () => [
-                this.weekday(index)
+                this.weekday(id)
             ];
             return obj;
         }
-        Week(row) {
+        Week(id) {
             const obj = new this.$.$mol_hor();
-            obj.sub = () => this.week_days(row);
+            obj.sub = () => this.week_days(id);
             return obj;
         }
-        Day(day) {
+        Day(id) {
             const obj = new this.$.$mol_calendar_day();
-            obj.ghost = () => this.day_ghost(day);
-            obj.holiday = () => this.day_holiday(day);
-            obj.selected = () => this.day_selected(day);
-            obj.theme = () => this.day_theme(day);
-            obj.sub = () => this.day_content(day);
+            obj.ghost = () => this.day_ghost(id);
+            obj.holiday = () => this.day_holiday(id);
+            obj.selected = () => this.day_selected(id);
+            obj.theme = () => this.day_theme(id);
+            obj.sub = () => this.day_content(id);
             return obj;
         }
         month_string() {
@@ -7286,33 +7286,33 @@ var $;
             obj.sub = () => this.weekdays();
             return obj;
         }
-        weekend(index) {
+        weekend(id) {
             return false;
         }
-        weekday(index) {
+        weekday(id) {
             return "";
         }
-        week_days(row) {
+        week_days(id) {
             return [];
         }
-        day_ghost(day) {
+        day_ghost(id) {
             return false;
         }
-        day_holiday(day) {
+        day_holiday(id) {
             return false;
         }
-        day_selected(day) {
+        day_selected(id) {
             return false;
         }
-        day_theme(day) {
+        day_theme(id) {
             return "";
         }
-        day_text(day) {
+        day_text(id) {
             return "";
         }
-        day_content(day) {
+        day_content(id) {
             return [
-                this.day_text(day)
+                this.day_text(id)
             ];
         }
     }
@@ -7620,10 +7620,10 @@ var $;
         month_moment() {
             return this.value_moment();
         }
-        day_selected(day) {
+        day_selected(id) {
             return false;
         }
-        day_click(day, event) {
+        day_click(id, event) {
             if (event !== undefined)
                 return event;
             return null;
@@ -7685,8 +7685,8 @@ var $;
         Calendar() {
             const obj = new this.$.$mol_date_calendar();
             obj.month_moment = () => this.month_moment();
-            obj.day_selected = (day) => this.day_selected(day);
-            obj.day_click = (day, event) => this.day_click(day, event);
+            obj.day_selected = (id) => this.day_selected(id);
+            obj.day_click = (id, event) => this.day_click(id, event);
             obj.head = () => [
                 this.Calendar_tools()
             ];
@@ -7737,20 +7737,20 @@ var $;
     ], $mol_date.prototype, "Calendar", null);
     $.$mol_date = $mol_date;
     class $mol_date_calendar extends $mol_calendar {
-        day_content(day) {
+        day_content(id) {
             return [
-                this.Day_button(day)
+                this.Day_button(id)
             ];
         }
-        day_click(day, event) {
+        day_click(id, event) {
             if (event !== undefined)
                 return event;
             return null;
         }
-        Day_button(day) {
+        Day_button(id) {
             const obj = new this.$.$mol_button_minor();
-            obj.title = () => this.day_text(day);
-            obj.event_click = (event) => this.day_click(day, event);
+            obj.title = () => this.day_text(id);
+            obj.event_click = (event) => this.day_click(id, event);
             obj.minimal_height = () => 24;
             return obj;
         }
@@ -8417,7 +8417,7 @@ var $;
         row_ids() {
             return [];
         }
-        row_id(index) {
+        row_id(id) {
             return null;
         }
         col_ids() {
@@ -9495,7 +9495,7 @@ var $;
             obj.selection = (val) => this.selection(val);
             return obj;
         }
-        row_numb(index) {
+        row_numb(id) {
             return 0;
         }
         highlight() {
@@ -9505,7 +9505,7 @@ var $;
             const obj = new this.$.$mol_text_code();
             obj.text = () => this.value();
             obj.render_visible_only = () => false;
-            obj.row_numb = (index) => this.row_numb(index);
+            obj.row_numb = (id) => this.row_numb(id);
             obj.sidebar_showed = () => this.sidebar_showed();
             obj.highlight = () => this.highlight();
             return obj;
@@ -9737,7 +9737,7 @@ var $;
         pages() {
             return [];
         }
-        Notes_page(tag) {
+        Notes_page(id) {
             const obj = new this.$.$mol_page();
             obj.title = () => this.notes_title();
             obj.tools = () => this.notes_page_tools();
@@ -12885,12 +12885,12 @@ var $;
 var $;
 (function ($) {
     class $mol_view_tree_test_attributes_subcomponent extends $mol_view {
-        Page(index) {
+        Page(id) {
             const obj = new this.$.$mol_view_tree_test_attributes_subcomponent_page();
-            obj.Sub = () => this.page(index);
+            obj.Sub = () => this.page(id);
             return obj;
         }
-        page(index) {
+        page(id) {
             return null;
         }
     }
