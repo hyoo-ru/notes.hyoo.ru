@@ -5961,6 +5961,9 @@ var $;
         enabled() {
             return true;
         }
+        bring() {
+            return this.Query().bring();
+        }
         Query() {
             const obj = new this.$.$mol_string();
             obj.value = (val) => this.query(val);
