@@ -2264,7 +2264,7 @@ var $;
         async ensure_visible(view, align = "start") {
             const path = this.view_find(v => v === view).next().value;
             this.force_render(new Set(path));
-            $mol_wire_fiber.sync();
+            this.dom_final();
             view.dom_node().scrollIntoView({ block: align });
         }
         bring() {
@@ -4761,18 +4761,33 @@ var $;
                 return `${this.align_vert()}_${this.align_hor()}`;
             }
             align_vert() {
-                const viewport = this.$.$mol_window.size();
-                const rect_bubble = this.view_rect();
-                if (!rect_bubble)
+                const viewport = this.view_port();
+                const rect_pop = this.view_rect();
+                if (!rect_pop)
                     return 'suspense';
-                return rect_bubble.top > (viewport.height - rect_bubble.bottom) ? 'top' : 'bottom';
+                return rect_pop.top > (viewport.top + viewport.height / 2) ? 'top' : 'bottom';
             }
             align_hor() {
-                const viewport = this.$.$mol_window.size();
-                const rect_bubble = this.view_rect();
-                if (!rect_bubble)
+                const viewport = this.view_port();
+                const rect_pop = this.view_rect();
+                if (!rect_pop)
                     return 'suspense';
-                return rect_bubble.left > (viewport.width - rect_bubble.right) ? 'left' : 'right';
+                return rect_pop.left > (viewport.left + viewport.width / 2) ? 'left' : 'right';
+            }
+            View_port() {
+                const view = new $mol_view;
+                view.dom_node = () => {
+                    let node = this.dom_node();
+                    while (node = node.offsetParent) {
+                        if (this.$.$mol_dom_context.getComputedStyle(node).overflow !== 'visible')
+                            return node;
+                    }
+                    return this.$.$mol_dom_context.document.documentElement;
+                };
+                return view;
+            }
+            view_port() {
+                return this.View_port().view_rect() ?? { ...this.$.$mol_window.size(), left: 0, top: 0 };
             }
         }
         __decorate([
@@ -4793,6 +4808,12 @@ var $;
         __decorate([
             $mol_mem
         ], $mol_pop.prototype, "align_hor", null);
+        __decorate([
+            $mol_mem
+        ], $mol_pop.prototype, "View_port", null);
+        __decorate([
+            $mol_mem
+        ], $mol_pop.prototype, "view_port", null);
         $$.$mol_pop = $mol_pop;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -9168,10 +9189,13 @@ var $;
                 return perm === 'granted';
             if (perm === 'granted')
                 return true;
-            perm = $mol_fiber_sync(() => new Promise(done => Notification.requestPermission(perm => {
-                done(perm);
-            })))();
+            perm = $mol_wire_sync(this).request_permissions();
             return perm === 'granted';
+        }
+        static async request_permissions() {
+            return new Promise(done => Notification.requestPermission(perm => {
+                done(perm);
+            }));
         }
         static show(info) {
             navigator.serviceWorker.controller.postMessage(info);

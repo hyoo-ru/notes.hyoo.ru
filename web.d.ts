@@ -1476,6 +1476,20 @@ declare namespace $.$$ {
         align(): string;
         align_vert(): "suspense" | "top" | "bottom";
         align_hor(): "suspense" | "left" | "right";
+        View_port(): $mol_view;
+        view_port(): {
+            width: number;
+            height: number;
+            left: number;
+            right: number;
+            top: number;
+            bottom: number;
+        } | {
+            left: number;
+            top: number;
+            width: number;
+            height: number;
+        };
     }
 }
 
@@ -2667,6 +2681,7 @@ declare namespace $ {
 declare namespace $ {
     class $mol_notify {
         static allowed(next?: boolean): boolean;
+        static request_permissions(): Promise<NotificationPermission>;
         static show(info: {
             context: string;
             message: string;
