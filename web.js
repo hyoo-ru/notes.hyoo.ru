@@ -8807,6 +8807,7 @@ var $;
         Note_date() {
             const obj = new this.$.$mol_date();
             obj.hint = () => this.$.$mol_locale.text('$hyoo_notes_Note_date_hint');
+            obj.align_hor = () => "left";
             obj.value_moment = (val) => this.note_current_moment(val);
             return obj;
         }

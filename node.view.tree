@@ -549,6 +549,7 @@ $hyoo_notes $mol_book2
 				Icon <= Note_archived_icon $mol_icon_trash_can_outline
 			<= Note_date $mol_date
 				hint @ \Reminder
+				align_hor \left
 				value_moment?val <=> note_current_moment?val $mol_time_moment
 			<= Note_close $mol_link
 				arg *
