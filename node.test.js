@@ -8693,6 +8693,9 @@ var $;
         enabled() {
             return true;
         }
+        spellcheck() {
+            return true;
+        }
         length_max() {
             return +Infinity;
         }
@@ -8706,6 +8709,7 @@ var $;
             obj.value = (val) => this.value(val);
             obj.hint = () => this.hint();
             obj.enabled = () => this.enabled();
+            obj.spellcheck = () => this.spellcheck();
             obj.length_max = () => this.length_max();
             obj.selection = (val) => this.selection(val);
             return obj;
