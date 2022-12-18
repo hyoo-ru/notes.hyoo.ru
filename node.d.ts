@@ -2246,6 +2246,7 @@ declare namespace $ {
     class $mol_calendar extends $mol_list {
         sub(): readonly any[];
         weeks(): readonly $mol_view[];
+        weeks_count(): number;
         Weekday(id: any): $mol_calendar_day;
         Week(id: any): $$.$mol_hor;
         Day(id: any): $mol_calendar_day;
@@ -2284,26 +2285,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    type $mol_time_interval_config = string | {
-        start?: $mol_time_moment_config;
-        end?: $mol_time_moment_config;
-        duration?: $mol_time_duration_config;
-    };
-    class $mol_time_interval extends $mol_time_base {
-        constructor(config: $mol_time_interval_config);
-        private _start;
-        get start(): $mol_time_moment;
-        private _end;
-        get end(): $mol_time_moment;
-        private _duration;
-        get duration(): $mol_time_duration;
-        toJSON(): string;
-        toString(): string;
-        [Symbol.toPrimitive](mode: 'default' | 'number' | 'string'): string;
-    }
-}
-
-declare namespace $ {
 }
 
 declare namespace $.$$ {
@@ -2316,7 +2297,6 @@ declare namespace $.$$ {
         weekdays(): $mol_view[];
         weekday(index: number): string;
         weekend(index: number): boolean;
-        weeks_count(): number;
         sub(): any[];
         weeks(): $mol_view[];
         week_days(index: number): $mol_view[];
@@ -2759,6 +2739,26 @@ declare namespace $ {
         tagging_tag(id: any, val?: any): boolean;
         Tag_toggle(id: any): $mol_check_icon;
         tagging_tag_row(id: any): readonly any[];
+    }
+}
+
+declare namespace $ {
+    type $mol_time_interval_config = string | {
+        start?: $mol_time_moment_config;
+        end?: $mol_time_moment_config;
+        duration?: $mol_time_duration_config;
+    };
+    class $mol_time_interval extends $mol_time_base {
+        constructor(config: $mol_time_interval_config);
+        private _start;
+        get start(): $mol_time_moment;
+        private _end;
+        get end(): $mol_time_moment;
+        private _duration;
+        get duration(): $mol_time_duration;
+        toJSON(): string;
+        toString(): string;
+        [Symbol.toPrimitive](mode: 'default' | 'number' | 'string'): string;
     }
 }
 
