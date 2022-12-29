@@ -37,6 +37,33 @@ $mol_page $mol_view
 			dom_name \footer
 			sub <= foot /$mol_view
 
+$mol_link $mol_view
+	uri \
+	dom_name \a
+	attr *
+		^
+		href <= uri_toggle \
+		title <= hint_safe <= hint \
+		target <= target \_self
+		download <= file_name \
+		mol_link_current <= current false
+	sub /$mol_view_content
+		<= title
+	arg *
+	event *
+		^
+		click?event <=> click?event <=> event_click?event null
+
+$mol_theme_auto $mol_plugin
+	attr * mol_theme <= theme \
+
+$mol_status $mol_view
+	status null
+	minimal_height 24
+	minimal_width 0
+	sub /
+		<= message \
+
 $mol_svg $mol_view
 	dom_name \svg
 	dom_name_space \http://www.w3.org/2000/svg
@@ -65,33 +92,6 @@ $mol_icon $mol_svg_root
 	sub /
 		<= Path $mol_svg_path
 			geometry <= path \
-
-$mol_link $mol_view
-	uri \
-	dom_name \a
-	attr *
-		^
-		href <= uri_toggle \
-		title <= hint_safe <= hint \
-		target <= target \_self
-		download <= file_name \
-		mol_link_current <= current false
-	sub /$mol_view_content
-		<= title
-	arg *
-	event *
-		^
-		click?event <=> click?event <=> event_click?event null
-
-$mol_theme_auto $mol_plugin
-	attr * mol_theme <= theme \
-
-$mol_status $mol_view
-	status null
-	minimal_height 24
-	minimal_width 0
-	sub /
-		<= message \
 
 $mol_icon_trash_can $mol_icon path \M9,3V4H4V6H5V19C5,20.1 5.9,21 7,21H17C18.1,21 19,20.1 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z
 
