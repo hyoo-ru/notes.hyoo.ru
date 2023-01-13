@@ -1122,7 +1122,7 @@ declare namespace $.$$ {
 
 declare namespace $ {
     class $mol_status extends $mol_view {
-        status(): any;
+        status(): string;
         minimal_height(): number;
         minimal_width(): number;
         sub(): readonly any[];

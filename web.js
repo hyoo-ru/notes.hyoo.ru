@@ -3512,6 +3512,7 @@ var $;
                     shrink: 1,
                     basis: per(100),
                 },
+                padding: $mol_gap.block,
             },
             Foot: {
                 display: 'flex',
@@ -3527,6 +3528,10 @@ var $;
                 },
                 boxShadow: `0 -0.5rem 0.5rem -0.5rem hsla(0,0%,0%,.25)`,
                 zIndex: 1,
+                padding: $mol_gap.block,
+                ':empty': {
+                    display: 'none',
+                },
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
@@ -3948,7 +3953,7 @@ var $;
 (function ($) {
     class $mol_status extends $mol_view {
         status() {
-            return null;
+            return this.title();
         }
         minimal_height() {
             return 24;
@@ -9650,7 +9655,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 50rem;\n}\n\n[hyoo_notes_tagging_content],\n[hyoo_notes_notes_page_content] {\n\tpadding: var(--mol_gap_block);\n}\n\n[hyoo_notes_notes_list] {\n\tflex: 0 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_note_title] {\n\tflex-grow: 1;\n}\n\n[hyoo_notes_note_moment] {\n\tflex-shrink: 1000;\n    flex-basis: 11ch;\n    min-width: max-content;\n    font-family: monospace;\n}\n\n[hyoo_notes_tag_link] {\n\tflex: auto;\n}\n\n[hyoo_notes_tag_toggle] {\n\tflex-grow: 10000;\n\tjustify-content: flex-end;\n}\n\n[hyoo_notes_note_content] {\n\tmargin: var(--mol_gap_block);\n}\n");
+    $mol_style_attach("hyoo/notes/notes.view.css", "[hyoo_notes_tagging_page] {\n\tflex: 0 0 20rem;\n}\n\n[hyoo_notes_notes_page] {\n\tflex: 0 0 30rem;\n}\n\n[hyoo_notes_note_page] {\n\tflex: 1000 0 50rem;\n}\n\n[hyoo_notes_notes_list] {\n\tflex: 0 0 auto;\n}\n\n[hyoo_notes_note_add_hint] {\n\tdisplay: flex;\n\tpadding: 0 .75rem;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tcolor: var(--mol_theme_shade);\n}\n\n[hyoo_notes_note_row] {\n\tdisplay: flex;\n}\n\n[hyoo_notes_note_title] {\n\tflex-grow: 1;\n}\n\n[hyoo_notes_note_moment] {\n\tflex-shrink: 1000;\n    flex-basis: 11ch;\n    min-width: max-content;\n    font-family: monospace;\n}\n\n[hyoo_notes_tag_link] {\n\tflex: auto;\n}\n\n[hyoo_notes_tag_toggle] {\n\tflex-grow: 10000;\n\tjustify-content: flex-end;\n}\n");
 })($ || ($ = {}));
 //hyoo/notes/-css/notes.view.css.ts
 ;
