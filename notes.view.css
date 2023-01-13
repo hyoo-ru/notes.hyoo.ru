@@ -10,11 +10,6 @@
 	flex: 1000 0 50rem;
 }
 
-[hyoo_notes_tagging_content],
-[hyoo_notes_notes_page_content] {
-	padding: var(--mol_gap_block);
-}
-
 [hyoo_notes_notes_list] {
 	flex: 0 0 auto;
 }
@@ -49,8 +44,4 @@
 [hyoo_notes_tag_toggle] {
 	flex-grow: 10000;
 	justify-content: flex-end;
-}
-
-[hyoo_notes_note_content] {
-	margin: var(--mol_gap_block);
 }
