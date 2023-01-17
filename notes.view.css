@@ -40,8 +40,3 @@
 [hyoo_notes_tag_link] {
 	flex: auto;
 }
-
-[hyoo_notes_tag_toggle] {
-	flex-grow: 10000;
-	justify-content: flex-end;
-}
