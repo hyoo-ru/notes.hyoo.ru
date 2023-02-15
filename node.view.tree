@@ -101,7 +101,7 @@ $mol_icon_trash_can_outline $mol_icon path \M9,3V4H4V6H5V19C5,20.1 5.9,21 7,21H1
 $mol_speck $mol_view
 	attr *
 		^
-		mol_theme \$mol_theme_accent
+		mol_theme <= theme \$mol_theme_accent
 	style *
 		^
 		minHeight \1em
