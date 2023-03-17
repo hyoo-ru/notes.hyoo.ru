@@ -1547,6 +1547,7 @@ declare namespace $ {
         showed(val?: any): boolean;
         align_vert(): string;
         align_hor(): string;
+        prefer(): string;
         sub(): readonly any[];
         sub_visible(): readonly any[];
         Anchor(): any;
@@ -1555,7 +1556,7 @@ declare namespace $ {
         height_max(): number;
         Bubble(): $mol_pop_bubble;
     }
-    class $mol_pop_bubble extends $mol_scroll {
+    class $mol_pop_bubble extends $mol_view {
         sub(): readonly $mol_view_content[];
         style(): {
             maxHeight: number;
@@ -2045,7 +2046,7 @@ declare namespace $.$$ {
         suggests_showed(next?: boolean): boolean;
         suggest_selected(next?: string): void;
         nav_components(): ($mol_button_minor | $mol_string)[];
-        nav_focused(component?: $mol_view): $mol_view | $mol_string | null;
+        nav_focused(component?: $mol_view): $mol_view | $mol_button_minor | $mol_string | null;
         suggest_label(key: string): string;
         menu_items(): $mol_button_minor[];
         suggest_select(id: string, event?: MouseEvent): void;
@@ -2303,7 +2304,7 @@ declare namespace $ {
         day_ghost(id: any): boolean;
         day_holiday(id: any): boolean;
         day_selected(id: any): boolean;
-        day_theme(id: any): string;
+        day_theme(id: any): any;
         day_text(id: any): string;
         day_content(id: any): readonly any[];
     }
@@ -2314,12 +2315,12 @@ declare namespace $ {
             mol_calendar_holiday: boolean;
             mol_calendar_ghost: boolean;
             mol_calendar_selected: boolean;
-            mol_theme: string;
+            mol_theme: any;
         };
         holiday(): boolean;
         ghost(): boolean;
         selected(): boolean;
-        theme(): string;
+        theme(): any;
     }
 }
 
@@ -2340,7 +2341,7 @@ declare namespace $.$$ {
         day_holiday(day: string): boolean;
         day_ghost(day: string): boolean;
         day_selected(day: string): boolean;
-        day_theme(day: string): string;
+        day_theme(day: string): any;
     }
 }
 
