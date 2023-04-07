@@ -5442,8 +5442,8 @@ var $;
             return {
                 ...super.attr(),
                 mol_check_checked: this.checked(),
-                "aria-checked": this.checked(),
-                role: "checkbox"
+                "aria-checked": this.aria_checked(),
+                role: this.aria_role()
             };
         }
         sub() {
@@ -5452,10 +5452,16 @@ var $;
                 this.label()
             ];
         }
-        checked(val) {
-            if (val !== undefined)
-                return val;
+        checked(next) {
+            if (next !== undefined)
+                return next;
             return false;
+        }
+        aria_checked() {
+            return "false";
+        }
+        aria_role() {
+            return "checkbox";
         }
         Icon() {
             return null;
@@ -5524,6 +5530,9 @@ var $;
             }
             label() {
                 return this.title() ? super.label() : [];
+            }
+            aria_checked() {
+                return String(this.checked());
             }
         }
         $$.$mol_check = $mol_check;
