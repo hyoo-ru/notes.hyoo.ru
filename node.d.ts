@@ -1161,7 +1161,7 @@ declare namespace $ {
     class $mol_fetch_response extends $mol_object2 {
         readonly native: Response;
         constructor(native: Response);
-        status(): "success" | "unknown" | "inform" | "redirect" | "wrong" | "failed";
+        status(): "unknown" | "success" | "inform" | "redirect" | "wrong" | "failed";
         code(): number;
         message(): string;
         headers(): Headers;
@@ -1191,8 +1191,8 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_huggingface_run(this: $, space: string, method: string | number, ...data: readonly any[]): readonly string[];
-    function $mol_huggingface_async(space: string, method: number, ...data: readonly any[]): Promise<[string]> & {
+    function $mol_huggingface_run(this: $, space: string, method: string | number, ...data: readonly any[]): any[] | readonly string[];
+    function $mol_huggingface_async(space: string, method: number, ...data: readonly any[]): Promise<any[]> & {
         destructor: () => void;
     };
 }
@@ -1210,7 +1210,7 @@ declare namespace $ {
         static lang(next?: string): string;
         static source(lang: string): any;
         static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
-        static text(key: string): {} | null;
+        static text(key: string): string;
         static warn(key: string): null;
     }
 }
@@ -2138,7 +2138,7 @@ declare namespace $ {
         nav_focused(component?: any): any;
         Nav(): $$.$mol_nav;
         suggests_showed(val?: any): boolean;
-        hint(): {} | null;
+        hint(): string;
         submit(event?: any): any;
         enabled(): boolean;
         keyboard(): string;
@@ -2487,11 +2487,11 @@ declare namespace $ {
         month_moment(): $mol_time_moment;
         day_selected(id: any): boolean;
         day_click(id: any, event?: any): any;
-        prev_hint(): {} | null;
+        prev_hint(): string;
         prev(event?: any): any;
         Prev_icon(): $mol_icon_chevron_left;
         Prev(): $mol_button_minor;
-        next_hint(): {} | null;
+        next_hint(): string;
         next(event?: any): any;
         Next_icon(): $mol_icon_chevron_right;
         Next(): $mol_button_minor;
@@ -2932,7 +2932,7 @@ declare namespace $ {
 
 declare namespace $ {
     class $mol_link_source extends $mol_link {
-        hint(): {} | null;
+        hint(): string;
         sub(): readonly any[];
         Icon(): $mol_icon_github_circle;
     }
@@ -2947,7 +2947,7 @@ declare namespace $ {
 declare namespace $ {
     class $mol_lights_toggle extends $mol_check_icon {
         Icon(): $mol_icon_brightness_6;
-        hint(): {} | null;
+        hint(): string;
         checked(val?: any): boolean;
         Lights_icon(): $mol_icon_brightness_6;
         lights(val?: any): boolean;
@@ -2969,7 +2969,7 @@ declare namespace $ {
 declare namespace $ {
     class $hyoo_notes extends $mol_book2 {
         plugins(): readonly any[];
-        note_default_title(): {} | null;
+        note_default_title(): string;
         pages(): readonly any[];
         Notes_page(id: any): $mol_page;
         Note_page(id: any): $mol_page;
@@ -2977,7 +2977,7 @@ declare namespace $ {
         Note_row(id: any): $$.$mol_link;
         Tagging_tag_row(id: any): $mol_view;
         Theme(): $$.$mol_theme_auto;
-        notes_title(): {} | null;
+        notes_title(): string;
         reminders(): any;
         Reminders(): $$.$mol_status;
         tag_archived(next?: any): boolean;
@@ -2988,7 +2988,7 @@ declare namespace $ {
         note_add_short(event?: any): any;
         Notes_filter(): $$.$mol_search;
         Note_add_icon(): $mol_icon_plus;
-        notes_list_add_title(): {} | null;
+        notes_list_add_title(): string;
         note_add_long(event?: any): any;
         Note_add(): $mol_button_major;
         Notes_page_add(): $mol_view;
@@ -3003,19 +3003,19 @@ declare namespace $ {
         Note_date(): $$.$mol_date;
         Note_close_icon(): $mol_icon_close;
         Note_close(): $$.$mol_link;
-        note_content_hint(): {} | null;
+        note_content_hint(): string;
         note_current_content(val?: any): string;
         Note_content(): $$.$mol_textarea;
         tagging_title(): string;
         Tags_all_icon(): $mol_icon_filter_remove;
-        tags_all_hint(): {} | null;
+        tags_all_hint(): string;
         Tags_all(): $$.$mol_link;
         Source_link(): $mol_link_source;
         Lights(): $$.$mol_lights_toggle;
         tagging_filter(val?: any): string;
         tagging_add(event?: any): any;
         Tagging_filter(): $$.$mol_search;
-        tag_add_title(): {} | null;
+        tag_add_title(): string;
         Tagging_add_icon(): $mol_icon_plus;
         Tagging_add(): $mol_button_minor;
         tagging_tools(): readonly any[];
@@ -3152,8 +3152,8 @@ declare namespace $.$$ {
         tagging_add(): void;
         tag_title(id: string): string;
         id(id: string): string;
-        note_title(id: string): {} | null;
-        note_current_title(): {} | null;
+        note_title(id: string): string;
+        note_current_title(): string;
         tagging_rows(): $mol_view[];
         tagging_tag_row(id: string): ($mol_link | $mol_check_icon)[];
         note_ids_available(): string[];
@@ -3162,7 +3162,7 @@ declare namespace $.$$ {
         note_add_long(): void;
         note_archived(next?: boolean): boolean;
         tag_archived(next?: boolean): boolean;
-        notes_title(): {} | null;
+        notes_title(): string;
         tagging_tag(tag: string, next?: boolean): boolean;
     }
 }
