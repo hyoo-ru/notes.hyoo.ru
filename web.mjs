@@ -10443,4 +10443,5 @@ var $;
 })($ || ($ = {}));
 //hyoo/notes/notes.view.ts
 
+export default $
 //# sourceMappingURL=web.js.map

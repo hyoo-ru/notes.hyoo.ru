@@ -10942,4 +10942,5 @@ var $;
 })($ || ($ = {}));
 //hyoo/notes/notes.view.ts
 
+export default $
 //# sourceMappingURL=node.js.map
