@@ -390,7 +390,7 @@ $mol_date $mol_pick
 		<= Input_row $mol_view sub <= input_content /
 			<= Today $mol_button_minor
 				hint @ \Today
-				enabled <= today_enabled true
+				enabled <= enabled true
 				click?event <=> today_click?event null
 				sub /
 					<= Today_icon $mol_icon_calendar_today
@@ -400,10 +400,12 @@ $mol_date $mol_pick
 				enabled <= enabled true
 			<= Clear $mol_button_minor
 				hint @ \Clear
+				enabled <= enabled true
 				click?event <=> clear?event null
 				sub /
-					<= Clear_icon $mol_icon_cross
+					<= Clear_icon $mol_icon_trash_can_outline
 		<= Calendar $mol_date_calendar
+			enabled <= enabled true
 			month_moment <= month_moment <= value_moment
 			day_selected* <= day_selected* false
 			day_click*?event <=> day_click*?event null
@@ -432,6 +434,7 @@ $mol_date_calendar $mol_calendar
 			title <= day_text*
 			event_click?event <=> day_click*?event null
 			minimal_height 24
+			enabled <= enabled true
 
 $mol_icon_close $mol_icon path \M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z
 
