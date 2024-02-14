@@ -6282,7 +6282,7 @@ var $;
 		}
 		Clear(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => (this.$.$mol_locale.text("$mol_search_Clear_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$mol_search_Clear_hint")));
 			(obj.click) = (next) => ((this.clear(next)));
 			(obj.sub) = () => ([(this.Clear_icon())]);
 			return obj;
@@ -7574,7 +7574,7 @@ var $;
 		}
 		Today(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => (this.$.$mol_locale.text("$mol_date_Today_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$mol_date_Today_hint")));
 			(obj.enabled) = () => ((this.enabled()));
 			(obj.click) = (next) => ((this.today_click(next)));
 			(obj.sub) = () => ([(this.Today_icon())]);
@@ -7607,7 +7607,7 @@ var $;
 		}
 		Clear(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => (this.$.$mol_locale.text("$mol_date_Clear_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$mol_date_Clear_hint")));
 			(obj.enabled) = () => ((this.enabled()));
 			(obj.click) = (next) => ((this.clear(next)));
 			(obj.sub) = () => ([(this.Clear_icon())]);
@@ -8493,7 +8493,7 @@ var $;
 		}
 		Copy(){
 			const obj = new this.$.$mol_button_copy();
-			(obj.hint) = () => (this.$.$mol_locale.text("$mol_text_code_Copy_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$mol_text_code_Copy_hint")));
 			(obj.text) = () => ((this.text_export()));
 			return obj;
 		}
@@ -9089,7 +9089,7 @@ var $;
 		}
 		Tag_archived(){
 			const obj = new this.$.$mol_check_icon();
-			(obj.hint) = () => (this.$.$mol_locale.text("$hyoo_notes_Tag_archived_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_notes_Tag_archived_hint")));
 			(obj.checked) = (next) => ((this.tag_archived(next)));
 			(obj.Icon) = () => ((this.Tag_archived_icon()));
 			return obj;
@@ -9109,7 +9109,7 @@ var $;
 			const obj = new this.$.$mol_search();
 			(obj.query) = (next) => ((this.note_filter(next)));
 			(obj.submit) = (next) => ((this.note_add_short(next)));
-			(obj.hint) = () => (this.$.$mol_locale.text("$hyoo_notes_Notes_filter_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_notes_Notes_filter_hint")));
 			return obj;
 		}
 		Note_add_icon(){
@@ -9161,7 +9161,7 @@ var $;
 		}
 		Note_archived(){
 			const obj = new this.$.$mol_check_icon();
-			(obj.hint) = () => (this.$.$mol_locale.text("$hyoo_notes_Note_archived_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_notes_Note_archived_hint")));
 			(obj.checked) = (next) => ((this.note_archived(next)));
 			(obj.Icon) = () => ((this.Note_archived_icon()));
 			return obj;
@@ -9173,7 +9173,7 @@ var $;
 		}
 		Note_date(){
 			const obj = new this.$.$mol_date();
-			(obj.hint) = () => (this.$.$mol_locale.text("$hyoo_notes_Note_date_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_notes_Note_date_hint")));
 			(obj.align_hor) = () => ("left");
 			(obj.value_moment) = (next) => ((this.note_current_moment(next)));
 			return obj;
@@ -9238,7 +9238,7 @@ var $;
 		Tagging_filter(){
 			const obj = new this.$.$mol_search();
 			(obj.query) = (next) => ((this.tagging_filter(next)));
-			(obj.hint) = () => (this.$.$mol_locale.text("$hyoo_notes_Tagging_filter_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_notes_Tagging_filter_hint")));
 			(obj.submit) = (next) => ((this.tagging_add(next)));
 			return obj;
 		}
@@ -9323,7 +9323,7 @@ var $;
 		Tag_toggle(id){
 			const obj = new this.$.$mol_check_icon();
 			(obj.Icon) = () => ((this.Tag_toggle_icon(id)));
-			(obj.hint) = () => (this.$.$mol_locale.text("$hyoo_notes_Tag_toggle_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_notes_Tag_toggle_hint")));
 			(obj.checked) = (next) => ((this.tagging_tag(id, next)));
 			return obj;
 		}
