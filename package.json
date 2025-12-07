@@ -237,7 +237,6 @@
     "$mol_unit"
   ],
   "dependencies": {
-    "internal": "*",
     "jsdom": "*"
   }
 }
