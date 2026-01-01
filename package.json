@@ -170,6 +170,8 @@
     "$mol_button_typed",
     "$mol_search",
     "$mol_pop",
+    "$mol_follower",
+    "$mol_ghost",
     "$mol_hotkey",
     "$mol_nav",
     "$mol_string",
