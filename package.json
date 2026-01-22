@@ -171,6 +171,7 @@
     "$mol_keyboard_code",
     "$mol_keyboard",
     "$mol_button_typed",
+    "$mol_dom_event",
     "$mol_search",
     "$mol_pop",
     "$mol_follower",
