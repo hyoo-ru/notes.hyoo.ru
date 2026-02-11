@@ -1,0 +1,22 @@
+{
+	"name": "Notes.HyOO.ru",
+	"short_name": "Notes",
+	"description": "",
+	"id": "hyoo_notes",
+	"start_url": "../..",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"icons": [
+		{
+			"src": "../../hyoo/notes/logo/logo.png",
+			"type": "image/png",
+			"sizes": "160x160"
+		},
+		{
+			"src": "../../hyoo/notes/logo/logo.svg",
+			"type": "image/svg",
+			"sizes": "160x160"
+		}
+	]
+}
