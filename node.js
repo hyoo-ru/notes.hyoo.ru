@@ -7307,6 +7307,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    let x = /x/[Symbol.matchAll];
     class $mol_regexp extends RegExp {
         groups;
         constructor(source, flags = 'gsu', groups = []) {
