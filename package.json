@@ -213,6 +213,7 @@
     "$mol_calendar",
     "$mol_hor",
     "$mol_link",
+    "$mol_dom_safe",
     "$mol_textarea",
     "$mol_stack",
     "$mol_syntax2",
